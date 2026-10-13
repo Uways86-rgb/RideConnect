@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+
+    <!-- FIXED MAP                                             -->
+    <org.osmdroid.views.MapView
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="10dp" />
+
+
+    <!-- SCROLLABLE CONTENT                                    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="30dp">
+
+
+            <!-- ================================================= -->
+            <!-- WELCOME                                           -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🚗"
+                android:textSize="55sp" />
+
+
+            <TextView
+                android:id="@+id/welcomeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello Passenger 👋"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Where do you want to go?"
+                android:textSize="18sp"
+                android:layout_marginTop="30dp" />
+
+
+            <!-- CURRENT LOCATION                                  -->
+            <TextView
+                android:id="@+id/currentLocationText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📍 Detecting your location..."
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:padding="10dp" />
+
+
+            <Button
+                android:id="@+id/useCurrentLocationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📍 USE CURRENT LOCATION"
+                android:layout_marginTop="5dp" />
+
+
+            <!-- PICKUP                                             -->
+            <EditText
+                android:id="@+id/pickupInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pickup Location"
+                android:layout_marginTop="20dp" />
+
+
+            <!-- ================================================= -->
+            <!-- DESTINATION                                        -->
+            <!-- ================================================= -->
+
+            <EditText
+                android:id="@+id/destinationInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Destination"
+                android:layout_marginTop="15dp" />
+
+            <Button
+                android:id="@+id/searchDestinationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📍 FIND DESTINATION"
+                android:layout_marginTop="5dp" />
+
+
+            <!-- ================================================= -->
+            <!-- FIND RIDE                                          -->
+            <Button
+                android:id="@+id/findRideButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FIND RIDE"
+                android:layout_marginTop="30dp" />
+
+            <Button
+                android:id="@+id/searchRidesButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🔎 SEARCH AVAILABLE RIDES"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"/>
+
+
+            <!-- RIDE HISTORY                                       -->
+            <Button
+                android:id="@+id/rideHistoryButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ride History"
+                android:layout_marginTop="15dp" />
+
+            <Button
+                android:id="@+id/myBookingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📋 MY BOOKINGS"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"/>
+
+
+            <!-- ================================================= -->
+            <!-- RIDE STATUS                                        -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ready to find a ride"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp" />
+
+
+            <!-- ================================================= -->
+            <!-- DRIVER NAME                                        -->
+            <TextView
+                android:id="@+id/driverNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp" />
+
+
+            <!-- DRIVER PHONE                                       -->
+            <TextView
+                android:id="@+id/driverPhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="18sp"
+                android:layout_marginTop="5dp" />
+
+
+            <TextView
+                android:id="@+id/driverCarText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp" />
+
+
+            <!-- ================================================= -->
+            <!-- RIDE DETAILS                                      -->
+            <!-- ================================================= -->
+
+            <TextView
+                android:id="@+id/rideDetailsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

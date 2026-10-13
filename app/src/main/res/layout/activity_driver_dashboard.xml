@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/driverMap"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="10dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Dashboard 🚘"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:id="@+id/welcomeDriverText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome Driver 👋"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <Button
+                android:id="@+id/accountButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👤 MY ACCOUNT"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/postRideButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🚗 POST A RIDE"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"/>
+
+            <Button
+                android:id="@+id/bookingRequestsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="🎫 BOOKING REQUESTS"
+                android:textSize="17sp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Available Ride Requests"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:layout_marginTop="35dp"/>
+
+            <LinearLayout
+                android:id="@+id/rideRequestContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginTop="15dp"
+                android:background="#EEEEEE">
+
+                <TextView
+                    android:id="@+id/pickupText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pickup: Waiting..."
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/destinationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destination: Waiting..."
+                    android:textSize="18sp"
+                    android:layout_marginTop="10dp"/>
+
+                <Button
+                    android:id="@+id/acceptRideButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="ACCEPT RIDE" />
+
+                <Button
+                    android:id="@+id/startRideButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start Ride"
+                    android:layout_marginTop="15dp"
+                    android:enabled="false"/>
+
+                <Button
+                    android:id="@+id/completeRideButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Complete Ride"
+                    android:layout_marginTop="15dp"
+                    android:enabled="false"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

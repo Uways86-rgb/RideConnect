@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚗 Post a Ride"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a ride for passengers to book"
+            android:textSize="17sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+
+        <!-- PICKUP -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pickup Location"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"/>
+
+        <EditText
+            android:id="@+id/pickupInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Moka"
+            android:inputType="textCapWords"
+            android:layout_marginTop="8dp"/>
+
+        <!-- DESTINATION -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/destinationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Port Louis"
+            android:inputType="textCapWords"
+            android:layout_marginTop="8dp"/>
+
+        <!-- DATE -->
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date: Not selected"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/selectDateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📅 SELECT DATE"
+            android:layout_marginTop="8dp"/>
+
+        <!-- TIME -->
+
+        <TextView
+            android:id="@+id/timeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time: Not selected"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"/>
+
+        <Button
+            android:id="@+id/selectTimeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🕐 SELECT TIME"
+            android:layout_marginTop="8dp"/>
+
+        <!-- AVAILABLE SEATS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available Seats"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/seatsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 3"
+            android:inputType="number"
+            android:layout_marginTop="8dp"/>
+
+        <!-- PRICE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price per Passenger (Rs)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/priceInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 100"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="8dp"/>
+
+        <!-- POST -->
+
+        <Button
+            android:id="@+id/postRideButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🚗 POST RIDE"
+            android:textSize="18sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

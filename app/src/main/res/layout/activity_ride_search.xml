@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔎 Search Rides"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find an available ride"
+            android:textSize="17sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"/>
+
+        <!-- PICKUP -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pickup Location"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"/>
+
+        <EditText
+            android:id="@+id/searchPickupInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Moka"
+            android:inputType="textCapWords"
+            android:layout_marginTop="8dp"/>
+
+        <!-- DESTINATION -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/searchDestinationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. Port Louis"
+            android:inputType="textCapWords"
+            android:layout_marginTop="8dp"/>
+
+        <!-- OPERATIONAL REGION -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Operational Region"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <Spinner
+            android:id="@+id/searchRegionSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- DATE -->
+
+        <TextView
+            android:id="@+id/searchDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date: Not selected"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:id="@+id/selectSearchDateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="📅 SELECT DATE"
+            android:layout_marginTop="8dp"/>
+
+        <!-- MINIMUM SEATS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minimum Available Seats"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/minSeatsInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 2"
+            android:inputType="number"
+            android:layout_marginTop="8dp"/>
+
+        <!-- MAXIMUM PRICE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maximum Price (Rs)"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/maxPriceInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="e.g. 150"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="8dp"/>
+
+        <!-- BUTTONS -->
+
+        <Button
+            android:id="@+id/searchRidesButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🔎 SEARCH RIDES"
+            android:textSize="18sp"
+            android:layout_marginTop="25dp"/>
+
+        <Button
+            android:id="@+id/clearFiltersButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CLEAR FILTERS"
+            android:layout_marginTop="8dp"/>
+
+        <!-- RESULTS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available Rides"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:id="@+id/resultsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🚗"
+            android:textSize="50sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Account"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/selectedRoleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registering as: Passenger"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/phoneInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mobile Phone Number"
+            android:inputType="phone"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Vehicle Information -->
+        <TextView
+            android:id="@+id/vehicleInformationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Information"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:layout_gravity="start"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/carRegistrationInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Registration Number"
+            android:inputType="textCapCharacters"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/carMakeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Make (e.g. Toyota)"
+            android:inputType="textCapWords"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/carModelInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Model (e.g. Corolla)"
+            android:inputType="textCapWords"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/carColorInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Car Colour (e.g. White)"
+            android:inputType="textCapWords"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REGISTER"
+            android:layout_marginTop="25dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
