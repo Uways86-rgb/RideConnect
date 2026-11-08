@@ -85,6 +85,10 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".activities.PassengerAccountActivity"
+            android:exported="false" />
+
         <service
             android:name=".notifications.RideConnectFirebaseMessagingService"
             android:exported="false">

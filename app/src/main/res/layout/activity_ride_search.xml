@@ -1,174 +1,357 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:orientation="vertical"
+    android:background="@color/screen_background">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🔎 Search Rides"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Find an available ride"
-            android:textSize="17sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"/>
-
-        <!-- PICKUP -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pickup Location"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
-
-        <EditText
-            android:id="@+id/searchPickupInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="e.g. Moka"
-            android:inputType="textCapWords"
-            android:layout_marginTop="8dp"/>
-
-        <!-- DESTINATION -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Destination"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
-
-        <EditText
-            android:id="@+id/searchDestinationInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="e.g. Port Louis"
-            android:inputType="textCapWords"
-            android:layout_marginTop="8dp"/>
-
-        <!-- OPERATIONAL REGION -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Operational Region"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
-
-        <Spinner
-            android:id="@+id/searchRegionSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginTop="8dp"/>
-
-        <!-- DATE -->
-
-        <TextView
-            android:id="@+id/searchDateText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Date: Not selected"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
-
-        <Button
-            android:id="@+id/selectSearchDateButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="📅 SELECT DATE"
-            android:layout_marginTop="8dp"/>
-
-        <!-- MINIMUM SEATS -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Minimum Available Seats"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
-
-        <EditText
-            android:id="@+id/minSeatsInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="e.g. 2"
-            android:inputType="number"
-            android:layout_marginTop="8dp"/>
-
-        <!-- MAXIMUM PRICE -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Maximum Price (Rs)"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
-
-        <EditText
-            android:id="@+id/maxPriceInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="e.g. 150"
-            android:inputType="numberDecimal"
-            android:layout_marginTop="8dp"/>
-
-        <!-- BUTTONS -->
-
-        <Button
-            android:id="@+id/searchRidesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="🔎 SEARCH RIDES"
-            android:textSize="18sp"
-            android:layout_marginTop="25dp"/>
-
-        <Button
-            android:id="@+id/clearFiltersButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="CLEAR FILTERS"
-            android:layout_marginTop="8dp"/>
-
-        <!-- RESULTS -->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Available Rides"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/resultsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="15dp"/>
+            android:padding="18dp">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/navy"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔎"
+                    android:textSize="34sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Explore Rides"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Find a ride that matches your journey"
+                    android:textSize="13sp"
+                    android:textColor="#DCE6EF"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+
+            <!-- Search form card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="18dp"
+                android:layout_marginTop="16dp"
+                android:elevation="3dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Plan Your Journey"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/navy"/>
+
+                <!-- Pickup -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pickup Location"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="18dp"/>
+
+                <EditText
+                    android:id="@+id/searchPickupInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="Where are you travelling from?"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
+
+                <!-- Destination -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destination"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="14dp"/>
+
+                <EditText
+                    android:id="@+id/searchDestinationInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="Where would you like to go?"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
+
+                <!-- District filter -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="District Filter (Optional)"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="14dp"/>
+
+                <Spinner
+                    android:id="@+id/searchRegionSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="6dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <!-- Date -->
+                <TextView
+                    android:id="@+id/searchDateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Travel date: Any date"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="18dp"/>
+
+                <Button
+                    android:id="@+id/selectSearchDateButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="SELECT TRAVEL DATE"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:backgroundTint="@color/screen_background"
+                    android:layout_marginTop="6dp"/>
+
+
+                <!-- Preferred departure time -->
+                <TextView
+                    android:id="@+id/searchTimeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Preferred departure: Any time"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="18dp"/>
+
+                <Button
+                    android:id="@+id/selectSearchTimeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="SELECT DEPARTURE TIME"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:backgroundTint="@color/screen_background"
+                    android:layout_marginTop="6dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Time Flexibility"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="14dp"/>
+
+                <Spinner
+                    android:id="@+id/searchTimeFlexibilitySpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="6dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <!-- Seats and price -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Minimum Available Seats"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="14dp"/>
+
+                <EditText
+                    android:id="@+id/minSeatsInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="Any number of seats"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginTop="6dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Maximum Price per Passenger (Rs)"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="14dp"/>
+
+                <EditText
+                    android:id="@+id/maxPriceInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:hint="No maximum price"
+                    android:inputType="numberDecimal"
+                    android:singleLine="true"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:layout_marginTop="6dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <!-- Search and clear -->
+                <Button
+                    android:id="@+id/searchRidesButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:text="SEARCH AVAILABLE RIDES"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/teal"
+                    android:layout_marginTop="22dp"/>
+
+                <Button
+                    android:id="@+id/clearFiltersButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="CLEAR FILTERS"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navy"
+                    android:backgroundTint="@color/screen_background"
+                    android:layout_marginTop="8dp"/>
+
+            </LinearLayout>
+
+            <!-- Results -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/white"
+                android:layout_marginTop="18dp"
+                android:elevation="3dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Available Rides"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/navy"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choose a suitable ride for your journey."
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp"/>
+
+                <LinearLayout
+                    android:id="@+id/resultsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="14dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Passenger Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/exploreBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/exploreHomeNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="⌂\nHome"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"/>
+
+        <TextView
+            android:id="@+id/exploreExploreNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="⌕\nExplore"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/teal"/>
+
+        <TextView
+            android:id="@+id/exploreBookingsNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▣\nBookings"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"/>
+
+        <TextView
+            android:id="@+id/exploreAccountNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="●\nAccount"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary"/>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

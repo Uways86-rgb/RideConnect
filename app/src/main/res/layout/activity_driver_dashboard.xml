@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="@color/screen_background">
 
+    <!-- DRIVER MAP -->
     <org.osmdroid.views.MapView
         android:id="@+id/driverMap"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_margin="10dp" />
 
+    <!-- DASHBOARD CONTENT -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -23,107 +24,175 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Driver Dashboard 🚘"
-                android:textSize="28sp"
+                android:text="Driver Dashboard"
+                android:textColor="@color/text_primary"
+                android:textSize="26sp"
                 android:textStyle="bold"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/welcomeDriverText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome Driver 👋"
-                android:textSize="20sp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center_horizontal"/>
+                android:text="Welcome Driver"
+                android:textColor="@color/text_secondary"
+                android:textSize="17sp"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- LEGACY ACTION BUTTONS
+                 Hidden because navigation is now at the bottom.
+                 IDs are retained for existing Kotlin references. -->
 
             <Button
                 android:id="@+id/accountButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="👤 MY ACCOUNT"
-                android:layout_marginTop="20dp"/>
+                android:text="MY ACCOUNT"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/postRideButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🚗 POST A RIDE"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"/>
+                android:text="POST A RIDE"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/bookingRequestsButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🎫 BOOKING REQUESTS"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"/>
+                android:text="BOOKING REQUESTS"
+                android:visibility="gone" />
 
+            <!-- RIDE REQUEST SECTION -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Available Ride Requests"
-                android:textSize="22sp"
+                android:textColor="@color/text_primary"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:layout_marginTop="35dp"/>
+                android:layout_marginTop="25dp" />
 
             <LinearLayout
                 android:id="@+id/rideRequestContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="20dp"
-                android:layout_marginTop="15dp"
-                android:background="#EEEEEE">
+                android:padding="18dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/card_white"
+                android:elevation="3dp">
 
                 <TextView
                     android:id="@+id/pickupText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pickup: Waiting..."
-                    android:textSize="18sp"/>
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp" />
 
                 <TextView
                     android:id="@+id/destinationText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Destination: Waiting..."
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"/>
+                    android:textColor="@color/text_primary"
+                    android:textSize="17sp"
+                    android:layout_marginTop="12dp" />
 
                 <Button
                     android:id="@+id/acceptRideButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="18dp"
                     android:text="ACCEPT RIDE" />
 
                 <Button
                     android:id="@+id/startRideButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Start Ride"
-                    android:layout_marginTop="15dp"
-                    android:enabled="false"/>
+                    android:text="START RIDE"
+                    android:layout_marginTop="12dp"
+                    android:enabled="false" />
 
                 <Button
                     android:id="@+id/completeRideButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Complete Ride"
-                    android:layout_marginTop="15dp"
-                    android:enabled="false"/>
+                    android:text="COMPLETE RIDE"
+                    android:layout_marginTop="12dp"
+                    android:enabled="false" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- DRIVER BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:id="@+id/driverBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/card_white"
+        android:elevation="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/driverHomeNavItem"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="⌂&#10;Home"
+            android:textColor="@color/teal"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/driverPostRideNavItem"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="+&#10;Post Ride"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/driverRequestsNavItem"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="▤&#10;Requests"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:background="?attr/selectableItemBackground" />
+
+        <TextView
+            android:id="@+id/driverAccountNavItem"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="●&#10;Account"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:background="?attr/selectableItemBackground" />
+
+    </LinearLayout>
 
 </LinearLayout>

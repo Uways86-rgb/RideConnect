@@ -21,6 +21,13 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+import android.app.TimePickerDialog
+
+
 class RideSearchActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
@@ -30,10 +37,13 @@ class RideSearchActivity : AppCompatActivity() {
     private lateinit var minSeatsInput: EditText
     private lateinit var maxPriceInput: EditText
     private lateinit var dateText: TextView
+    private lateinit var timeText: TextView
     private lateinit var regionSpinner: Spinner
+    private lateinit var timeFlexibilitySpinner: Spinner
     private lateinit var resultsContainer: LinearLayout
 
     private var selectedDate: String? = null
+    private var selectedTime: String? = null
 
     private val regions = listOf(
         "All regions",
@@ -53,6 +63,26 @@ class RideSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ride_search)
 
+        // Bottom navigation system bar spacing
+        val bottomNavigation = findViewById<View>(R.id.exploreBottomNavigation)
+        val initialBottomPadding = bottomNavigation.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNavigation) { view, insets ->
+            val navigationBarInsets =
+                insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+
+            view.setPadding(
+                view.paddingLeft,
+                view.paddingTop,
+                view.paddingRight,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(bottomNavigation)
+
         db = FirebaseFirestore.getInstance()
 
         pickupInput = findViewById(R.id.searchPickupInput)
@@ -60,7 +90,10 @@ class RideSearchActivity : AppCompatActivity() {
         minSeatsInput = findViewById(R.id.minSeatsInput)
         maxPriceInput = findViewById(R.id.maxPriceInput)
         dateText = findViewById(R.id.searchDateText)
+        timeText = findViewById(R.id.searchTimeText)
         regionSpinner = findViewById(R.id.searchRegionSpinner)
+        timeFlexibilitySpinner =
+            findViewById(R.id.searchTimeFlexibilitySpinner)
         resultsContainer = findViewById(R.id.resultsContainer)
 
         val regionAdapter = ArrayAdapter(
@@ -76,8 +109,31 @@ class RideSearchActivity : AppCompatActivity() {
         regionSpinner.adapter = regionAdapter
         regionSpinner.setSelection(0)
 
+        val timeFlexibilityOptions = listOf(
+            "Exact time",
+            "Within ±15 minutes",
+            "Within ±30 minutes",
+            "Within ±60 minutes"
+        )
+
+        val timeFlexibilityAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item,
+            timeFlexibilityOptions
+        )
+
+        timeFlexibilityAdapter.setDropDownViewResource(
+            android.R.layout.simple_spinner_dropdown_item
+        )
+
+        timeFlexibilitySpinner.adapter = timeFlexibilityAdapter
+        timeFlexibilitySpinner.setSelection(0)
+
         val selectDateButton =
             findViewById<Button>(R.id.selectSearchDateButton)
+
+        val selectTimeButton =
+            findViewById<Button>(R.id.selectSearchTimeButton)
 
         val searchButton =
             findViewById<Button>(R.id.searchRidesButton)
@@ -88,6 +144,40 @@ class RideSearchActivity : AppCompatActivity() {
         selectDateButton.setOnClickListener {
             showDatePicker()
         }
+
+        selectTimeButton.setOnClickListener {
+            showTimePicker()
+        }
+
+        // HOME
+        findViewById<TextView>(R.id.exploreHomeNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, PassengerDashboardActivity::class.java)
+                )
+            }
+
+        // EXPLORE
+        findViewById<TextView>(R.id.exploreExploreNavItem)
+            .setOnClickListener {
+                // Already on Explore screen.
+            }
+
+        // BOOKINGS
+        findViewById<TextView>(R.id.exploreBookingsNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, MyBookingsActivity::class.java)
+                )
+            }
+
+        // ACCOUNT
+        findViewById<TextView>(R.id.exploreAccountNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, PassengerAccountActivity::class.java)
+                )
+            }
 
         searchButton.setOnClickListener {
             searchRides()
@@ -138,6 +228,47 @@ class RideSearchActivity : AppCompatActivity() {
     }
 
     // ------------------------------------------------------------
+    // PREFERRED DEPARTURE TIME PICKER
+    // ------------------------------------------------------------
+
+    private fun showTimePicker() {
+        val calendar = Calendar.getInstance()
+
+        val timePicker = TimePickerDialog(
+            this,
+            { _, hourOfDay, minute ->
+
+                val selectedCalendar = Calendar.getInstance()
+
+                selectedCalendar.set(
+                    Calendar.HOUR_OF_DAY,
+                    hourOfDay
+                )
+
+                selectedCalendar.set(
+                    Calendar.MINUTE,
+                    minute
+                )
+
+                val formatter = SimpleDateFormat(
+                    "HH:mm",
+                    Locale.getDefault()
+                )
+
+                selectedTime =
+                    formatter.format(selectedCalendar.time)
+
+                timeText.text = "Preferred departure: $selectedTime"
+            },
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+
+        timePicker.show()
+    }
+
+    // ------------------------------------------------------------
     // SEARCH RIDES
     // ------------------------------------------------------------
 
@@ -150,6 +281,19 @@ class RideSearchActivity : AppCompatActivity() {
 
         val selectedRegion = regionSpinner.selectedItem?.toString()
             ?: "All regions"
+
+        val requestedTimeMinutes = selectedTime?.let {
+            timeToMinutes(it)
+        }
+
+        val timeFlexibilityMinutes = when (
+            timeFlexibilitySpinner.selectedItemPosition
+        ) {
+            1 -> 15
+            2 -> 30
+            3 -> 60
+            else -> 0
+        }
 
         val minSeats = if (minSeatsText.isEmpty()) {
             null
@@ -207,6 +351,9 @@ class RideSearchActivity : AppCompatActivity() {
 
                     val rideDate =
                         document.getString("date") ?: ""
+
+                    val rideTime =
+                        document.getString("time") ?: ""
 
                     val rideRegion =
                         document.getString("region") ?: ""
@@ -272,6 +419,25 @@ class RideSearchActivity : AppCompatActivity() {
                         availableSeats < minSeats
                     ) {
                         continue
+                    }
+
+                    // PREFERRED DEPARTURE TIME FILTER
+
+                    if (requestedTimeMinutes != null) {
+
+                        val rideTimeMinutes = timeToMinutes(rideTime)
+
+                        if (rideTimeMinutes == null) {
+                            continue
+                        }
+
+                        val timeDifference = kotlin.math.abs(
+                            rideTimeMinutes - requestedTimeMinutes
+                        )
+
+                        if (timeDifference > timeFlexibilityMinutes) {
+                            continue
+                        }
                     }
 
                     // PRICE FILTER
@@ -443,9 +609,41 @@ class RideSearchActivity : AppCompatActivity() {
         selectedDate = null
         dateText.text = "Date: Not selected"
 
+        selectedTime = null
+        timeText.text = "Preferred departure: Any time"
+
+        timeFlexibilitySpinner.setSelection(0)
+
         regionSpinner.setSelection(0)
 
         searchRides()
+    }
+
+    // ------------------------------------------------------------
+    // CONVERT HH:mm TO MINUTES
+    // ------------------------------------------------------------
+
+    private fun timeToMinutes(time: String): Int? {
+
+        val parts = time.split(":")
+
+        if (parts.size != 2) {
+            return null
+        }
+
+        val hour = parts[0].toIntOrNull()
+        val minute = parts[1].toIntOrNull()
+
+        if (
+            hour == null ||
+            minute == null ||
+            hour !in 0..23 ||
+            minute !in 0..59
+        ) {
+            return null
+        }
+
+        return hour * 60 + minute
     }
 
     // ------------------------------------------------------------

@@ -1,124 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/screen_background"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="👤 My Account"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"/>
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/navy"
+            android:padding="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Personal Information"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👤"
+                android:textSize="38sp"/>
 
-        <EditText
-            android:id="@+id/nameInput"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Account"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Manage your profile, vehicle and travel preferences"
+                android:textSize="12sp"
+                android:textColor="#DCE6EF"
+                android:layout_marginTop="5dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <!-- Personal Information -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
-            android:layout_marginTop="15dp"/>
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="20dp"
+            android:layout_marginTop="18dp"
+            android:elevation="3dp">
 
-        <EditText
-            android:id="@+id/emailInput"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Information"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"/>
+
+            <EditText
+                android:id="@+id/nameInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Full Name"
+                android:inputType="textPersonName|textCapWords"
+                android:singleLine="true"
+                android:layout_marginTop="15dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="@color/teal"/>
+
+            <EditText
+                android:id="@+id/emailInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Email Address"
+                android:inputType="textEmailAddress"
+                android:enabled="false"
+                android:singleLine="true"
+                android:layout_marginTop="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="@color/teal"/>
+
+            <EditText
+                android:id="@+id/phoneInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Mobile Phone Number"
+                android:inputType="phone"
+                android:singleLine="true"
+                android:layout_marginTop="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textColor="@color/text_primary"
+                android:backgroundTint="@color/teal"/>
+
+        </LinearLayout>
+
+        <!-- Travel Preferences -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:enabled="false"
-            android:layout_marginTop="10dp"/>
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="20dp"
+            android:layout_marginTop="18dp"
+            android:elevation="3dp">
 
-        <EditText
-            android:id="@+id/phoneInput"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Travel Preferences"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your travel coverage"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Entire Mauritius"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/success"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You can accept suitable rides between any locations in Mauritius. You are not restricted to a particular district."
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="3dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/border"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="18dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preferred Operating Areas"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select the districts where you usually operate. You can select multiple areas or leave this empty."
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="6dp"
+                android:lineSpacingExtra="3dp"/>
+
+            <Button
+                android:id="@+id/choosePreferredAreasButton"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="CHOOSE PREFERRED AREAS"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/teal"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/preferredAreasSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No preferred areas selected."
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:background="@color/screen_background"
+                android:padding="14dp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <!-- Vehicle Information -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mobile Phone Number"
-            android:inputType="phone"
-            android:layout_marginTop="10dp"/>
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:padding="20dp"
+            android:layout_marginTop="18dp"
+            android:elevation="3dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vehicle Information"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"/>
 
+            <EditText
+                android:id="@+id/carMakeInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Car Make"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:layout_marginTop="15dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:backgroundTint="@color/teal"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Assigned Operational Region"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="25dp" />
+            <EditText
+                android:id="@+id/carModelInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Car Model"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:layout_marginTop="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:backgroundTint="@color/teal"/>
 
+            <EditText
+                android:id="@+id/carColorInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Car Colour"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:layout_marginTop="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:backgroundTint="@color/teal"/>
 
-        <Spinner
-            android:id="@+id/assignedRegionSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginTop="10dp" />
+            <EditText
+                android:id="@+id/carRegistrationInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Car Registration Number"
+                android:inputType="textCapCharacters"
+                android:singleLine="true"
+                android:layout_marginTop="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:backgroundTint="@color/teal"/>
 
+        </LinearLayout>
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Vehicle Information"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            android:layout_marginTop="30dp"/>
-
-        <EditText
-            android:id="@+id/carMakeInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Car Make"
-            android:inputType="textCapWords"
-            android:layout_marginTop="15dp"/>
-
-        <EditText
-            android:id="@+id/carModelInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Car Model"
-            android:inputType="textCapWords"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:id="@+id/carColorInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Car Colour"
-            android:inputType="textCapWords"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:id="@+id/carRegistrationInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Car Registration Number"
-            android:inputType="textCapCharacters"
-            android:layout_marginTop="10dp"/>
-
+        <!-- Save -->
         <Button
             android:id="@+id/saveButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="58dp"
             android:text="SAVE CHANGES"
-            android:textSize="17sp"
-            android:layout_marginTop="30dp"/>
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/teal"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="25dp"
+            android:elevation="3dp"/>
+
+        <Button
+            android:id="@+id/driverLogoutButton"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="LOG OUT"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/error"
+            android:layout_marginBottom="20dp"
+            android:elevation="3dp"/>
 
     </LinearLayout>
 

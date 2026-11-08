@@ -1,9 +1,39 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.RideConnect" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.Theme.RideConnect"
+        parent="Theme.Material3.Light.NoActionBar">
+
+        <!-- Brand colours -->
+        <item name="colorPrimary">@color/navy</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/teal</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <item name="colorTertiary">@color/gold</item>
+        <item name="colorOnTertiary">@color/navy</item>
+
+        <!-- Surface colours -->
+        <item name="colorSurface">@color/card_white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+
+        <!-- Android system bars -->
+        <item name="android:statusBarColor">@color/navy</item>
+        <item name="android:navigationBarColor">@color/card_white</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <!-- Window background -->
+        <item name="android:windowBackground">@color/screen_background</item>
+
+        <!-- Accent -->
+        <item name="android:colorAccent">@color/teal</item>
+
     </style>
 
-    <style name="Theme.RideConnect" parent="Base.Theme.RideConnect" />
+    <style name="Theme.RideConnect"
+        parent="Base.Theme.RideConnect" />
+
 </resources>

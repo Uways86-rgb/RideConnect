@@ -40,6 +40,10 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.rideconnect.notifications.NotificationPermissionHelper
 
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
 
 class PassengerDashboardActivity : AppCompatActivity() {
 
@@ -85,6 +89,37 @@ class PassengerDashboardActivity : AppCompatActivity() {
             "RideConnect/1.0 (Android; educational project)"
 
         setContentView(R.layout.activity_passenger_dashboard)
+
+        // ---------------------------------------------------------
+        // HANDLE ANDROID SYSTEM NAVIGATION BAR INSETS
+        // ---------------------------------------------------------
+
+        val bottomNavigation = findViewById<View>(
+            R.id.passengerBottomNavigation
+        )
+
+        val initialBottomPadding = bottomNavigation.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNavigation) { view, insets ->
+
+            val navigationBarInsets = insets.getInsets(
+                WindowInsetsCompat.Type.navigationBars()
+            )
+
+            view.setPadding(
+                view.paddingLeft,
+                view.paddingTop,
+                view.paddingRight,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        // Request the current system navigation bar dimensions.
+        ViewCompat.requestApplyInsets(bottomNavigation)
+
+
 
         map = findViewById(R.id.map)
         map.setTileSource(
@@ -161,6 +196,41 @@ class PassengerDashboardActivity : AppCompatActivity() {
                     Intent(this, RideSearchActivity::class.java)
                 )
             }
+
+        // ---------------------------------------------------------
+        // PASSENGER BOTTOM NAVIGATION
+        // ---------------------------------------------------------
+
+        // HOME
+        findViewById<TextView>(R.id.homeNavItem)
+            .setOnClickListener {
+                // Already on the Passenger Dashboard.
+            }
+
+        // EXPLORE
+        findViewById<TextView>(R.id.exploreNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, RideSearchActivity::class.java)
+                )
+            }
+
+        // BOOKINGS
+        findViewById<TextView>(R.id.bookingsNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, MyBookingsActivity::class.java)
+                )
+            }
+
+        // ACCOUNT
+        findViewById<TextView>(R.id.accountNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, PassengerAccountActivity::class.java)
+                )
+            }
+
 
         loadPassengerName()
 

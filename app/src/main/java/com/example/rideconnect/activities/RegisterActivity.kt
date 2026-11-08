@@ -101,6 +101,7 @@ class RegisterActivity : AppCompatActivity() {
             vehicleInformationTitle.visibility =
                 View.VISIBLE
 
+
             carRegistrationInput.visibility =
                 View.VISIBLE
 
@@ -112,6 +113,7 @@ class RegisterActivity : AppCompatActivity() {
 
             carColorInput.visibility =
                 View.VISIBLE
+
 
         } else {
 

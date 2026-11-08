@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Main brand colours -->
+    <color name="navy">#102C46</color>
+    <color name="teal">#167D83</color>
+    <color name="gold">#F2B84B</color>
+
+    <!-- Screen and card backgrounds -->
+    <color name="screen_background">#F4F6F8</color>
+    <color name="card_white">#FFFFFF</color>
+
+    <!-- Text colours -->
+    <color name="text_primary">#172B3A</color>
+    <color name="text_secondary">#718096</color>
+
+    <!-- Borders and dividers -->
+    <color name="border">#E2E8F0</color>
+
+    <!-- Status colours -->
+    <color name="success">#21865B</color>
+    <color name="warning">#D99A24</color>
+    <color name="error">#D64545</color>
+
+    <!-- Existing Android colours -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

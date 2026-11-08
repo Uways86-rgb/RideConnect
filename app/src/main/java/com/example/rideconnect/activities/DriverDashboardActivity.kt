@@ -28,6 +28,12 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
+
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
+
 class DriverDashboardActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
@@ -83,6 +89,34 @@ class DriverDashboardActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_driver_dashboard)
 
+        // ---------------------------------------------------------
+        // HANDLE ANDROID SYSTEM NAVIGATION BAR INSETS
+        // ---------------------------------------------------------
+
+        val bottomNavigation = findViewById<View>(
+            R.id.driverBottomNavigation
+        )
+
+        val initialBottomPadding = bottomNavigation.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(bottomNavigation) { view, insets ->
+
+            val navigationBarInsets = insets.getInsets(
+                WindowInsetsCompat.Type.navigationBars()
+            )
+
+            view.setPadding(
+                view.paddingLeft,
+                view.paddingTop,
+                view.paddingRight,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(bottomNavigation)
+
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
 
@@ -126,6 +160,43 @@ class DriverDashboardActivity : AppCompatActivity() {
                         this,
                         DriverBookingRequestsActivity::class.java
                     )
+                )
+            }
+
+        // ---------------------------------------------------------
+        // DRIVER BOTTOM NAVIGATION
+        // ---------------------------------------------------------
+
+        // HOME
+        findViewById<TextView>(R.id.driverHomeNavItem)
+            .setOnClickListener {
+                // Already on the Driver Dashboard.
+            }
+
+        // POST RIDE
+        findViewById<TextView>(R.id.driverPostRideNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, PostRideActivity::class.java)
+                )
+            }
+
+        // REQUESTS
+        findViewById<TextView>(R.id.driverRequestsNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(
+                        this,
+                        DriverBookingRequestsActivity::class.java
+                    )
+                )
+            }
+
+        // ACCOUNT
+        findViewById<TextView>(R.id.driverAccountNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, DriverAccountActivity::class.java)
                 )
             }
 
