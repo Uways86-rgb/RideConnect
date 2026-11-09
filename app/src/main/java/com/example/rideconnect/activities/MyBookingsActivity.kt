@@ -494,10 +494,22 @@ class MyBookingsActivity : AppCompatActivity() {
     // ============================================================
     // CANCEL BOOKING
     // ============================================================
-
     private fun cancelBooking(
         bookingId: String
     ) {
+
+        val passengerId = auth.currentUser?.uid
+
+        if (passengerId.isNullOrBlank()) {
+
+            Toast.makeText(
+                this,
+                "Please log in again.",
+                Toast.LENGTH_LONG
+            ).show()
+
+            return
+        }
 
         val bookingReference =
             db.collection("bookings")
@@ -505,10 +517,12 @@ class MyBookingsActivity : AppCompatActivity() {
 
         db.runTransaction { transaction ->
 
+            // ----------------------------------------------------
+            // 1. READ BOOKING
+            // ----------------------------------------------------
+
             val bookingSnapshot =
-                transaction.get(
-                    bookingReference
-                )
+                transaction.get(bookingReference)
 
             if (!bookingSnapshot.exists()) {
                 throw Exception(
@@ -516,10 +530,18 @@ class MyBookingsActivity : AppCompatActivity() {
                 )
             }
 
+            // Verify that this booking belongs to the logged-in passenger.
+            val bookingPassengerId =
+                bookingSnapshot.getString("passengerId") ?: ""
+
+            if (bookingPassengerId != passengerId) {
+                throw Exception(
+                    "You are not authorised to cancel this booking."
+                )
+            }
+
             val currentStatus =
-                bookingSnapshot.getString(
-                    "status"
-                ) ?: ""
+                bookingSnapshot.getString("status") ?: ""
 
             if (
                 currentStatus != "Pending" &&
@@ -531,15 +553,31 @@ class MyBookingsActivity : AppCompatActivity() {
             }
 
             val rideId =
-                bookingSnapshot.getString(
-                    "rideId"
-                )
+                bookingSnapshot.getString("rideId")
 
-            if (rideId.isNullOrEmpty()) {
+            if (rideId.isNullOrBlank()) {
                 throw Exception(
                     "Ride information is missing."
                 )
             }
+
+            // ----------------------------------------------------
+            // 2. GET NUMBER OF PASSENGERS
+            // ----------------------------------------------------
+
+            val numberOfPassengers =
+                (bookingSnapshot.get("numberOfPassengers") as? Number)
+                    ?.toInt() ?: 1
+
+            if (numberOfPassengers <= 0) {
+                throw Exception(
+                    "Invalid number of passengers."
+                )
+            }
+
+            // ----------------------------------------------------
+            // 3. RESTORE SEATS ONLY FOR APPROVED BOOKINGS
+            // ----------------------------------------------------
 
             if (currentStatus == "Approved") {
 
@@ -548,9 +586,7 @@ class MyBookingsActivity : AppCompatActivity() {
                         .document(rideId)
 
                 val rideSnapshot =
-                    transaction.get(
-                        rideReference
-                    )
+                    transaction.get(rideReference)
 
                 if (!rideSnapshot.exists()) {
                     throw Exception(
@@ -559,18 +595,22 @@ class MyBookingsActivity : AppCompatActivity() {
                 }
 
                 val availableSeats =
-                    rideSnapshot.getLong(
-                        "availableSeats"
-                    )?.toInt() ?: 0
+                    (rideSnapshot.get("availableSeats") as? Number)
+                        ?.toInt() ?: 0
 
                 val totalSeats =
-                    rideSnapshot.getLong(
-                        "totalSeats"
-                    )?.toInt() ?: 0
+                    (rideSnapshot.get("totalSeats") as? Number)
+                        ?.toInt() ?: 0
+
+                if (totalSeats <= 0) {
+                    throw Exception(
+                        "Invalid total seat capacity."
+                    )
+                }
 
                 val newAvailableSeats =
                     minOf(
-                        availableSeats + 1,
+                        availableSeats + numberOfPassengers,
                         totalSeats
                     )
 
@@ -580,6 +620,10 @@ class MyBookingsActivity : AppCompatActivity() {
                     newAvailableSeats
                 )
             }
+
+            // ----------------------------------------------------
+            // 4. UPDATE BOOKING STATUS
+            // ----------------------------------------------------
 
             transaction.update(
                 bookingReference,
@@ -592,25 +636,26 @@ class MyBookingsActivity : AppCompatActivity() {
             )
 
             null
+
+        }.addOnSuccessListener {
+
+            Toast.makeText(
+                this,
+                "Booking cancelled successfully.",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            loadMyBookings()
+
+        }.addOnFailureListener { exception ->
+
+            Toast.makeText(
+                this,
+                "Could not cancel booking: ${exception.message}",
+                Toast.LENGTH_LONG
+            ).show()
         }
-            .addOnSuccessListener {
-
-                Toast.makeText(
-                    this,
-                    "Booking cancelled successfully.",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                loadMyBookings()
-            }
-            .addOnFailureListener { exception ->
-
-                Toast.makeText(
-                    this,
-                    "Could not cancel booking: ${exception.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
     }
+
 
 }

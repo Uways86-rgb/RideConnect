@@ -34,8 +34,7 @@ class RideSearchActivity : AppCompatActivity() {
 
     private lateinit var pickupInput: EditText
     private lateinit var destinationInput: EditText
-    private lateinit var minSeatsInput: EditText
-    private lateinit var maxPriceInput: EditText
+    private lateinit var passengerCountInput: EditText
     private lateinit var dateText: TextView
     private lateinit var timeText: TextView
     private lateinit var regionSpinner: Spinner
@@ -87,8 +86,7 @@ class RideSearchActivity : AppCompatActivity() {
 
         pickupInput = findViewById(R.id.searchPickupInput)
         destinationInput = findViewById(R.id.searchDestinationInput)
-        minSeatsInput = findViewById(R.id.minSeatsInput)
-        maxPriceInput = findViewById(R.id.maxPriceInput)
+        passengerCountInput = findViewById(R.id.passengerCountInput)
         dateText = findViewById(R.id.searchDateText)
         timeText = findViewById(R.id.searchTimeText)
         regionSpinner = findViewById(R.id.searchRegionSpinner)
@@ -276,8 +274,8 @@ class RideSearchActivity : AppCompatActivity() {
 
         val pickup = pickupInput.text.toString().trim()
         val destination = destinationInput.text.toString().trim()
-        val minSeatsText = minSeatsInput.text.toString().trim()
-        val maxPriceText = maxPriceInput.text.toString().trim()
+        val passengerCountText =
+            passengerCountInput.text.toString().trim()
 
         val selectedRegion = regionSpinner.selectedItem?.toString()
             ?: "All regions"
@@ -295,31 +293,16 @@ class RideSearchActivity : AppCompatActivity() {
             else -> 0
         }
 
-        val minSeats = if (minSeatsText.isEmpty()) {
-            null
-        } else {
-            minSeatsText.toIntOrNull()
-        }
-
-        val maxPrice = if (maxPriceText.isEmpty()) {
-            null
-        } else {
-            maxPriceText.toDoubleOrNull()
-        }
+        val numberOfPassengers =
+            passengerCountText.toIntOrNull()
 
         if (
-            minSeatsText.isNotEmpty() &&
-            (minSeats == null || minSeats <= 0)
+            numberOfPassengers == null ||
+            numberOfPassengers <= 0
         ) {
-            showMessage("Please enter a valid minimum number of seats")
-            return
-        }
-
-        if (
-            maxPriceText.isNotEmpty() &&
-            (maxPrice == null || !maxPrice.isFinite() || maxPrice < 0)
-        ) {
-            showMessage("Please enter a valid maximum price")
+            showMessage("Please enter a valid number of passengers")
+            passengerCountInput.error = "Enter at least 1 passenger"
+            passengerCountInput.requestFocus()
             return
         }
 
@@ -412,12 +395,9 @@ class RideSearchActivity : AppCompatActivity() {
                         continue
                     }
 
-                    // SEAT FILTER
+                    // PASSENGER COUNT FILTER
 
-                    if (
-                        minSeats != null &&
-                        availableSeats < minSeats
-                    ) {
+                    if (availableSeats < numberOfPassengers) {
                         continue
                     }
 
@@ -440,16 +420,11 @@ class RideSearchActivity : AppCompatActivity() {
                         }
                     }
 
-                    // PRICE FILTER
-
-                    if (
-                        maxPrice != null &&
-                        price > maxPrice
-                    ) {
-                        continue
-                    }
-
-                    addRideResult(document.id, document)
+                    addRideResult(
+                        document.id,
+                        document,
+                        numberOfPassengers
+                    )
                     resultCount++
                 }
 
@@ -480,7 +455,8 @@ class RideSearchActivity : AppCompatActivity() {
 
     private fun addRideResult(
         rideId: String,
-        document: DocumentSnapshot
+        document: DocumentSnapshot,
+        numberOfPassengers: Int
     ) {
 
         val card = LinearLayout(this).apply {
@@ -560,10 +536,25 @@ class RideSearchActivity : AppCompatActivity() {
         addText("📅 $date    🕐 $time", 16f)
         addText("💺 Available seats: $seats", 16f)
 
+        val totalCost = price * numberOfPassengers
+
         addText(
-            "💰 Price: Rs ${
+            "💰 Price per passenger: Rs ${
                 String.format(Locale.getDefault(), "%.2f", price)
-            } per passenger",
+            }",
+            17f,
+            bold = true
+        )
+
+        addText(
+            "👥 Passengers requested: $numberOfPassengers",
+            16f
+        )
+
+        addText(
+            "Total group cost: Rs ${
+                String.format(Locale.getDefault(), "%.2f", totalCost)
+            }",
             17f,
             bold = true
         )
@@ -578,6 +569,12 @@ class RideSearchActivity : AppCompatActivity() {
                 )
 
                 intent.putExtra("RIDE_ID", rideId)
+
+                intent.putExtra(
+                    "NUMBER_OF_PASSENGERS",
+                    numberOfPassengers
+                )
+
                 startActivity(intent)
             }
         }
@@ -603,11 +600,10 @@ class RideSearchActivity : AppCompatActivity() {
 
         pickupInput.text.clear()
         destinationInput.text.clear()
-        minSeatsInput.text.clear()
-        maxPriceInput.text.clear()
+        passengerCountInput.setText("1")
 
         selectedDate = null
-        dateText.text = "Date: Not selected"
+        dateText.text = "Travel date: Any date"
 
         selectedTime = null
         timeText.text = "Preferred departure: Any time"

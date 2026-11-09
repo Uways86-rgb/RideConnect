@@ -1,4 +1,3 @@
-
 package com.example.rideconnect.activities
 
 import android.Manifest

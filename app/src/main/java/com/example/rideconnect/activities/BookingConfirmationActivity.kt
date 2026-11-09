@@ -30,6 +30,7 @@ class BookingConfirmationActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private var rideId: String? = null
+    private var numberOfPassengers: Int = 1
 
     private lateinit var driverText: TextView
     private lateinit var vehicleText: TextView
@@ -71,6 +72,21 @@ class BookingConfirmationActivity : AppCompatActivity() {
         pickupAddressText = findViewById(R.id.passengerPickupAddressText)
 
         rideId = intent.getStringExtra("RIDE_ID")
+
+        numberOfPassengers = intent.getIntExtra(
+            "NUMBER_OF_PASSENGERS",
+            1
+        )
+
+        if (numberOfPassengers <= 0) {
+            Toast.makeText(
+                this,
+                "Invalid number of passengers",
+                Toast.LENGTH_LONG
+            ).show()
+            finish()
+            return
+        }
 
         if (rideId.isNullOrBlank()) {
             Toast.makeText(
@@ -293,25 +309,31 @@ class BookingConfirmationActivity : AppCompatActivity() {
                 val availableSeats =
                     document.getLong("availableSeats")?.toInt() ?: 0
                 val price =
-                    document.getDouble("pricePerPassenger") ?: 0.0
+                    (document.get("pricePerPassenger") as? Number)?.toDouble() ?: 0.0
 
                 driverText.text = "Driver: $driverName"
                 vehicleText.text =
                     "Vehicle: $carMake $carModel ($carColor)"
                 routeText.text = "Driver's posted route:\n$pickup → $destination"
                 dateTimeText.text = "Date: $date\nTime: $time"
-                seatsText.text = "Available seats: $availableSeats"
+                seatsText.text =
+                    "Available seats: $availableSeats\n" +
+                            "Passengers requested: $numberOfPassengers"
+
+                val totalPrice = price * numberOfPassengers
+
                 priceText.text = String.format(
                     Locale.getDefault(),
-                    "Fare: Rs %.2f per passenger",
-                    price
+                    "Fare per passenger: Rs %.2f\nTotal group fare: Rs %.2f",
+                    price,
+                    totalPrice
                 )
 
-                if (availableSeats <= 0) {
+                if (availableSeats < numberOfPassengers) {
                     confirmButton.isEnabled = false
                     Toast.makeText(
                         this,
-                        "No seats are currently available",
+                        "Not enough seats are available for your group",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -414,11 +436,11 @@ class BookingConfirmationActivity : AppCompatActivity() {
                         val availableSeats =
                             rideDocument.getLong("availableSeats")?.toInt() ?: 0
 
-                        if (availableSeats <= 0) {
+                        if (availableSeats < numberOfPassengers) {
                             confirmButton.isEnabled = true
                             Toast.makeText(
                                 this,
-                                "No seats are currently available",
+                                "Not enough seats are available for your group",
                                 Toast.LENGTH_LONG
                             ).show()
                             return@addOnSuccessListener
@@ -447,7 +469,10 @@ class BookingConfirmationActivity : AppCompatActivity() {
                         val time =
                             rideDocument.getString("time") ?: ""
                         val price =
-                            rideDocument.getDouble("pricePerPassenger") ?: 0.0
+                            (rideDocument.get("pricePerPassenger") as? Number)?.toDouble() ?: 0.0
+
+                        val totalPrice =
+                            price * numberOfPassengers
 
                         val booking = hashMapOf<String, Any>(
                             "rideId" to id,
@@ -476,7 +501,11 @@ class BookingConfirmationActivity : AppCompatActivity() {
 
                             "date" to date,
                             "time" to time,
+
+                            // Passenger group and fare information.
+                            "numberOfPassengers" to numberOfPassengers,
                             "pricePerPassenger" to price,
+                            "totalPrice" to totalPrice,
 
                             // Keep existing notification backend statuses.
                             "status" to "Pending",

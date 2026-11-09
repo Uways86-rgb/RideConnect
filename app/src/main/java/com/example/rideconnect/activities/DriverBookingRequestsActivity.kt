@@ -264,25 +264,38 @@ class DriverBookingRequestsActivity : AppCompatActivity() {
         )
 
         // --------------------------------------------------------
-        // FARE
+        // PASSENGER COUNT AND FARE
         // --------------------------------------------------------
 
+        val numberOfPassengers =
+            (document.get("numberOfPassengers") as? Number)?.toInt() ?: 1
+
         val price =
-            document.getDouble(
-                "pricePerPassenger"
-            ) ?: 0.0
+            (document.get("pricePerPassenger") as? Number)?.toDouble() ?: 0.0
+
+        val totalPrice =
+            (document.get("totalPrice") as? Number)?.toDouble()
+                ?: (price * numberOfPassengers)
 
         val fareText =
             TextView(this)
 
         fareText.text =
-            "💰 Fare: Rs ${
-                String.format(
-                    Locale.getDefault(),
-                    "%.2f",
-                    price
-                )
-            }"
+            "👥 Passengers: $numberOfPassengers\n" +
+                    "💰 Fare per passenger: Rs ${
+                        String.format(
+                            Locale.getDefault(),
+                            "%.2f",
+                            price
+                        )
+                    }\n" +
+                    "💰 Total group fare: Rs ${
+                        String.format(
+                            Locale.getDefault(),
+                            "%.2f",
+                            totalPrice
+                        )
+                    }"
 
         fareText.textSize =
             18f
@@ -408,185 +421,172 @@ class DriverBookingRequestsActivity : AppCompatActivity() {
         rejectButton: Button?
     ) {
 
-        approveButton.isEnabled =
-            false
+        val currentDriverId = auth.currentUser?.uid
 
-        rejectButton?.isEnabled =
-            false
+        if (currentDriverId.isNullOrBlank()) {
 
-        db.collection("bookings")
-            .document(bookingId)
-            .get()
-            .addOnSuccessListener { bookingDocument ->
+            Toast.makeText(
+                this,
+                "Driver is not logged in",
+                Toast.LENGTH_LONG
+            ).show()
 
-                if (!bookingDocument.exists()) {
+            return
+        }
 
-                    Toast.makeText(
-                        this,
-                        "Booking no longer exists",
-                        Toast.LENGTH_LONG
-                    ).show()
+        approveButton.isEnabled = false
+        rejectButton?.isEnabled = false
 
-                    loadBookingRequests()
+        val bookingReference =
+            db.collection("bookings")
+                .document(bookingId)
 
-                    return@addOnSuccessListener
-                }
+        db.runTransaction { transaction ->
 
-                val rideId =
-                    bookingDocument.getString(
-                        "rideId"
-                    )
+            // ----------------------------------------------------
+            // 1. READ BOOKING
+            // ----------------------------------------------------
 
-                if (rideId.isNullOrEmpty()) {
+            val bookingSnapshot =
+                transaction.get(bookingReference)
 
-                    Toast.makeText(
-                        this,
-                        "Ride information is missing",
-                        Toast.LENGTH_LONG
-                    ).show()
+            if (!bookingSnapshot.exists()) {
+                throw Exception("Booking no longer exists.")
+            }
 
-                    approveButton.isEnabled =
-                        true
+            val currentStatus =
+                bookingSnapshot.getString("status") ?: ""
 
-                    rejectButton?.isEnabled =
-                        true
+            if (currentStatus != "Pending") {
+                throw Exception(
+                    "This booking is no longer pending."
+                )
+            }
 
-                    return@addOnSuccessListener
-                }
+            // Verify that the logged-in driver owns this booking.
+            val bookingDriverId =
+                bookingSnapshot.getString("driverId") ?: ""
 
-                // ------------------------------------------------
-                // CHECK AVAILABLE SEATS
-                // ------------------------------------------------
+            if (bookingDriverId != currentDriverId) {
+                throw Exception(
+                    "You are not authorised to approve this booking."
+                )
+            }
 
+            val rideId =
+                bookingSnapshot.getString("rideId")
+
+            if (rideId.isNullOrBlank()) {
+                throw Exception("Ride information is missing.")
+            }
+
+            // ----------------------------------------------------
+            // 2. GET NUMBER OF PASSENGERS
+            // ----------------------------------------------------
+
+            val numberOfPassengers =
+                (bookingSnapshot.get("numberOfPassengers") as? Number)
+                    ?.toInt() ?: 1
+
+            if (numberOfPassengers <= 0) {
+                throw Exception(
+                    "Invalid number of passengers."
+                )
+            }
+
+            // ----------------------------------------------------
+            // 3. READ RIDE
+            // ----------------------------------------------------
+
+            val rideReference =
                 db.collection("rides")
                     .document(rideId)
-                    .get()
-                    .addOnSuccessListener { rideDocument ->
 
-                        if (!rideDocument.exists()) {
+            val rideSnapshot =
+                transaction.get(rideReference)
 
-                            Toast.makeText(
-                                this,
-                                "Ride no longer exists",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                            approveButton.isEnabled =
-                                true
-
-                            rejectButton?.isEnabled =
-                                true
-
-                            return@addOnSuccessListener
-                        }
-
-                        val availableSeats =
-                            rideDocument.getLong(
-                                "availableSeats"
-                            )?.toInt() ?: 0
-
-                        if (availableSeats <= 0) {
-
-                            Toast.makeText(
-                                this,
-                                "No available seats remain",
-                                Toast.LENGTH_LONG
-                            ).show()
-
-                            approveButton.isEnabled =
-                                true
-
-                            rejectButton?.isEnabled =
-                                true
-
-                            return@addOnSuccessListener
-                        }
-
-                        // ----------------------------------------
-                        // APPROVE BOOKING
-                        // ----------------------------------------
-
-                        val batch =
-                            db.batch()
-
-                        val bookingReference =
-                            db.collection("bookings")
-                                .document(bookingId)
-
-                        val rideReference =
-                            db.collection("rides")
-                                .document(rideId)
-
-                        batch.update(
-                            bookingReference,
-                            mapOf(
-                                "status" to "Approved",
-                                "approvedAt" to
-                                        FieldValue.serverTimestamp()
-                            )
-                        )
-
-                        batch.update(
-                            rideReference,
-                            "availableSeats",
-                            availableSeats - 1
-                        )
-
-                        batch.commit()
-                            .addOnSuccessListener {
-
-                                Toast.makeText(
-                                    this,
-                                    "Booking approved!",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-
-                                loadBookingRequests()
-                            }
-                            .addOnFailureListener { exception ->
-
-                                approveButton.isEnabled =
-                                    true
-
-                                rejectButton?.isEnabled =
-                                    true
-
-                                Toast.makeText(
-                                    this,
-                                    "Could not approve booking: ${exception.message}",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                            }
-                    }
-                    .addOnFailureListener { exception ->
-
-                        approveButton.isEnabled =
-                            true
-
-                        rejectButton?.isEnabled =
-                            true
-
-                        Toast.makeText(
-                            this,
-                            "Could not check ride: ${exception.message}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+            if (!rideSnapshot.exists()) {
+                throw Exception("Ride no longer exists.")
             }
-            .addOnFailureListener { exception ->
 
-                approveButton.isEnabled =
-                    true
+            val rideDriverId =
+                rideSnapshot.getString("driverId") ?: ""
 
-                rejectButton?.isEnabled =
-                    true
-
-                Toast.makeText(
-                    this,
-                    "Could not load booking: ${exception.message}",
-                    Toast.LENGTH_LONG
-                ).show()
+            if (rideDriverId != currentDriverId) {
+                throw Exception(
+                    "This ride does not belong to your account."
+                )
             }
+
+            val rideStatus =
+                rideSnapshot.getString("status") ?: ""
+
+            if (rideStatus != "Available") {
+                throw Exception(
+                    "This ride is no longer available."
+                )
+            }
+
+            // ----------------------------------------------------
+            // 4. CHECK AVAILABLE SEATS
+            // ----------------------------------------------------
+
+            val availableSeats =
+                (rideSnapshot.get("availableSeats") as? Number)
+                    ?.toInt() ?: 0
+
+            if (availableSeats < numberOfPassengers) {
+                throw Exception(
+                    "Not enough seats remain. " +
+                            "Required: $numberOfPassengers, " +
+                            "Available: $availableSeats."
+                )
+            }
+
+            val newAvailableSeats =
+                availableSeats - numberOfPassengers
+
+            // ----------------------------------------------------
+            // 5. UPDATE BOOKING AND RIDE ATOMICALLY
+            // ----------------------------------------------------
+
+            transaction.update(
+                bookingReference,
+                mapOf(
+                    "status" to "Approved",
+                    "approvedAt" to FieldValue.serverTimestamp()
+                )
+            )
+
+            transaction.update(
+                rideReference,
+                "availableSeats",
+                newAvailableSeats
+            )
+
+            null
+
+        }.addOnSuccessListener {
+
+            Toast.makeText(
+                this,
+                "Booking approved successfully!",
+                Toast.LENGTH_LONG
+            ).show()
+
+            loadBookingRequests()
+
+        }.addOnFailureListener { exception ->
+
+            approveButton.isEnabled = true
+            rejectButton?.isEnabled = true
+
+            Toast.makeText(
+                this,
+                "Could not approve booking: ${exception.message}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
 
     // ============================================================

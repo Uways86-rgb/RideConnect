@@ -192,44 +192,24 @@
                     android:layout_marginTop="6dp"
                     android:backgroundTint="@color/teal"/>
 
-                <!-- Seats and price -->
+                <!-- Number of passengers -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Minimum Available Seats"
+                    android:text="Number of Passengers"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/text_primary"
                     android:layout_marginTop="14dp"/>
 
                 <EditText
-                    android:id="@+id/minSeatsInput"
+                    android:id="@+id/passengerCountInput"
                     android:layout_width="match_parent"
                     android:layout_height="52dp"
-                    android:hint="Any number of seats"
+                    android:hint="Enter number of passengers"
                     android:inputType="number"
                     android:singleLine="true"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:layout_marginTop="6dp"
-                    android:backgroundTint="@color/teal"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Maximum Price per Passenger (Rs)"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/text_primary"
-                    android:layout_marginTop="14dp"/>
-
-                <EditText
-                    android:id="@+id/maxPriceInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:hint="No maximum price"
-                    android:inputType="numberDecimal"
-                    android:singleLine="true"
+                    android:text="1"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:layout_marginTop="6dp"
