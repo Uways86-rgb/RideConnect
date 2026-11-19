@@ -128,74 +128,34 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Your travel coverage"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="18dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Entire Mauritius"
+                android:text="Operating Areas in Mauritius"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:textColor="@color/success"
-                android:layout_marginTop="8dp"/>
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="You can accept suitable rides between any locations in Mauritius. You are not restricted to a particular district."
+                android:text="Manage the regions and locations where you want to operate for shared rides."
                 android:textSize="13sp"
                 android:textColor="@color/text_secondary"
                 android:layout_marginTop="6dp"
                 android:lineSpacingExtra="3dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/border"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="18dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Preferred Operating Areas"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Select the districts where you usually operate. You can select multiple areas or leave this empty."
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary"
-                android:layout_marginTop="6dp"
-                android:lineSpacingExtra="3dp"/>
-
+            <!-- Selected Locations Button -->
             <Button
-                android:id="@+id/choosePreferredAreasButton"
+                android:id="@+id/selectedLocationsButton"
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:text="CHOOSE PREFERRED AREAS"
+                android:layout_height="58dp"
+                android:text="📍  MANAGE SELECTED LOCATIONS"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/teal"
-                android:layout_marginTop="15dp"/>
-
-            <TextView
-                android:id="@+id/preferredAreasSummary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="No preferred areas selected."
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary"
-                android:background="@color/screen_background"
-                android:padding="14dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="16dp"
+                android:elevation="2dp"/>
 
         </LinearLayout>
 
@@ -282,6 +242,7 @@
             android:layout_marginBottom="25dp"
             android:elevation="3dp"/>
 
+        <!-- Logout -->
         <Button
             android:id="@+id/driverLogoutButton"
             android:layout_width="match_parent"

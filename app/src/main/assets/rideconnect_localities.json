@@ -1,0 +1,7452 @@
+{
+  "source": "PostCodeMauritius.csv",
+  "encoding_read": "Windows-1252",
+  "section_grouping": "RideConnect operational grouping",
+  "sections": [
+    {
+      "name": "North",
+      "localities": [
+        {
+          "name": "AMAURY",
+          "sublocalities": [
+            {
+              "name": "Amaury",
+              "postcode": "31401"
+            },
+            {
+              "name": "Bois Jacquot",
+              "postcode": "31402"
+            },
+            {
+              "name": "Bois Mourand",
+              "postcode": "31403"
+            },
+            {
+              "name": "Morc Beauclimat",
+              "postcode": "31404"
+            }
+          ]
+        },
+        {
+          "name": "AMITIE GOKOOLA",
+          "sublocalities": [
+            {
+              "name": "Amitie",
+              "postcode": "31501"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "31502"
+            },
+            {
+              "name": "Gokhoola",
+              "postcode": "31503"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "31504"
+            }
+          ]
+        },
+        {
+          "name": "ARSENAL",
+          "sublocalities": [
+            {
+              "name": "Arsenal",
+              "postcode": "20101"
+            },
+            {
+              "name": "Domaine Les Cascades",
+              "postcode": "20102"
+            },
+            {
+              "name": "Morc Poonith",
+              "postcode": "20103"
+            },
+            {
+              "name": "Morc Promo Holiday",
+              "postcode": "20104"
+            },
+            {
+              "name": "Morc Ramjan",
+              "postcode": "20105"
+            },
+            {
+              "name": "Morc. Royal Park",
+              "postcode": "20106"
+            },
+            {
+              "name": "Morc Sobrun",
+              "postcode": "20107"
+            },
+            {
+              "name": "Paul & Virginie",
+              "postcode": "20108"
+            },
+            {
+              "name": "Petit Gamin",
+              "postcode": "20109"
+            },
+            {
+              "name": "Riviere Citron",
+              "postcode": "20110"
+            },
+            {
+              "name": "St Joseph",
+              "postcode": "20111"
+            }
+          ]
+        },
+        {
+          "name": "CALEBASSES",
+          "sublocalities": [
+            {
+              "name": "Calebasses",
+              "postcode": "20201"
+            },
+            {
+              "name": "Koyratty",
+              "postcode": "20202"
+            },
+            {
+              "name": "L'Espoir",
+              "postcode": "20203"
+            },
+            {
+              "name": "Old Flacq",
+              "postcode": "20204"
+            }
+          ]
+        },
+        {
+          "name": "CAP MALHEUREUX",
+          "sublocalities": [
+            {
+              "name": "Anse La Raie",
+              "postcode": "31701"
+            },
+            {
+              "name": "Bain Boeuf",
+              "postcode": "31702"
+            },
+            {
+              "name": "Calodyne",
+              "postcode": "31703"
+            },
+            {
+              "name": "Camp Gervaise",
+              "postcode": "31704"
+            },
+            {
+              "name": "Cape Garden",
+              "postcode": "31705"
+            },
+            {
+              "name": "Cap Malheureux",
+              "postcode": "31706"
+            },
+            {
+              "name": "Cayeux",
+              "postcode": "31707"
+            },
+            {
+              "name": "C.H.A",
+              "postcode": "31708"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "31709"
+            },
+            {
+              "name": "Jardin du Cap",
+              "postcode": "31710"
+            },
+            {
+              "name": "La Roue Charette",
+              "postcode": "31711"
+            },
+            {
+              "name": "Mariamen Temple",
+              "postcode": "31712"
+            },
+            {
+              "name": "Morc Agnis Ph 2",
+              "postcode": "31713"
+            },
+            {
+              "name": "Morc Chetty 1",
+              "postcode": "31714"
+            },
+            {
+              "name": "Morc Chetty 2",
+              "postcode": "31715"
+            },
+            {
+              "name": "Morc Chetty 3",
+              "postcode": "31716"
+            },
+            {
+              "name": "Morc Garrib",
+              "postcode": "31717"
+            },
+            {
+              "name": "Morc Merven",
+              "postcode": "31718"
+            },
+            {
+              "name": "Morc Rouillard",
+              "postcode": "31719"
+            },
+            {
+              "name": "Mosque Square",
+              "postcode": "31720"
+            },
+            {
+              "name": "NHDC",
+              "postcode": "31721"
+            },
+            {
+              "name": "Pavillon",
+              "postcode": "31722"
+            },
+            {
+              "name": "Pazani Mallaye",
+              "postcode": "31723"
+            },
+            {
+              "name": "Quartier La Ligne",
+              "postcode": "31724"
+            },
+            {
+              "name": "Residence du Nord",
+              "postcode": "31725"
+            },
+            {
+              "name": "St Francois",
+              "postcode": "31726"
+            },
+            {
+              "name": "Villa Maria Sq",
+              "postcode": "31727"
+            }
+          ]
+        },
+        {
+          "name": "CONGOMAH",
+          "sublocalities": [
+            {
+              "name": "Congomah",
+              "postcode": "20301"
+            },
+            {
+              "name": "Cite E.D.C",
+              "postcode": "20302"
+            },
+            {
+              "name": "Royal Rd",
+              "postcode": "20303"
+            }
+          ]
+        },
+        {
+          "name": "COTTAGE",
+          "sublocalities": [
+            {
+              "name": "Cite C.H.A",
+              "postcode": "30201"
+            },
+            {
+              "name": "Cottage North",
+              "postcode": "30202"
+            },
+            {
+              "name": "Cottage South",
+              "postcode": "30203"
+            },
+            {
+              "name": "Morc Beau Plateau",
+              "postcode": "30204"
+            },
+            {
+              "name": "Morc Kestrel",
+              "postcode": "30205"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "30206"
+            },
+            {
+              "name": "NHDC",
+              "postcode": "30207"
+            }
+          ]
+        },
+        {
+          "name": "CREVE COEUR",
+          "sublocalities": [
+            {
+              "name": "Creve Coeur",
+              "postcode": "20401"
+            },
+            {
+              "name": "Morc.Creve",
+              "postcode": "20402"
+            },
+            {
+              "name": "Ripaille        1/2/3",
+              "postcode": "20403"
+            },
+            {
+              "name": "Robinson (Right side)",
+              "postcode": "20404"
+            },
+            {
+              "name": "Thomassin",
+              "postcode": "20405"
+            },
+            {
+              "name": "Upper C. Coeur",
+              "postcode": "20406"
+            }
+          ]
+        },
+        {
+          "name": "D'EPINAY",
+          "sublocalities": [
+            {
+              "name": "Camp Creole",
+              "postcode": "20501"
+            },
+            {
+              "name": "Cite C.H.A",
+              "postcode": "20502"
+            },
+            {
+              "name": "Depinay Village",
+              "postcode": "20503"
+            },
+            {
+              "name": "Domaine de Rosalie",
+              "postcode": "20504"
+            },
+            {
+              "name": "Grande Rosalie",
+              "postcode": "20505"
+            },
+            {
+              "name": "Ilot",
+              "postcode": "20506"
+            },
+            {
+              "name": "Jouvence",
+              "postcode": "20507"
+            },
+            {
+              "name": "Le Plessis Mount",
+              "postcode": "20508"
+            },
+            {
+              "name": "Mon Plaisir Mount",
+              "postcode": "20509"
+            },
+            {
+              "name": "Monc. Le Plessis",
+              "postcode": "20510"
+            },
+            {
+              "name": "Monc. Mount",
+              "postcode": "20511"
+            },
+            {
+              "name": "Monc. Juwaheer",
+              "postcode": "20512"
+            },
+            {
+              "name": "Monc V.R.S",
+              "postcode": "20513"
+            },
+            {
+              "name": "Mon Gout",
+              "postcode": "20514"
+            },
+            {
+              "name": "Mme Cayeux",
+              "postcode": "20515"
+            },
+            {
+              "name": "The Mount",
+              "postcode": "20516"
+            }
+          ]
+        },
+        {
+          "name": "FOND DU SAC",
+          "sublocalities": [
+            {
+              "name": "Fond du Sac East",
+              "postcode": "20601"
+            },
+            {
+              "name": "Fond du Sac West",
+              "postcode": "20602"
+            },
+            {
+              "name": "Morc Dilchand",
+              "postcode": "20603"
+            }
+          ]
+        },
+        {
+          "name": "GOODLANDS",
+          "sublocalities": [
+            {
+              "name": "Arya Mandir",
+              "postcode": "30401"
+            },
+            {
+              "name": "Astoria",
+              "postcode": "30402"
+            },
+            {
+              "name": "Balkan",
+              "postcode": "30403"
+            },
+            {
+              "name": "Bois Rouge",
+              "postcode": "30404"
+            },
+            {
+              "name": "CEB Sq",
+              "postcode": "30405"
+            },
+            {
+              "name": "Cite Ste Claire",
+              "postcode": "30406"
+            },
+            {
+              "name": "Domaine du Moulin",
+              "postcode": "30407"
+            },
+            {
+              "name": "Madame Azor",
+              "postcode": "30408"
+            },
+            {
+              "name": "Mamzelle Jeanne (Wlk II)",
+              "postcode": "30409"
+            },
+            {
+              "name": "Mamzelle Jeanne (Wlk III)",
+              "postcode": ""
+            },
+            {
+              "name": "Mapon Leclezio",
+              "postcode": "30410"
+            },
+            {
+              "name": "Morc Petit Village",
+              "postcode": "30411"
+            },
+            {
+              "name": "Morc St Antoine",
+              "postcode": "30412"
+            },
+            {
+              "name": "Mosque Sq",
+              "postcode": "30413"
+            },
+            {
+              "name": "New Morc Goodlands",
+              "postcode": "30414"
+            },
+            {
+              "name": "Petit Village",
+              "postcode": "30415"
+            },
+            {
+              "name": "Plateau",
+              "postcode": "30416"
+            },
+            {
+              "name": "Railway Sq",
+              "postcode": "30417"
+            },
+            {
+              "name": "Reservoir",
+              "postcode": "30418"
+            },
+            {
+              "name": "Soobany Sq",
+              "postcode": "30419"
+            },
+            {
+              "name": "St Antoine Industrial Zone",
+              "postcode": "30420"
+            },
+            {
+              "name": "Triangle",
+              "postcode": "30421"
+            }
+          ]
+        },
+        {
+          "name": "GRAND BAY",
+          "sublocalities": [
+            {
+              "name": "Aquamarine",
+              "postcode": "30501"
+            },
+            {
+              "name": "Bazar",
+              "postcode": "30502"
+            },
+            {
+              "name": "Bain Boeuf",
+              "postcode": "30503"
+            },
+            {
+              "name": "Beau Manguier",
+              "postcode": "30504"
+            },
+            {
+              "name": "Camp Harel",
+              "postcode": "30505"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "30506"
+            },
+            {
+              "name": "Cite CHA",
+              "postcode": "30507"
+            },
+            {
+              "name": "Cite Lumiere",
+              "postcode": "30508"
+            },
+            {
+              "name": "Camp Huradon",
+              "postcode": "30509"
+            },
+            {
+              "name": "Coastal Rd",
+              "postcode": "30510"
+            },
+            {
+              "name": "Camp Lamour",
+              "postcode": "30511"
+            },
+            {
+              "name": "Camp Carol",
+              "postcode": "30512"
+            },
+            {
+              "name": "Chemin Vingt Pied",
+              "postcode": "30513"
+            },
+            {
+              "name": "Dodo Square",
+              "postcode": "30514"
+            },
+            {
+              "name": "Grand Baie",
+              "postcode": "30515"
+            },
+            {
+              "name": "Les Bougainvilliers",
+              "postcode": "30516"
+            },
+            {
+              "name": "La Croisette",
+              "postcode": "30517"
+            },
+            {
+              "name": "La Mare Ronde",
+              "postcode": "30518"
+            },
+            {
+              "name": "Les Flamants",
+              "postcode": "30519"
+            },
+            {
+              "name": "Morc Raffray (a)",
+              "postcode": "30520"
+            },
+            {
+              "name": "Morc Raffray (b)",
+              "postcode": "30521"
+            },
+            {
+              "name": "Morc Raffray (c)",
+              "postcode": "30522"
+            },
+            {
+              "name": "Morc Raffray (d)",
+              "postcode": "30523"
+            },
+            {
+              "name": "Morc Le Corsaire (a -f )",
+              "postcode": "30524"
+            },
+            {
+              "name": "Mont Choisy (s.e)",
+              "postcode": "30525"
+            },
+            {
+              "name": "Morc Berth",
+              "postcode": "30526"
+            },
+            {
+              "name": "Mont Choisy Shopping Mall",
+              "postcode": "30527"
+            },
+            {
+              "name": "Morc Martin",
+              "postcode": "30528"
+            },
+            {
+              "name": "Morc Boucan",
+              "postcode": "30529"
+            },
+            {
+              "name": "Morc Honore",
+              "postcode": "30530"
+            },
+            {
+              "name": "Morc Le Caleche",
+              "postcode": "30531"
+            },
+            {
+              "name": "Morc Swan",
+              "postcode": "30532"
+            },
+            {
+              "name": "Morc Foondun",
+              "postcode": "30533"
+            },
+            {
+              "name": "Morc Unicorn",
+              "postcode": "30534"
+            },
+            {
+              "name": "Morc Toorabally",
+              "postcode": "30535"
+            },
+            {
+              "name": "Moulin Casse",
+              "postcode": "30536"
+            },
+            {
+              "name": "Morc Chetty",
+              "postcode": "30537"
+            },
+            {
+              "name": "Morc Villa Pereybere",
+              "postcode": "30538"
+            },
+            {
+              "name": "Mont Oreb",
+              "postcode": "30539"
+            },
+            {
+              "name": "Morc Jaulim",
+              "postcode": "30540"
+            },
+            {
+              "name": "Morc Comty",
+              "postcode": "30541"
+            },
+            {
+              "name": "Morc Jitsing",
+              "postcode": "30542"
+            },
+            {
+              "name": "Morc Ramdin",
+              "postcode": "30543"
+            },
+            {
+              "name": "Macumba",
+              "postcode": "30544"
+            },
+            {
+              "name": "Oasis 2 (res)",
+              "postcode": "30545"
+            },
+            {
+              "name": "Pereybere",
+              "postcode": "30546"
+            },
+            {
+              "name": "Pointe D’Azur",
+              "postcode": "30547"
+            },
+            {
+              "name": "Richmond Hill",
+              "postcode": "30548"
+            },
+            {
+              "name": "Racket",
+              "postcode": "30549"
+            },
+            {
+              "name": "Sottise",
+              "postcode": "30550"
+            },
+            {
+              "name": "Super U",
+              "postcode": "30551"
+            }
+          ]
+        },
+        {
+          "name": "GRAND GAUBE",
+          "sublocalities": [
+            {
+              "name": "Arya Mandir",
+              "postcode": "30601"
+            },
+            {
+              "name": "Batie",
+              "postcode": "30602"
+            },
+            {
+              "name": "Butte a L’Herbe",
+              "postcode": "30603"
+            },
+            {
+              "name": "Calodyne",
+              "postcode": "30604"
+            },
+            {
+              "name": "Camp Corail",
+              "postcode": "30605"
+            },
+            {
+              "name": "Camp Madras",
+              "postcode": "30606"
+            },
+            {
+              "name": "Camp Petrol",
+              "postcode": "30607"
+            },
+            {
+              "name": "Citerne",
+              "postcode": "30608"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "30609"
+            },
+            {
+              "name": "Complex Paul et Virginie",
+              "postcode": "30610"
+            },
+            {
+              "name": "Complex Melville No 1",
+              "postcode": "30611"
+            },
+            {
+              "name": "Complex Melville No 2",
+              "postcode": "30612"
+            },
+            {
+              "name": "Complex Melville No 3",
+              "postcode": "30613"
+            },
+            {
+              "name": "Complex Melville No 4",
+              "postcode": "30614"
+            },
+            {
+              "name": "Couacaud",
+              "postcode": "30615"
+            },
+            {
+              "name": "Germain",
+              "postcode": "30616"
+            },
+            {
+              "name": "Grand Gaube",
+              "postcode": "30617"
+            },
+            {
+              "name": "John Kennedy",
+              "postcode": "30618"
+            },
+            {
+              "name": "La Lucie Residence",
+              "postcode": "30619"
+            },
+            {
+              "name": "Morc Agnis Phase 1",
+              "postcode": "30620"
+            },
+            {
+              "name": "Nelson",
+              "postcode": "30621"
+            },
+            {
+              "name": "Pere Glorieux",
+              "postcode": "30622"
+            },
+            {
+              "name": "Quartier des Lauriers",
+              "postcode": "30623"
+            },
+            {
+              "name": "St Jean Bosco",
+              "postcode": "30624"
+            },
+            {
+              "name": "Sin Fat",
+              "postcode": "30625"
+            },
+            {
+              "name": "St Joseph Roc en Roc",
+              "postcode": "30626"
+            },
+            {
+              "name": "St Michel",
+              "postcode": "30627"
+            }
+          ]
+        },
+        {
+          "name": "L'ESPERANCE TREBUCHET",
+          "sublocalities": [
+            {
+              "name": "L’Esperance Trebuchet",
+              "postcode": "30301"
+            }
+          ]
+        },
+        {
+          "name": "LE HOCHET",
+          "sublocalities": [
+            {
+              "name": "Cite C.H.A",
+              "postcode": "21801"
+            },
+            {
+              "name": "Cite Roma",
+              "postcode": "21802"
+            },
+            {
+              "name": "Jumbo",
+              "postcode": "21803"
+            },
+            {
+              "name": "La Fontaine 23",
+              "postcode": "21804"
+            },
+            {
+              "name": "Le Hochet",
+              "postcode": "21805"
+            },
+            {
+              "name": "Morc. Foondun",
+              "postcode": "21806"
+            },
+            {
+              "name": "Morc. Goolamally 1",
+              "postcode": "21807"
+            },
+            {
+              "name": "Morc. Goolamally 2",
+              "postcode": "21808"
+            },
+            {
+              "name": "Morc Manick",
+              "postcode": "21809"
+            },
+            {
+              "name": "Morc Motee",
+              "postcode": "21810"
+            },
+            {
+              "name": "Morc.Raffray 1",
+              "postcode": "21811"
+            },
+            {
+              "name": "Morc. Raffray 2",
+              "postcode": "21812"
+            },
+            {
+              "name": "Riche Terre",
+              "postcode": "21813"
+            },
+            {
+              "name": "Riche Terre Ind Zone",
+              "postcode": "21814"
+            },
+            {
+              "name": "Terre Rouge (village)",
+              "postcode": "21815"
+            }
+          ]
+        },
+        {
+          "name": "LONG MOUNTAIN",
+          "sublocalities": [
+            {
+              "name": "Baillache",
+              "postcode": "20801"
+            },
+            {
+              "name": "Boulingrin",
+              "postcode": "20802"
+            },
+            {
+              "name": "C.H.A",
+              "postcode": "20803"
+            },
+            {
+              "name": "Camp la Boue/ Vallee du paradis",
+              "postcode": "20804"
+            },
+            {
+              "name": "Cite Social Welfare",
+              "postcode": "20805"
+            },
+            {
+              "name": "Descoins",
+              "postcode": "20806"
+            },
+            {
+              "name": "E.D.C.  A",
+              "postcode": "20807"
+            },
+            {
+              "name": "E.D.C.  B",
+              "postcode": "20808"
+            },
+            {
+              "name": "Les Mariannes",
+              "postcode": "20809"
+            },
+            {
+              "name": "L'Industrie",
+              "postcode": "20810"
+            },
+            {
+              "name": "Morc. Baillache",
+              "postcode": "20811"
+            },
+            {
+              "name": "Morc. Nouvelle",
+              "postcode": "20812"
+            },
+            {
+              "name": "Robinson (Left Side)",
+              "postcode": "20813"
+            },
+            {
+              "name": "Valton",
+              "postcode": "20814"
+            }
+          ]
+        },
+        {
+          "name": "MAPOU",
+          "sublocalities": [
+            {
+              "name": "Cite S.I.L.W.F",
+              "postcode": "31801"
+            },
+            {
+              "name": "Ferret",
+              "postcode": "31802"
+            },
+            {
+              "name": "Labourdonnais",
+              "postcode": "31803"
+            },
+            {
+              "name": "Mapou",
+              "postcode": "31804"
+            },
+            {
+              "name": "Morc B.Plateau",
+              "postcode": "31805"
+            },
+            {
+              "name": "Morc BelleVue",
+              "postcode": "31806"
+            },
+            {
+              "name": "Morc Hillside",
+              "postcode": "31807"
+            },
+            {
+              "name": "NHDC (Phase 1 / Phase 2)",
+              "postcode": "31808"
+            }
+          ]
+        },
+        {
+          "name": "MORC ST ANDRE",
+          "sublocalities": [
+            {
+              "name": "Cite Cremation",
+              "postcode": "20901"
+            },
+            {
+              "name": "Morc St Andre East",
+              "postcode": "20902"
+            },
+            {
+              "name": "Morc St Andre West",
+              "postcode": "20903"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "20904"
+            }
+          ]
+        },
+        {
+          "name": "NOTRE DAME",
+          "sublocalities": [
+            {
+              "name": "Church Square",
+              "postcode": "22001"
+            },
+            {
+              "name": "Montee Jolie",
+              "postcode": "22002"
+            },
+            {
+              "name": "Morc L'Amitie",
+              "postcode": "22003"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "22004"
+            },
+            {
+              "name": "Morc Teeluck",
+              "postcode": "22005"
+            },
+            {
+              "name": "Morc Kitchine",
+              "postcode": "22006"
+            },
+            {
+              "name": "Morc La Rochelle",
+              "postcode": "22007"
+            },
+            {
+              "name": "Notre Dame",
+              "postcode": "22008"
+            },
+            {
+              "name": "N.H.D.C Baillache",
+              "postcode": "22009"
+            },
+            {
+              "name": "N.H.D.C.Church",
+              "postcode": "22010"
+            },
+            {
+              "name": "N.H.D.C.Valton",
+              "postcode": "22011"
+            },
+            {
+              "name": "Platform",
+              "postcode": "22012"
+            }
+          ]
+        },
+        {
+          "name": "PAMPLEMOUSSES",
+          "sublocalities": [
+            {
+              "name": "Beau Plan",
+              "postcode": "21001"
+            },
+            {
+              "name": "Bois Rouge",
+              "postcode": "21002"
+            },
+            {
+              "name": "Botanical Garden",
+              "postcode": "21003"
+            },
+            {
+              "name": "Canton Nancy",
+              "postcode": "21004"
+            },
+            {
+              "name": "Canton Belle Eau",
+              "postcode": "21005"
+            },
+            {
+              "name": "Camp Badamiers",
+              "postcode": "21006"
+            },
+            {
+              "name": "Camp d Embrevades",
+              "postcode": "21007"
+            },
+            {
+              "name": "Cite E.D.C",
+              "postcode": "21008"
+            },
+            {
+              "name": "La Louisa",
+              "postcode": "21009"
+            },
+            {
+              "name": "Mon Plaisir",
+              "postcode": "21010"
+            },
+            {
+              "name": "Monc. Ripaille",
+              "postcode": "21011"
+            },
+            {
+              "name": "Mon Rocher",
+              "postcode": "21012"
+            },
+            {
+              "name": "Monc.Maison Blanche",
+              "postcode": "21013"
+            },
+            {
+              "name": "Pamplemousses",
+              "postcode": "21014"
+            },
+            {
+              "name": "Riviere Citron",
+              "postcode": "21015"
+            },
+            {
+              "name": "Sixth Mile",
+              "postcode": "21016"
+            },
+            {
+              "name": "S.S.R.N.Hospital",
+              "postcode": "21017"
+            }
+          ]
+        },
+        {
+          "name": "PETIT RAFFRAY",
+          "sublocalities": [
+            {
+              "name": "Camp Mayeux",
+              "postcode": "30701"
+            },
+            {
+              "name": "Les Charmose",
+              "postcode": "30702"
+            },
+            {
+              "name": "Mare Seche",
+              "postcode": "30703"
+            },
+            {
+              "name": "Mont Mascal",
+              "postcode": "30704"
+            },
+            {
+              "name": "Morc Bholah",
+              "postcode": "30705"
+            },
+            {
+              "name": "Morc Gowreesunkur 1",
+              "postcode": "30706"
+            },
+            {
+              "name": "Morc Gowreesunkur 2",
+              "postcode": "30707"
+            },
+            {
+              "name": "Morc Harrangee",
+              "postcode": "30708"
+            },
+            {
+              "name": "Morc Loderchand",
+              "postcode": "30709"
+            },
+            {
+              "name": "Moulin au vent",
+              "postcode": "30710"
+            },
+            {
+              "name": "Petit Raffray Village 1",
+              "postcode": "30711"
+            },
+            {
+              "name": "Petit Raffray Village 2",
+              "postcode": "30712"
+            },
+            {
+              "name": "Reunion Maurel",
+              "postcode": "30713"
+            },
+            {
+              "name": "St Francois",
+              "postcode": "30714"
+            },
+            {
+              "name": "Union Daruty",
+              "postcode": "30715"
+            },
+            {
+              "name": "Union Delcourt",
+              "postcode": "30716"
+            }
+          ]
+        },
+        {
+          "name": "PITON",
+          "sublocalities": [
+            {
+              "name": "Beau Sejour",
+              "postcode": "30801"
+            },
+            {
+              "name": "Beau Sejour SE",
+              "postcode": "30802"
+            },
+            {
+              "name": "Bon Espoir",
+              "postcode": "30803"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "30804"
+            },
+            {
+              "name": "Espe Piton",
+              "postcode": "30805"
+            },
+            {
+              "name": "La Paix",
+              "postcode": "30806"
+            },
+            {
+              "name": "Mon Piton",
+              "postcode": "30807"
+            },
+            {
+              "name": "Morc Le Haut Champs",
+              "postcode": "30808"
+            },
+            {
+              "name": "NHDC",
+              "postcode": "30809"
+            }
+          ]
+        },
+        {
+          "name": "PLAINE DES PAPAYES",
+          "sublocalities": [
+            {
+              "name": "Bois Mangue",
+              "postcode": "21201"
+            },
+            {
+              "name": "Camp Maraz",
+              "postcode": "21202"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "21203"
+            },
+            {
+              "name": "Cite NHDC",
+              "postcode": "21204"
+            },
+            {
+              "name": "Morc Beau Plan",
+              "postcode": "21205"
+            },
+            {
+              "name": "Morc Blue Nile",
+              "postcode": "21206"
+            },
+            {
+              "name": "Morc Chummun",
+              "postcode": "21207"
+            },
+            {
+              "name": "Morc Dauhoo",
+              "postcode": "21208"
+            },
+            {
+              "name": "Morc Koonjoo",
+              "postcode": "21209"
+            },
+            {
+              "name": "Morc Ramphul",
+              "postcode": "21210"
+            },
+            {
+              "name": "Morc Seebundhun",
+              "postcode": "21211"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "21212"
+            },
+            {
+              "name": "P.Papayes East",
+              "postcode": "21213"
+            },
+            {
+              "name": "P.Papayes West",
+              "postcode": "21214"
+            },
+            {
+              "name": "Theo Maigrot Sq",
+              "postcode": "21215"
+            }
+          ]
+        },
+        {
+          "name": "POINTE AUX PIMENTS",
+          "sublocalities": [
+            {
+              "name": "Camp Lilas",
+              "postcode": "21301"
+            },
+            {
+              "name": "Camp Sada",
+              "postcode": "21302"
+            },
+            {
+              "name": "Camp Scipion",
+              "postcode": "21303"
+            },
+            {
+              "name": "Grande Pointe aux Piments",
+              "postcode": "21304"
+            },
+            {
+              "name": "Morc Brizmohun",
+              "postcode": "21305"
+            },
+            {
+              "name": "Petite Pointe aux Piments",
+              "postcode": "21306"
+            },
+            {
+              "name": "Morc Baie du Tortues",
+              "postcode": "21307"
+            },
+            {
+              "name": "Morc Le Vieux Banian",
+              "postcode": "21308"
+            }
+          ]
+        },
+        {
+          "name": "POUDRE D'OR HAMLET",
+          "sublocalities": [
+            {
+              "name": "Forbach Branch",
+              "postcode": "31001"
+            },
+            {
+              "name": "Morc VRS A",
+              "postcode": "31002"
+            },
+            {
+              "name": "Morc VRS B",
+              "postcode": "31003"
+            },
+            {
+              "name": "Morc VRS C",
+              "postcode": "31004"
+            },
+            {
+              "name": "Morc VRS D",
+              "postcode": "31005"
+            },
+            {
+              "name": "Poudre D’Or Hamlet",
+              "postcode": "31006"
+            }
+          ]
+        },
+        {
+          "name": "POUDRE D'OR VILLAGE",
+          "sublocalities": [
+            {
+              "name": "Bois Doiseau",
+              "postcode": "30901"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "30902"
+            },
+            {
+              "name": "Debarcadere",
+              "postcode": "30903"
+            },
+            {
+              "name": "Ile Dambre",
+              "postcode": "30904"
+            },
+            {
+              "name": "Poudre D’Or Village",
+              "postcode": "30905"
+            }
+          ]
+        },
+        {
+          "name": "RIV DU REMPART",
+          "sublocalities": [
+            {
+              "name": "Cite C.H.A",
+              "postcode": "31101"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "31102"
+            },
+            {
+              "name": "Coquinbourg",
+              "postcode": "31103"
+            },
+            {
+              "name": "Haute Rive",
+              "postcode": "31104"
+            },
+            {
+              "name": "La Clemence",
+              "postcode": "31105"
+            },
+            {
+              "name": "Maurel",
+              "postcode": "31106"
+            },
+            {
+              "name": "Mosque Lane",
+              "postcode": "31107"
+            },
+            {
+              "name": "Panchvati",
+              "postcode": "31108"
+            },
+            {
+              "name": "Pave",
+              "postcode": "31109"
+            },
+            {
+              "name": "Pte des Lascars",
+              "postcode": "31110"
+            },
+            {
+              "name": "Railway Lane",
+              "postcode": "31111"
+            },
+            {
+              "name": "Railway Line",
+              "postcode": "31112"
+            },
+            {
+              "name": "Riverside",
+              "postcode": "31113"
+            },
+            {
+              "name": "Riviere du Rempart",
+              "postcode": "31114"
+            },
+            {
+              "name": "Schoenfield",
+              "postcode": "31115"
+            },
+            {
+              "name": "Temple",
+              "postcode": "31116"
+            },
+            {
+              "name": "B.V.Maurel (Amitie) part of",
+              "postcode": "30101"
+            },
+            {
+              "name": "Antoinette",
+              "postcode": "30102"
+            },
+            {
+              "name": "Barlow",
+              "postcode": "30103"
+            },
+            {
+              "name": "Belle Vue Maurel",
+              "postcode": "30104"
+            },
+            {
+              "name": "Desjardins",
+              "postcode": "30105"
+            },
+            {
+              "name": "Mon. Allybocus",
+              "postcode": "30106"
+            },
+            {
+              "name": "Mon Loisir",
+              "postcode": "30107"
+            },
+            {
+              "name": "Phoolia Nagar",
+              "postcode": "30108"
+            },
+            {
+              "name": "Plaines des Roches Aubin",
+              "postcode": "31901"
+            },
+            {
+              "name": "Plaines des Roches (Lower)",
+              "postcode": "31902"
+            },
+            {
+              "name": "Plaines des Roches (Upper)",
+              "postcode": "31903"
+            },
+            {
+              "name": "Plaines des Roches Seneck",
+              "postcode": "31904"
+            }
+          ]
+        },
+        {
+          "name": "ROCHE TERRE",
+          "sublocalities": [
+            {
+              "name": "Calasse",
+              "postcode": "32001"
+            },
+            {
+              "name": "Roche Terre",
+              "postcode": "32002"
+            }
+          ]
+        },
+        {
+          "name": "ROCHES NOIRES",
+          "sublocalities": [
+            {
+              "name": "Azuri Complex",
+              "postcode": "31201"
+            },
+            {
+              "name": "Coastal Side",
+              "postcode": "31202"
+            },
+            {
+              "name": "Domaine du levant",
+              "postcode": "31203"
+            },
+            {
+              "name": "Haute Rive",
+              "postcode": "31204"
+            },
+            {
+              "name": "Lambic",
+              "postcode": "31205"
+            },
+            {
+              "name": "Roches Noires Village",
+              "postcode": "31206"
+            },
+            {
+              "name": "Branch Rd",
+              "postcode": "31207"
+            },
+            {
+              "name": "Sidine",
+              "postcode": "31208"
+            }
+          ]
+        },
+        {
+          "name": "TERRE ROUGE",
+          "sublocalities": [
+            {
+              "name": "Bois Marchand",
+              "postcode": "21401"
+            },
+            {
+              "name": "Bois Pignolet",
+              "postcode": "21402"
+            },
+            {
+              "name": "Camp La Boue",
+              "postcode": "21403"
+            },
+            {
+              "name": "C.E.B Sq.",
+              "postcode": "21404"
+            },
+            {
+              "name": "Cite Bois Marchand",
+              "postcode": "21405"
+            },
+            {
+              "name": "Mamzelle Laure",
+              "postcode": "21406"
+            },
+            {
+              "name": "Morc Bussawon",
+              "postcode": "21407"
+            },
+            {
+              "name": "Morc. Cathan",
+              "postcode": "21408"
+            },
+            {
+              "name": "Morc. Green Park",
+              "postcode": "21409"
+            },
+            {
+              "name": "Morc Peerun",
+              "postcode": "21410"
+            },
+            {
+              "name": "Morc.Poonith",
+              "postcode": "21411"
+            },
+            {
+              "name": "Morc. Ragoobar",
+              "postcode": "21412"
+            },
+            {
+              "name": "Morc Soobratty",
+              "postcode": "21413"
+            },
+            {
+              "name": "Morc. Tara",
+              "postcode": "21414"
+            },
+            {
+              "name": "St Joseph",
+              "postcode": "21415"
+            },
+            {
+              "name": "Terre Rouge",
+              "postcode": "21416"
+            }
+          ]
+        },
+        {
+          "name": "THE VALE",
+          "sublocalities": [
+            {
+              "name": "Lower Vale",
+              "postcode": "31301"
+            },
+            {
+              "name": "Upper Vale",
+              "postcode": "31302"
+            }
+          ]
+        },
+        {
+          "name": "TOMBEAU BAY",
+          "sublocalities": [
+            {
+              "name": "Auberge",
+              "postcode": "21701"
+            },
+            {
+              "name": "Bay Village",
+              "postcode": "21702"
+            },
+            {
+              "name": "Cite Florida",
+              "postcode": "21703"
+            },
+            {
+              "name": "Cite Illois",
+              "postcode": "21704"
+            },
+            {
+              "name": "Cite La Chaux/State Land",
+              "postcode": "21705"
+            },
+            {
+              "name": "Docker's Village",
+              "postcode": "21706"
+            },
+            {
+              "name": "Elizabethville",
+              "postcode": "21707"
+            },
+            {
+              "name": "Industrial Zone",
+              "postcode": "21708"
+            },
+            {
+              "name": "Le Goulet (Royal Rd)",
+              "postcode": "21709"
+            },
+            {
+              "name": "Morc Beau Rivage",
+              "postcode": "21710"
+            },
+            {
+              "name": "Morc Boucan",
+              "postcode": "21711"
+            },
+            {
+              "name": "Morc Concorde",
+              "postcode": "21712"
+            },
+            {
+              "name": "Morc Coprim",
+              "postcode": "21713"
+            },
+            {
+              "name": "Morc Dassagne",
+              "postcode": "21714"
+            },
+            {
+              "name": "Morc Filature",
+              "postcode": "21715"
+            },
+            {
+              "name": "Morc Fong Sing",
+              "postcode": "21716"
+            },
+            {
+              "name": "Morc Illois",
+              "postcode": "21717"
+            },
+            {
+              "name": "Morc La Cocheyle",
+              "postcode": "21718"
+            },
+            {
+              "name": "Morc Le Verger",
+              "postcode": "21719"
+            },
+            {
+              "name": "Morc Madhoo",
+              "postcode": "21720"
+            },
+            {
+              "name": "Morc Mignot",
+              "postcode": "21721"
+            },
+            {
+              "name": "Morc Rouillard",
+              "postcode": "21722"
+            },
+            {
+              "name": "Morc Ruhomatally",
+              "postcode": "21723"
+            },
+            {
+              "name": "Morc Senestra",
+              "postcode": "21724"
+            },
+            {
+              "name": "Morc Swan",
+              "postcode": "21725"
+            },
+            {
+              "name": "Morc Zenith",
+              "postcode": "21726"
+            },
+            {
+              "name": "N.H.D.C",
+              "postcode": "21727"
+            },
+            {
+              "name": "Paille en Queue",
+              "postcode": "21728"
+            },
+            {
+              "name": "Pont Bruniquel",
+              "postcode": "21729"
+            },
+            {
+              "name": "Residence St Malo",
+              "postcode": "21730"
+            },
+            {
+              "name": "Riche Terre",
+              "postcode": "21731"
+            },
+            {
+              "name": "St Malo",
+              "postcode": "21732"
+            },
+            {
+              "name": "Tombeau Bay (Royal Rd)",
+              "postcode": "21733"
+            },
+            {
+              "name": "Tresor",
+              "postcode": "21734"
+            },
+            {
+              "name": "Village les cocotiers",
+              "postcode": "21735"
+            }
+          ]
+        },
+        {
+          "name": "TRIOLET",
+          "sublocalities": [
+            {
+              "name": "Cinema Casse",
+              "postcode": "21501"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "21502"
+            },
+            {
+              "name": "Huitieme Mile",
+              "postcode": "21503"
+            },
+            {
+              "name": "Neuvieme Mile",
+              "postcode": "21504"
+            },
+            {
+              "name": "NHDC (Solitude)",
+              "postcode": "21505"
+            },
+            {
+              "name": "Septieme Mile",
+              "postcode": "21506"
+            },
+            {
+              "name": "Solitude",
+              "postcode": "21507"
+            },
+            {
+              "name": "Terminus",
+              "postcode": "21508"
+            },
+            {
+              "name": "Trois Boutiques",
+              "postcode": "21509"
+            }
+          ]
+        },
+        {
+          "name": "TROU AUX BICHES",
+          "sublocalities": [
+            {
+              "name": "Cite EDC Pere Laval",
+              "postcode": "22301"
+            },
+            {
+              "name": "Morc Asviva",
+              "postcode": "22302"
+            },
+            {
+              "name": "Morc Bassa",
+              "postcode": "22303"
+            },
+            {
+              "name": "Morc Choisy",
+              "postcode": "22304"
+            },
+            {
+              "name": "Morc Elaya",
+              "postcode": "22305"
+            },
+            {
+              "name": "Morc Future",
+              "postcode": "22306"
+            },
+            {
+              "name": "Morc Hossen",
+              "postcode": "22307"
+            },
+            {
+              "name": "Morc Jhuboo",
+              "postcode": "22308"
+            },
+            {
+              "name": "Morc Mascareign",
+              "postcode": "22309"
+            },
+            {
+              "name": "Morc Moosary",
+              "postcode": "22310"
+            },
+            {
+              "name": "Morc Papin",
+              "postcode": "22311"
+            },
+            {
+              "name": "Morc Ramdewar",
+              "postcode": "22312"
+            },
+            {
+              "name": "Morc Ramdhany",
+              "postcode": "22313"
+            },
+            {
+              "name": "Morc Residence",
+              "postcode": "22314"
+            },
+            {
+              "name": "Morc Sagitaire",
+              "postcode": "22315"
+            },
+            {
+              "name": "Morc Souvenir",
+              "postcode": "22316"
+            },
+            {
+              "name": "Morc Tobago",
+              "postcode": "22317"
+            },
+            {
+              "name": "Morc Trio",
+              "postcode": "22318"
+            },
+            {
+              "name": "Morc VRS Choisy",
+              "postcode": "22319"
+            },
+            {
+              "name": "Residence Flebistier",
+              "postcode": "22320"
+            },
+            {
+              "name": "Trou aux Biches I",
+              "postcode": "22321"
+            },
+            {
+              "name": "Trou aux Biches II",
+              "postcode": "22322"
+            }
+          ]
+        },
+        {
+          "name": "VILLEBAGUE",
+          "sublocalities": [
+            {
+              "name": "Camp Sipaye",
+              "postcode": "21601"
+            },
+            {
+              "name": "Mon Songe",
+              "postcode": "21602"
+            },
+            {
+              "name": "Monc V.R.S",
+              "postcode": "21603"
+            },
+            {
+              "name": "Nicoliere",
+              "postcode": "21604"
+            },
+            {
+              "name": "Petite Julie",
+              "postcode": "21605"
+            },
+            {
+              "name": "Ville Bague upper",
+              "postcode": "21606"
+            },
+            {
+              "name": "Ville Bague lower",
+              "postcode": "21607"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "South",
+      "localities": [
+        {
+          "name": "BAIE DU CAP",
+          "sublocalities": [
+            {
+              "name": "Baie Du Cap",
+              "postcode": "60101"
+            },
+            {
+              "name": "Choisy",
+              "postcode": "60102"
+            }
+          ]
+        },
+        {
+          "name": "BAMBOUS VIRIEUX",
+          "sublocalities": [
+            {
+              "name": "Bambous Virieux",
+              "postcode": "50101"
+            },
+            {
+              "name": "Debarcadere",
+              "postcode": "50102"
+            },
+            {
+              "name": "Les Mares",
+              "postcode": "50103"
+            },
+            {
+              "name": "Pointe Bambous",
+              "postcode": "50104"
+            }
+          ]
+        },
+        {
+          "name": "BANANES",
+          "sublocalities": [
+            {
+              "name": "Bananes",
+              "postcode": "50201"
+            },
+            {
+              "name": "Eau Bleue Reservoir",
+              "postcode": "50202"
+            }
+          ]
+        },
+        {
+          "name": "BEAU VALLON",
+          "sublocalities": [
+            {
+              "name": "Beau Vallon",
+              "postcode": "52201"
+            },
+            {
+              "name": "Cite CHA",
+              "postcode": "52202"
+            },
+            {
+              "name": "Cite NHDC",
+              "postcode": "52203"
+            },
+            {
+              "name": "New Residential Area [Morc]",
+              "postcode": "52204"
+            },
+            {
+              "name": "Verger",
+              "postcode": "52205"
+            }
+          ]
+        },
+        {
+          "name": "BEL OMBRE",
+          "sublocalities": [
+            {
+              "name": "Beau Champ",
+              "postcode": "61001"
+            },
+            {
+              "name": "Bel Ombre",
+              "postcode": "61002"
+            },
+            {
+              "name": "Cite EDC Bel Ombre",
+              "postcode": "61003"
+            },
+            {
+              "name": "Cite Longtill Bel Ombre",
+              "postcode": "61004"
+            },
+            {
+              "name": "Sainte Marie",
+              "postcode": "61005"
+            },
+            {
+              "name": "Morc Beau Champs",
+              "postcode": "61007"
+            },
+            {
+              "name": "Sofitel",
+              "postcode": "61008"
+            },
+            {
+              "name": "Belle Riviere",
+              "postcode": "61009"
+            },
+            {
+              "name": "Movenpick",
+              "postcode": "61010"
+            },
+            {
+              "name": "Tamassa",
+              "postcode": "61011"
+            },
+            {
+              "name": "Heritage Awali",
+              "postcode": "61012"
+            },
+            {
+              "name": "Heritage Le Telfair",
+              "postcode": "61013"
+            },
+            {
+              "name": "Villa Valriche",
+              "postcode": "61014"
+            },
+            {
+              "name": "Villa Valriche Resort",
+              "postcode": "61015"
+            },
+            {
+              "name": "Heritage Golf and Spa Club",
+              "postcode": "61016"
+            }
+          ]
+        },
+        {
+          "name": "BENARES",
+          "sublocalities": [
+            {
+              "name": "BATIMARAIS",
+              "postcode": "61101"
+            },
+            {
+              "name": "COLMAR",
+              "postcode": "61102"
+            },
+            {
+              "name": "BENARES",
+              "postcode": "61103"
+            }
+          ]
+        },
+        {
+          "name": "BOIS CHERI",
+          "sublocalities": [
+            {
+              "name": "Ahchin",
+              "postcode": "60201"
+            },
+            {
+              "name": "Akla Road",
+              "postcode": "60202"
+            },
+            {
+              "name": "Bois Cheri",
+              "postcode": "60203"
+            },
+            {
+              "name": "Building",
+              "postcode": "60204"
+            },
+            {
+              "name": "Cader Road",
+              "postcode": "60205"
+            },
+            {
+              "name": "Cite EDC Bois Cheri",
+              "postcode": "60206"
+            },
+            {
+              "name": "Cooperative",
+              "postcode": "60207"
+            },
+            {
+              "name": "Heerallal Rd",
+              "postcode": "60208"
+            },
+            {
+              "name": "Mambahal",
+              "postcode": "60209"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "60210"
+            },
+            {
+              "name": "Porida",
+              "postcode": "60211"
+            },
+            {
+              "name": "Residence Bois Cheri",
+              "postcode": "60212"
+            },
+            {
+              "name": "Seeruttun Rd",
+              "postcode": "60213"
+            },
+            {
+              "name": "Tivoli",
+              "postcode": "60214"
+            }
+          ]
+        },
+        {
+          "name": "BOIS DES AMOURETTES",
+          "sublocalities": [
+            {
+              "name": "Anse Jonchée",
+              "postcode": "50401"
+            },
+            {
+              "name": "Bois Des Amourettes",
+              "postcode": "50402"
+            },
+            {
+              "name": "Domaine des Chasseur",
+              "postcode": "50403"
+            },
+            {
+              "name": "Providence",
+              "postcode": "50404"
+            }
+          ]
+        },
+        {
+          "name": "BRITANNIA",
+          "sublocalities": [
+            {
+              "name": "BRITANNIA",
+              "postcode": "61201"
+            },
+            {
+              "name": "CITE RAMPUR",
+              "postcode": "61202"
+            },
+            {
+              "name": "VRS BRITANNIA (land only)",
+              "postcode": "61203"
+            },
+            {
+              "name": "RIVIERE DRAGON",
+              "postcode": "61204"
+            },
+            {
+              "name": "MORC VRS R.DRAGON",
+              "postcode": "61205"
+            },
+            {
+              "name": "CAMP BERTHAUD",
+              "postcode": "61206"
+            }
+          ]
+        },
+        {
+          "name": "CAMP CAROL",
+          "sublocalities": [
+            {
+              "name": "Camp Carol",
+              "postcode": "52401"
+            },
+            {
+              "name": "Carreau Acacia",
+              "postcode": "52402"
+            },
+            {
+              "name": "La Cambuse",
+              "postcode": "52403"
+            },
+            {
+              "name": "Le Bouchon",
+              "postcode": "52404"
+            },
+            {
+              "name": "Mon Desert Mon Tresor",
+              "postcode": "52405"
+            },
+            {
+              "name": "Morc. V.R.S M. Desert",
+              "postcode": "52406"
+            }
+          ]
+        },
+        {
+          "name": "CAMP DIABLE",
+          "sublocalities": [
+            {
+              "name": "EDC CAMP DIABLE",
+              "postcode": "60301"
+            },
+            {
+              "name": "MORC SAVANNAH",
+              "postcode": "60302"
+            },
+            {
+              "name": "ILOT",
+              "postcode": "60303"
+            },
+            {
+              "name": "CAMP DIABLE",
+              "postcode": "60304"
+            },
+            {
+              "name": "NHDC CAMP DIABLE",
+              "postcode": "60305"
+            },
+            {
+              "name": "RICHE BOIS",
+              "postcode": "60306"
+            }
+          ]
+        },
+        {
+          "name": "CHAMOUNY",
+          "sublocalities": [
+            {
+              "name": "Chamouny",
+              "postcode": "61301"
+            },
+            {
+              "name": "Mare Anguilles",
+              "postcode": "61302"
+            },
+            {
+              "name": "Mont Blanc",
+              "postcode": "61303"
+            }
+          ]
+        },
+        {
+          "name": "CHEMIN GRENIER",
+          "sublocalities": [
+            {
+              "name": "Adventist RD",
+              "postcode": "60401"
+            },
+            {
+              "name": "Camp Barbe",
+              "postcode": "60402"
+            },
+            {
+              "name": "Camp Charlot",
+              "postcode": "60403"
+            },
+            {
+              "name": "Camp Fanny",
+              "postcode": "60404"
+            },
+            {
+              "name": "Camp Fanny Lorquet",
+              "postcode": "60405"
+            },
+            {
+              "name": "Camp Galets",
+              "postcode": "60406"
+            },
+            {
+              "name": "Camp Goolbar",
+              "postcode": "60407"
+            },
+            {
+              "name": "Camp Jeannette",
+              "postcode": "60408"
+            },
+            {
+              "name": "Camp Lilas",
+              "postcode": "60409"
+            },
+            {
+              "name": "Florentina",
+              "postcode": "60410"
+            },
+            {
+              "name": "Jooloom",
+              "postcode": "60411"
+            },
+            {
+              "name": "Jumbo",
+              "postcode": "60412"
+            },
+            {
+              "name": "Lotus",
+              "postcode": "60413"
+            },
+            {
+              "name": "Mont Carmel",
+              "postcode": "60414"
+            },
+            {
+              "name": "Morc Dunputh",
+              "postcode": "60415"
+            },
+            {
+              "name": "Mosque Rd",
+              "postcode": "60416"
+            },
+            {
+              "name": "New Mosque",
+              "postcode": "60417"
+            },
+            {
+              "name": "Plaine des Galets",
+              "postcode": "60418"
+            },
+            {
+              "name": "PlayGround",
+              "postcode": "60419"
+            },
+            {
+              "name": "Railway",
+              "postcode": "60420"
+            },
+            {
+              "name": "Riviere des Galets",
+              "postcode": "60421"
+            },
+            {
+              "name": "Saint Felix",
+              "postcode": "60422"
+            },
+            {
+              "name": "Satanah",
+              "postcode": "60423"
+            },
+            {
+              "name": "Social Welfare Centre Rd",
+              "postcode": "60424"
+            },
+            {
+              "name": "Chemin Grenier",
+              "postcode": "60425"
+            }
+          ]
+        },
+        {
+          "name": "CLUNY",
+          "sublocalities": [
+            {
+              "name": "Bemanique",
+              "postcode": "50501"
+            },
+            {
+              "name": "Camp Bengali",
+              "postcode": "50502"
+            },
+            {
+              "name": "Camp Ramdin",
+              "postcode": "50503"
+            },
+            {
+              "name": "Cluny",
+              "postcode": "50504"
+            },
+            {
+              "name": "Eau Bleue Tostee",
+              "postcode": "50505"
+            },
+            {
+              "name": "Railway",
+              "postcode": "50506"
+            }
+          ]
+        },
+        {
+          "name": "GRAND BEL AIR",
+          "sublocalities": [
+            {
+              "name": "Grand Bel Air",
+              "postcode": "50301"
+            }
+          ]
+        },
+        {
+          "name": "GRAND BOIS",
+          "sublocalities": [
+            {
+              "name": "Morc SIT",
+              "postcode": "60509"
+            },
+            {
+              "name": "N.H.D.C Grand Bois",
+              "postcode": "60510"
+            },
+            {
+              "name": "N.H.D.C Legrand",
+              "postcode": "60511"
+            },
+            {
+              "name": "Old Savanne Rd",
+              "postcode": "60512"
+            },
+            {
+              "name": "Sewsagur Rd",
+              "postcode": "60513"
+            },
+            {
+              "name": "Young Tow",
+              "postcode": "60514"
+            }
+          ]
+        },
+        {
+          "name": "GRAND SABLE",
+          "sublocalities": [
+            {
+              "name": "Camp Balma",
+              "postcode": "50601"
+            },
+            {
+              "name": "Camp Pierre",
+              "postcode": "50602"
+            },
+            {
+              "name": "Grand Sable",
+              "postcode": "50603"
+            },
+            {
+              "name": "Petit Sable",
+              "postcode": "50604"
+            },
+            {
+              "name": "Plaine Des Roches",
+              "postcode": "50605"
+            },
+            {
+              "name": "Pointe Des Roches",
+              "postcode": "50606"
+            }
+          ]
+        },
+        {
+          "name": "L'ESCALIER",
+          "sublocalities": [
+            {
+              "name": "Allée Jacques",
+              "postcode": "61401"
+            },
+            {
+              "name": "Camp La Hache",
+              "postcode": "61402"
+            },
+            {
+              "name": "Camp Tagore",
+              "postcode": "61403"
+            },
+            {
+              "name": "Charles Rd",
+              "postcode": "61404"
+            },
+            {
+              "name": "Chattorgoon",
+              "postcode": "61405"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "61406"
+            },
+            {
+              "name": "Cite Longtill",
+              "postcode": "61407"
+            },
+            {
+              "name": "Cite Paul & Virginie",
+              "postcode": "61408"
+            },
+            {
+              "name": "La Barraque S.E",
+              "postcode": "61409"
+            },
+            {
+              "name": "La Chapelle",
+              "postcode": "61410"
+            },
+            {
+              "name": "La Sourdine",
+              "postcode": "61411"
+            },
+            {
+              "name": "L’Escalier",
+              "postcode": "61412"
+            },
+            {
+              "name": "Morc Barbe",
+              "postcode": "61413"
+            },
+            {
+              "name": "Morc La Sourdine",
+              "postcode": "61414"
+            },
+            {
+              "name": "Morc Tagore",
+              "postcode": "61415"
+            },
+            {
+              "name": "Savannah",
+              "postcode": "61416"
+            },
+            {
+              "name": "Savannah S.E",
+              "postcode": "61417"
+            }
+          ]
+        },
+        {
+          "name": "LA FLORA",
+          "sublocalities": [
+            {
+              "name": "Bostom Rd",
+              "postcode": "61701"
+            },
+            {
+              "name": "Cooperative Rd",
+              "postcode": "61702"
+            },
+            {
+              "name": "Kanhye Rd",
+              "postcode": "61703"
+            },
+            {
+              "name": "La Flora",
+              "postcode": "61704"
+            },
+            {
+              "name": "Matoo Rd",
+              "postcode": "61705"
+            },
+            {
+              "name": "Pamplemousses Rd",
+              "postcode": "61706"
+            },
+            {
+              "name": "Rioux",
+              "postcode": "61707"
+            },
+            {
+              "name": "Seebaruth Rd",
+              "postcode": "61708"
+            }
+          ]
+        },
+        {
+          "name": "MAHEBOURG",
+          "sublocalities": [
+            {
+              "name": "Allee Gheude",
+              "postcode": "50801"
+            },
+            {
+              "name": "Blue Bay",
+              "postcode": "50802"
+            },
+            {
+              "name": "Bois D'oiseaux",
+              "postcode": "50803"
+            },
+            {
+              "name": "Carreau Manioc",
+              "postcode": "50804"
+            },
+            {
+              "name": "Cent Gaulettes",
+              "postcode": "50805"
+            },
+            {
+              "name": "Cite La Chaux",
+              "postcode": "50806"
+            },
+            {
+              "name": "Debarcadere",
+              "postcode": "50807"
+            },
+            {
+              "name": "Hospital",
+              "postcode": "50808"
+            },
+            {
+              "name": "Ile aux deux cocos",
+              "postcode": "50809"
+            },
+            {
+              "name": "Mahebourg",
+              "postcode": "50810"
+            },
+            {
+              "name": "Maurice st",
+              "postcode": "50811"
+            },
+            {
+              "name": "Morc. Lorette",
+              "postcode": "50812"
+            },
+            {
+              "name": "Museum",
+              "postcode": "50813"
+            },
+            {
+              "name": "Pointe Canon",
+              "postcode": "50814"
+            },
+            {
+              "name": "Pointe D'Esny",
+              "postcode": "50815"
+            },
+            {
+              "name": "Pte des Regates",
+              "postcode": "50816"
+            },
+            {
+              "name": "Pte Jerome",
+              "postcode": "50817"
+            },
+            {
+              "name": "Quartier",
+              "postcode": "50818"
+            },
+            {
+              "name": "Remy Ollier",
+              "postcode": "50819"
+            },
+            {
+              "name": "Tombeau",
+              "postcode": "50820"
+            },
+            {
+              "name": "Ville Noire",
+              "postcode": "50821"
+            },
+            {
+              "name": "Villeneuve",
+              "postcode": "50822"
+            },
+            {
+              "name": "Waterfront",
+              "postcode": "50823"
+            }
+          ]
+        },
+        {
+          "name": "MARE D'ALBERT",
+          "sublocalities": [
+            {
+              "name": "Allee Coco",
+              "postcode": "51001"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "51002"
+            },
+            {
+              "name": "Cite Mare D’Albert",
+              "postcode": "51003"
+            },
+            {
+              "name": "Gros Bois S.E",
+              "postcode": "51004"
+            },
+            {
+              "name": "Les Vergers de Gros Bois",
+              "postcode": "51005"
+            },
+            {
+              "name": "Mare D’Albert",
+              "postcode": "51006"
+            },
+            {
+              "name": "Morc Gokool",
+              "postcode": "51007"
+            },
+            {
+              "name": "Morc Grove",
+              "postcode": "51008"
+            },
+            {
+              "name": "Morc Piscine",
+              "postcode": "51009"
+            },
+            {
+              "name": "Morc Samlaul",
+              "postcode": "51010"
+            },
+            {
+              "name": "Morc Toolsee",
+              "postcode": "51011"
+            },
+            {
+              "name": "Rampe Le Moirt",
+              "postcode": "51012"
+            }
+          ]
+        },
+        {
+          "name": "MARE TABAC",
+          "sublocalities": [
+            {
+              "name": "Aspral",
+              "postcode": "51101"
+            },
+            {
+              "name": "Camp Francois",
+              "postcode": "51102"
+            },
+            {
+              "name": "Cite CHA",
+              "postcode": "51103"
+            },
+            {
+              "name": "Cite Greenwood",
+              "postcode": "51104"
+            },
+            {
+              "name": "Gros Bois  Rd",
+              "postcode": "51105"
+            },
+            {
+              "name": "Joli Bois",
+              "postcode": "51106"
+            },
+            {
+              "name": "Jugoo Bhunjun",
+              "postcode": "51107"
+            },
+            {
+              "name": "Mare Tabac",
+              "postcode": "51108"
+            },
+            {
+              "name": "Morc SIT",
+              "postcode": "51109"
+            },
+            {
+              "name": "NHDC Mare Tabac",
+              "postcode": "51110"
+            }
+          ]
+        },
+        {
+          "name": "NEW GROVE",
+          "sublocalities": [
+            {
+              "name": "Astroea Rochecouste",
+              "postcode": "51201"
+            },
+            {
+              "name": "Bamboo",
+              "postcode": "51202"
+            },
+            {
+              "name": "Bois D’oiseaux",
+              "postcode": "51203"
+            },
+            {
+              "name": "Business Park",
+              "postcode": "51204"
+            },
+            {
+              "name": "Cite La Rosa",
+              "postcode": "51205"
+            },
+            {
+              "name": "Cite Mont Fertile",
+              "postcode": "51206"
+            },
+            {
+              "name": "Cite NHDC",
+              "postcode": "51207"
+            },
+            {
+              "name": "Deux Bras",
+              "postcode": "51208"
+            },
+            {
+              "name": "Deux Bras S.E",
+              "postcode": "51209"
+            },
+            {
+              "name": "Gros Billot",
+              "postcode": "51210"
+            },
+            {
+              "name": "Gros Billot Branch",
+              "postcode": "51211"
+            },
+            {
+              "name": "Kalimaye",
+              "postcode": "51212"
+            },
+            {
+              "name": "La Rosa",
+              "postcode": "51213"
+            },
+            {
+              "name": "Mare Chicose",
+              "postcode": "51214"
+            },
+            {
+              "name": "Mont Fertille",
+              "postcode": "51215"
+            },
+            {
+              "name": "Morc Balance",
+              "postcode": "51216"
+            },
+            {
+              "name": "Morc Dreepaul",
+              "postcode": "51217"
+            },
+            {
+              "name": "Morc Ganga",
+              "postcode": "51218"
+            },
+            {
+              "name": "Morc Gaytree",
+              "postcode": "51219"
+            },
+            {
+              "name": "Morc Mauripark",
+              "postcode": "51220"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "51221"
+            },
+            {
+              "name": "New Grove",
+              "postcode": "51222"
+            },
+            {
+              "name": "Parasol",
+              "postcode": "51223"
+            },
+            {
+              "name": "Siding",
+              "postcode": "51224"
+            }
+          ]
+        },
+        {
+          "name": "NOUVELLE FRANCE",
+          "sublocalities": [
+            {
+              "name": "Bemanique",
+              "postcode": "51301"
+            },
+            {
+              "name": "Bissoondoyalrd",
+              "postcode": "51302"
+            },
+            {
+              "name": "Commelonne",
+              "postcode": "51303"
+            },
+            {
+              "name": "Grand Port Rd",
+              "postcode": "51304"
+            },
+            {
+              "name": "Kanpur",
+              "postcode": "51305"
+            },
+            {
+              "name": "La Peyre",
+              "postcode": "51306"
+            },
+            {
+              "name": "Morc B.Climat",
+              "postcode": "51307"
+            },
+            {
+              "name": "N.H.D.C N.France",
+              "postcode": "51308"
+            },
+            {
+              "name": "N.France",
+              "postcode": "51309"
+            },
+            {
+              "name": "Pont Colville",
+              "postcode": "51310"
+            },
+            {
+              "name": "Residence U.Park",
+              "postcode": "51311"
+            },
+            {
+              "name": "Savanne Rd",
+              "postcode": "51312"
+            },
+            {
+              "name": "Seegoolam Rd",
+              "postcode": "51313"
+            }
+          ]
+        },
+        {
+          "name": "OLD GRAND PORT",
+          "sublocalities": [
+            {
+              "name": "Belle Vue /Kenya",
+              "postcode": "51401"
+            },
+            {
+              "name": "Cite NHDC",
+              "postcode": "51402"
+            },
+            {
+              "name": "Debarcadere",
+              "postcode": "51403"
+            },
+            {
+              "name": "Ferney",
+              "postcode": "51404"
+            },
+            {
+              "name": "Le Vallon",
+              "postcode": "51405"
+            },
+            {
+              "name": "Old Grand Port",
+              "postcode": "51406"
+            }
+          ]
+        },
+        {
+          "name": "PETIT BEL AIR",
+          "sublocalities": [
+            {
+              "name": "Camp Vinson",
+              "postcode": "52301"
+            },
+            {
+              "name": "Cemetery",
+              "postcode": "52302"
+            },
+            {
+              "name": "Petit Bel Air",
+              "postcode": "52303"
+            }
+          ]
+        },
+        {
+          "name": "PLAINE MAGNIEN",
+          "sublocalities": [
+            {
+              "name": "Agricultural Extension Office",
+              "postcode": "51501"
+            },
+            {
+              "name": "Balance",
+              "postcode": "51502"
+            },
+            {
+              "name": "Bois D’Oiseau",
+              "postcode": "51503"
+            },
+            {
+              "name": "Cemetry Rd",
+              "postcode": "51504"
+            },
+            {
+              "name": "Chatgaon (ex Airport)",
+              "postcode": "51505"
+            },
+            {
+              "name": "Cite Burrenchobay",
+              "postcode": "51506"
+            },
+            {
+              "name": "Cite EDC Balance",
+              "postcode": "51507"
+            },
+            {
+              "name": "La Cambuse",
+              "postcode": "51508"
+            },
+            {
+              "name": "La Grotte",
+              "postcode": "51509"
+            },
+            {
+              "name": "Le Chaland",
+              "postcode": "51510"
+            },
+            {
+              "name": "Madame Dayla",
+              "postcode": "51511"
+            },
+            {
+              "name": "Mon desert Rd",
+              "postcode": "51512"
+            },
+            {
+              "name": "Morc Gobin",
+              "postcode": "51513"
+            },
+            {
+              "name": "Morc Ithier",
+              "postcode": "51514"
+            },
+            {
+              "name": "NHDC les Palmiers",
+              "postcode": "51515"
+            },
+            {
+              "name": "Plaine Magnien",
+              "postcode": "51516"
+            },
+            {
+              "name": "Rishi dayanand Rd",
+              "postcode": "51517"
+            },
+            {
+              "name": "Ruisseau Copeaux",
+              "postcode": "51518"
+            },
+            {
+              "name": "Solitude",
+              "postcode": "51519"
+            },
+            {
+              "name": "SSR International Airport",
+              "postcode": "51520"
+            }
+          ]
+        },
+        {
+          "name": "QUATRE SOEURS",
+          "sublocalities": [
+            {
+              "name": "Deux Freres Mountain side",
+              "postcode": "52701"
+            },
+            {
+              "name": "Deux Freres Seaside",
+              "postcode": "52702"
+            },
+            {
+              "name": "Marie Jeanne",
+              "postcode": "52703"
+            },
+            {
+              "name": "Mr Joly",
+              "postcode": "52704"
+            },
+            {
+              "name": "Pointe aux Feuilles",
+              "postcode": "52705"
+            }
+          ]
+        },
+        {
+          "name": "RIVIERE DES ANGUILLES",
+          "sublocalities": [
+            {
+              "name": "SENNEVILLE",
+              "postcode": "60601"
+            },
+            {
+              "name": "MORC ROUNTREE(land)",
+              "postcode": "60602"
+            },
+            {
+              "name": "PRUD’HOMME",
+              "postcode": "60603"
+            },
+            {
+              "name": "MORC PRUD'HOMME",
+              "postcode": "60604"
+            },
+            {
+              "name": "MAISONNETTE",
+              "postcode": "60605"
+            },
+            {
+              "name": "RAILWAY",
+              "postcode": "60606"
+            },
+            {
+              "name": "RAILWAY SQUARE",
+              "postcode": "61802"
+            },
+            {
+              "name": "BARRACKS",
+              "postcode": "60608"
+            },
+            {
+              "name": "CAMP MARTIN",
+              "postcode": "60609"
+            },
+            {
+              "name": "LA VANILLE NHDC",
+              "postcode": "60610"
+            },
+            {
+              "name": "BEL AIR SAINT FELIX",
+              "postcode": "60611"
+            }
+          ]
+        },
+        {
+          "name": "RIVIERE DES CREOLES",
+          "sublocalities": [
+            {
+              "name": "Camp Carol",
+              "postcode": "51601"
+            },
+            {
+              "name": "Cite CHA",
+              "postcode": "51602"
+            },
+            {
+              "name": "Cite Longtill",
+              "postcode": "51603"
+            },
+            {
+              "name": "Morc. Ferney, VRS",
+              "postcode": "51604"
+            },
+            {
+              "name": "Pte Brocus",
+              "postcode": "51605"
+            },
+            {
+              "name": "Riviere des Creoles",
+              "postcode": "51606"
+            }
+          ]
+        },
+        {
+          "name": "RIVIERE DU POSTE",
+          "sublocalities": [
+            {
+              "name": "Camp Rabaud",
+              "postcode": "60701"
+            },
+            {
+              "name": "Camp Siajee",
+              "postcode": "60702"
+            },
+            {
+              "name": "Riv du Poste",
+              "postcode": "60703"
+            },
+            {
+              "name": "Terrain Maurice",
+              "postcode": "60704"
+            }
+          ]
+        },
+        {
+          "name": "ROSE BELLE",
+          "sublocalities": [
+            {
+              "name": "Balisson",
+              "postcode": "52101"
+            },
+            {
+              "name": "Baramia",
+              "postcode": "51802"
+            },
+            {
+              "name": "Camp Bouvet",
+              "postcode": "51803"
+            },
+            {
+              "name": "Capitol",
+              "postcode": "51804"
+            },
+            {
+              "name": "Chakla",
+              "postcode": "51805"
+            },
+            {
+              "name": "Chapel",
+              "postcode": "51806"
+            },
+            {
+              "name": "Cite Balisson (SILWF)",
+              "postcode": "52107"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "51808"
+            },
+            {
+              "name": "Cite Padco",
+              "postcode": "52109"
+            },
+            {
+              "name": "Gebert",
+              "postcode": "51810"
+            },
+            {
+              "name": "Letord",
+              "postcode": "51811"
+            },
+            {
+              "name": "Le Vieux Moulin",
+              "postcode": "51812"
+            },
+            {
+              "name": "Madame Lolo",
+              "postcode": "51813"
+            },
+            {
+              "name": "Marie Jeannie",
+              "postcode": "51814"
+            },
+            {
+              "name": "Mongelard",
+              "postcode": "51815"
+            },
+            {
+              "name": "Mon Rose 1",
+              "postcode": "51816"
+            },
+            {
+              "name": "Mon Rose 2",
+              "postcode": "51817"
+            },
+            {
+              "name": "Morc Bakory",
+              "postcode": "51818"
+            },
+            {
+              "name": "Morc Boolaky",
+              "postcode": "51819"
+            },
+            {
+              "name": "Morc Brito",
+              "postcode": "51820"
+            },
+            {
+              "name": "Morc Domaine",
+              "postcode": "51821"
+            },
+            {
+              "name": "Morc Jac",
+              "postcode": "51822"
+            },
+            {
+              "name": "Morc Orchidee",
+              "postcode": "51823"
+            },
+            {
+              "name": "Morc Rosiere",
+              "postcode": "51824"
+            },
+            {
+              "name": "Morc S.I.T",
+              "postcode": "51825"
+            },
+            {
+              "name": "Mosque Rd",
+              "postcode": "51826"
+            },
+            {
+              "name": "Railway",
+              "postcode": "51827"
+            },
+            {
+              "name": "Res Marc Chicose",
+              "postcode": "51828"
+            },
+            {
+              "name": "Rose Belle",
+              "postcode": "51829"
+            }
+          ]
+        },
+        {
+          "name": "SOUILLAC",
+          "sublocalities": [
+            {
+              "name": "Cite Boodhoo",
+              "postcode": "60801"
+            },
+            {
+              "name": "Cite E.D.C Chaline",
+              "postcode": "60802"
+            },
+            {
+              "name": "Cite E.D.C Pitot",
+              "postcode": "60803"
+            },
+            {
+              "name": "Cite Gris Gris",
+              "postcode": "60804"
+            },
+            {
+              "name": "Cite Texamon",
+              "postcode": "60805"
+            },
+            {
+              "name": "Lady Barkly",
+              "postcode": "60806"
+            },
+            {
+              "name": "Morc Brise de Mer",
+              "postcode": "60807"
+            },
+            {
+              "name": "Morc GRIS GRIS",
+              "postcode": "60808"
+            },
+            {
+              "name": "NHDC Brise De Mer",
+              "postcode": "60809"
+            },
+            {
+              "name": "Souillac",
+              "postcode": "60810"
+            },
+            {
+              "name": "Terracine",
+              "postcode": "60811"
+            },
+            {
+              "name": "VRS 1 souillac",
+              "postcode": "60812"
+            },
+            {
+              "name": "VRS 2 souillac",
+              "postcode": "60813"
+            }
+          ]
+        },
+        {
+          "name": "ST HUBERT",
+          "sublocalities": [
+            {
+              "name": "Beau Site",
+              "postcode": "51901"
+            },
+            {
+              "name": "Camp Filbert",
+              "postcode": "51902"
+            },
+            {
+              "name": "Camp Florine",
+              "postcode": "51903"
+            },
+            {
+              "name": "Camp Jardin",
+              "postcode": "51904"
+            },
+            {
+              "name": "Camp Ramphul",
+              "postcode": "51905"
+            },
+            {
+              "name": "Cent Gaulettes",
+              "postcode": "51906"
+            },
+            {
+              "name": "Cite CHA",
+              "postcode": "51907"
+            },
+            {
+              "name": "Cite St Hilaire",
+              "postcode": "51908"
+            },
+            {
+              "name": "Hydro Power Station",
+              "postcode": "51909"
+            },
+            {
+              "name": "Le Val Nature Park",
+              "postcode": "51910"
+            },
+            {
+              "name": "Morc Dussoye",
+              "postcode": "51911"
+            },
+            {
+              "name": "Morc Henry",
+              "postcode": "51912"
+            },
+            {
+              "name": "Riche en Eau",
+              "postcode": "51913"
+            },
+            {
+              "name": "St Hilaire",
+              "postcode": "51914"
+            },
+            {
+              "name": "St Hubert",
+              "postcode": "51915"
+            },
+            {
+              "name": "Ste Madeleine",
+              "postcode": "51916"
+            },
+            {
+              "name": "Ste Philomene",
+              "postcode": "51917"
+            }
+          ]
+        },
+        {
+          "name": "SURINAM",
+          "sublocalities": [
+            {
+              "name": "African Town squatters",
+              "postcode": "60901"
+            },
+            {
+              "name": "Balance",
+              "postcode": "60902"
+            },
+            {
+              "name": "CEMETARY Squatters",
+              "postcode": "60903"
+            },
+            {
+              "name": "Cite de Dieu Squatters",
+              "postcode": "60904"
+            },
+            {
+              "name": "Cite EDC 1 Surinam",
+              "postcode": "60905"
+            },
+            {
+              "name": "Cite EDC 2 Surinam",
+              "postcode": "60906"
+            },
+            {
+              "name": "Coastal/mandir",
+              "postcode": "60907"
+            },
+            {
+              "name": "Katamaraz",
+              "postcode": "60908"
+            },
+            {
+              "name": "Martiniere",
+              "postcode": "60909"
+            },
+            {
+              "name": "Morc Dhunputh",
+              "postcode": "60910"
+            },
+            {
+              "name": "Morc DIDI",
+              "postcode": "60911"
+            },
+            {
+              "name": "Morc Gobin",
+              "postcode": "60912"
+            },
+            {
+              "name": "NHDC Filao",
+              "postcode": "60913"
+            },
+            {
+              "name": "Pomponette",
+              "postcode": "60914"
+            },
+            {
+              "name": "Riambel",
+              "postcode": "60915"
+            },
+            {
+              "name": "Rochester/Mosque",
+              "postcode": "60916"
+            },
+            {
+              "name": "Saint Louis",
+              "postcode": "60917"
+            },
+            {
+              "name": "Sept Croisees",
+              "postcode": "60918"
+            },
+            {
+              "name": "Trois Bras",
+              "postcode": "60919"
+            }
+          ]
+        },
+        {
+          "name": "TROIS BOUTIQUES",
+          "sublocalities": [
+            {
+              "name": "Beau Fonds",
+              "postcode": "52001"
+            },
+            {
+              "name": "Carreau Esnouf",
+              "postcode": "52002"
+            },
+            {
+              "name": "Carreau La Paille",
+              "postcode": "52003"
+            },
+            {
+              "name": "Cite Ouvrière",
+              "postcode": "52004"
+            },
+            {
+              "name": "Cite Trois Boutiques",
+              "postcode": "52005"
+            },
+            {
+              "name": "Malakoff",
+              "postcode": "52006"
+            },
+            {
+              "name": "Morc. Aspirale",
+              "postcode": "52007"
+            },
+            {
+              "name": "Morc. Les Palmiers",
+              "postcode": "52008"
+            },
+            {
+              "name": "Morc Pitchen",
+              "postcode": "52009"
+            },
+            {
+              "name": "Plein Bois",
+              "postcode": "52010"
+            },
+            {
+              "name": "Trois Boutiques",
+              "postcode": "52011"
+            },
+            {
+              "name": "Union Vale",
+              "postcode": "52012"
+            },
+            {
+              "name": "Virginia",
+              "postcode": "52013"
+            }
+          ]
+        },
+        {
+          "name": "TYACK",
+          "sublocalities": [
+            {
+              "name": "LOWERTYACK",
+              "postcode": "61802"
+            },
+            {
+              "name": "UPPER TYACK",
+              "postcode": "61805"
+            },
+            {
+              "name": "CITE TYACK",
+              "postcode": "61801"
+            },
+            {
+              "name": "MORC BLUE PRINT",
+              "postcode": "61803"
+            },
+            {
+              "name": "NHDC TYACK",
+              "postcode": "61804"
+            }
+          ]
+        },
+        {
+          "name": "UNION DUCRAY/ST AUBIN",
+          "sublocalities": [
+            {
+              "name": "UNION DUCRAY S.E/Union St Aubin",
+              "postcode": "61501"
+            },
+            {
+              "name": "CITE SAINT AUBIN",
+              "postcode": "61502"
+            },
+            {
+              "name": "MORC St Aubin",
+              "postcode": "61503"
+            },
+            {
+              "name": "New morc St Aubin (land only)",
+              "postcode": "61504"
+            }
+          ]
+        },
+        {
+          "name": "UNION PARK",
+          "sublocalities": [
+            {
+              "name": "Cluny rd",
+              "postcode": "52104"
+            },
+            {
+              "name": "Morc Cheminee",
+              "postcode": "52105"
+            },
+            {
+              "name": "Morc VRS",
+              "postcode": "52106"
+            },
+            {
+              "name": "School Rd",
+              "postcode": "52107"
+            },
+            {
+              "name": "U.Park",
+              "postcode": "52108"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "East",
+      "localities": [
+        {
+          "name": "BEL AIR",
+          "sublocalities": [
+            {
+              "name": "Bel Air",
+              "postcode": "40101"
+            },
+            {
+              "name": "Caroline",
+              "postcode": "40102"
+            },
+            {
+              "name": "Ernest Florent",
+              "postcode": "40103"
+            },
+            {
+              "name": "La Laura",
+              "postcode": "40104"
+            },
+            {
+              "name": "La Lucie Roy",
+              "postcode": "40105"
+            },
+            {
+              "name": "La Lucie  Building",
+              "postcode": "40106"
+            },
+            {
+              "name": "Morcellement  Central",
+              "postcode": "40107"
+            },
+            {
+              "name": "Morcellement  La Cheminee",
+              "postcode": "40108"
+            },
+            {
+              "name": "Morcellement Pont Lardier",
+              "postcode": "40109"
+            },
+            {
+              "name": "Petit Bois",
+              "postcode": "40110"
+            },
+            {
+              "name": "Pont Lardier",
+              "postcode": "40111"
+            },
+            {
+              "name": "Saint Michel",
+              "postcode": "40112"
+            }
+          ]
+        },
+        {
+          "name": "BON ACCUEIL",
+          "sublocalities": [
+            {
+              "name": "Mission Cross",
+              "postcode": "40202"
+            },
+            {
+              "name": "Belvedere",
+              "postcode": "40203"
+            },
+            {
+              "name": "Grand Bas Fond(northern part)",
+              "postcode": "40204"
+            },
+            {
+              "name": "Bon Accueil",
+              "postcode": "40205"
+            },
+            {
+              "name": "Beau Bois",
+              "postcode": "40206"
+            },
+            {
+              "name": "Quatre Bords",
+              "postcode": "40208"
+            },
+            {
+              "name": "Latapie (eastern side)",
+              "postcode": "40209"
+            },
+            {
+              "name": "Off Beau Bois/Vrindavan",
+              "postcode": "43302"
+            },
+            {
+              "name": "Grande Retraite",
+              "postcode": "43301"
+            }
+          ]
+        },
+        {
+          "name": "BRAMSTHAN",
+          "sublocalities": [
+            {
+              "name": "Bramsthan",
+              "postcode": "43201"
+            }
+          ]
+        },
+        {
+          "name": "BRISEE VERDIERE",
+          "sublocalities": [
+            {
+              "name": "Latapie(western side)",
+              "postcode": "42409"
+            },
+            {
+              "name": "Brisee Verdiere",
+              "postcode": "42410"
+            },
+            {
+              "name": "Mare D'Australia",
+              "postcode": "42411"
+            },
+            {
+              "name": "Belvedere",
+              "postcode": "42403"
+            },
+            {
+              "name": "Pont Praslin",
+              "postcode": "21612"
+            }
+          ]
+        },
+        {
+          "name": "CAMP DE MASQUE",
+          "sublocalities": [
+            {
+              "name": "Balance John",
+              "postcode": "40301"
+            },
+            {
+              "name": "Camp De Masque",
+              "postcode": "40302"
+            },
+            {
+              "name": "Camp Sonar",
+              "postcode": "40303"
+            },
+            {
+              "name": "L' Unite",
+              "postcode": "40304"
+            }
+          ]
+        },
+        {
+          "name": "CAMP DE MASQUE PAVE",
+          "sublocalities": [
+            {
+              "name": "Camp De Masque Pave",
+              "postcode": "40401"
+            },
+            {
+              "name": "Mare Goyaves",
+              "postcode": "40402"
+            },
+            {
+              "name": "Petite Cabane",
+              "postcode": "40403"
+            }
+          ]
+        },
+        {
+          "name": "CAMP ITHIER",
+          "sublocalities": [
+            {
+              "name": "Camp Ithier",
+              "postcode": "40501"
+            },
+            {
+              "name": "Isidore Rose",
+              "postcode": "40502"
+            },
+            {
+              "name": "Isidore Rose Pave",
+              "postcode": "40503"
+            }
+          ]
+        },
+        {
+          "name": "CENTRAL FLACQ",
+          "sublocalities": [
+            {
+              "name": "Belle Vue Allendy",
+              "postcode": "40601"
+            },
+            {
+              "name": "Boulet Blanc",
+              "postcode": "40602"
+            },
+            {
+              "name": "Boulet Rouge",
+              "postcode": "40603"
+            },
+            {
+              "name": "Boutique Coco",
+              "postcode": "40604"
+            },
+            {
+              "name": "Camp Garreau",
+              "postcode": "40605"
+            },
+            {
+              "name": "Central Flacq",
+              "postcode": "40606"
+            },
+            {
+              "name": "Cite Argy",
+              "postcode": "40607"
+            },
+            {
+              "name": "Cite Hibiscus",
+              "postcode": "40608"
+            },
+            {
+              "name": "Constance S.E",
+              "postcode": "40609"
+            },
+            {
+              "name": "Domaine La Colombe",
+              "postcode": "40610"
+            },
+            {
+              "name": "Hermitage",
+              "postcode": "40611"
+            },
+            {
+              "name": "La Source",
+              "postcode": "40612"
+            },
+            {
+              "name": "Morc Argy",
+              "postcode": "40613"
+            },
+            {
+              "name": "Morc Hospital",
+              "postcode": "40614"
+            },
+            {
+              "name": "Morc Robillard",
+              "postcode": "40615"
+            },
+            {
+              "name": "Nehru Nagar",
+              "postcode": "40616"
+            },
+            {
+              "name": "Plaine De Gersigny",
+              "postcode": "40617"
+            },
+            {
+              "name": "Riche Mare",
+              "postcode": "40618"
+            },
+            {
+              "name": "Saint Remy",
+              "postcode": "40619"
+            }
+          ]
+        },
+        {
+          "name": "CLEMENCIA",
+          "sublocalities": [
+            {
+              "name": "Belle Rose",
+              "postcode": "40701"
+            },
+            {
+              "name": "Clemencia",
+              "postcode": "40702"
+            }
+          ]
+        },
+        {
+          "name": "ECROIGNARD",
+          "sublocalities": [
+            {
+              "name": "Ecroignard",
+              "postcode": "40801"
+            }
+          ]
+        },
+        {
+          "name": "G.R.S.E",
+          "sublocalities": [
+            {
+              "name": "ANAHITA IRS+HOTEL",
+              "postcode": "40901"
+            },
+            {
+              "name": "Beau Champ",
+              "postcode": "40902"
+            },
+            {
+              "name": "Beau Champ S.E (ALTEO)",
+              "postcode": "40903"
+            },
+            {
+              "name": "Camp Pecheurs",
+              "postcode": "40904"
+            },
+            {
+              "name": "FOUR SEASONS+HOTEL",
+              "postcode": "40905"
+            },
+            {
+              "name": "Grande River South East",
+              "postcode": "40906"
+            },
+            {
+              "name": "Morc  VRS",
+              "postcode": "40907"
+            },
+            {
+              "name": "Quartier",
+              "postcode": "40908"
+            }
+          ]
+        },
+        {
+          "name": "GRANDE RETRAITE",
+          "sublocalities": [
+            {
+              "name": "Bois d'Oiseaux",
+              "postcode": "43302"
+            },
+            {
+              "name": "Petite retraite",
+              "postcode": "43303"
+            }
+          ]
+        },
+        {
+          "name": "LALMATIE",
+          "sublocalities": [
+            {
+              "name": "Lalmatie",
+              "postcode": "42601"
+            },
+            {
+              "name": "Mission Cross",
+              "postcode": "42602"
+            },
+            {
+              "name": "Belvedere",
+              "postcode": "42603"
+            },
+            {
+              "name": "Grand Bas Fond(southern part)",
+              "postcode": "42604"
+            }
+          ]
+        },
+        {
+          "name": "LAVENTURE",
+          "sublocalities": [
+            {
+              "name": "Laventure",
+              "postcode": "41001"
+            }
+          ]
+        },
+        {
+          "name": "MARE LA CHAUX",
+          "sublocalities": [
+            {
+              "name": "Camp Creole",
+              "postcode": "41101"
+            },
+            {
+              "name": "Mare La Chaux",
+              "postcode": "41102"
+            }
+          ]
+        },
+        {
+          "name": "MEDINE CAMP DE MASQUE",
+          "sublocalities": [
+            {
+              "name": "Bel Etang",
+              "postcode": "41201"
+            },
+            {
+              "name": "Medine",
+              "postcode": "41202"
+            },
+            {
+              "name": "Mont Ida",
+              "postcode": "41203"
+            }
+          ]
+        },
+        {
+          "name": "OLIVIA",
+          "sublocalities": [
+            {
+              "name": "Camp Beau Bois",
+              "postcode": "41401"
+            },
+            {
+              "name": "Camp Jakeeree",
+              "postcode": "41402"
+            },
+            {
+              "name": "CHA+ (state land)",
+              "postcode": "41403"
+            },
+            {
+              "name": "Deep River S.E",
+              "postcode": "41404"
+            },
+            {
+              "name": "EDC",
+              "postcode": "41405"
+            },
+            {
+              "name": "Kewal Nagar (Belle Rive)",
+              "postcode": "41406"
+            },
+            {
+              "name": "la Nourrice",
+              "postcode": "41407"
+            },
+            {
+              "name": "Louis Renaud",
+              "postcode": "41408"
+            },
+            {
+              "name": "Morc Deep River",
+              "postcode": "41409"
+            },
+            {
+              "name": "Morc Hamid",
+              "postcode": "41410"
+            },
+            {
+              "name": "Morc Louis Renaud",
+              "postcode": "41411"
+            },
+            {
+              "name": "Morc Trois Ilots****",
+              "postcode": "41412"
+            },
+            {
+              "name": "morc VRS Kewal Nagar",
+              "postcode": "41413"
+            },
+            {
+              "name": "Olivia",
+              "postcode": "41414"
+            },
+            {
+              "name": "Plaines Bananes",
+              "postcode": "41415"
+            },
+            {
+              "name": "Rousset Rd (olivia)",
+              "postcode": "41416"
+            },
+            {
+              "name": "SILWF---Olivia",
+              "postcode": "41417"
+            },
+            {
+              "name": "Trois Ilots",
+              "postcode": "41418"
+            }
+          ]
+        },
+        {
+          "name": "POSTE DE FLACQ",
+          "sublocalities": [
+            {
+              "name": "Bras d'Eau",
+              "postcode": "41501"
+            },
+            {
+              "name": "Camp Accacia",
+              "postcode": "41502"
+            },
+            {
+              "name": "Camp Poorun",
+              "postcode": "41503"
+            },
+            {
+              "name": "Camp Raffia",
+              "postcode": "41504"
+            },
+            {
+              "name": "Cite Perdu",
+              "postcode": "41505"
+            },
+            {
+              "name": "Choisy",
+              "postcode": "41506"
+            },
+            {
+              "name": "Cremation",
+              "postcode": "41507"
+            },
+            {
+              "name": "Debarcadere",
+              "postcode": "41508"
+            },
+            {
+              "name": "Jardin",
+              "postcode": "41509"
+            },
+            {
+              "name": "Kashinath",
+              "postcode": "41510"
+            },
+            {
+              "name": "La Pointe",
+              "postcode": "41511"
+            },
+            {
+              "name": "La Porte",
+              "postcode": "41512"
+            },
+            {
+              "name": "Long Beach Hotel(ex Coco)",
+              "postcode": "41601"
+            },
+            {
+              "name": "Morc Constance",
+              "postcode": "41513"
+            },
+            {
+              "name": "Morc Janoo",
+              "postcode": "41514"
+            },
+            {
+              "name": "Morc Monet",
+              "postcode": "41515"
+            },
+            {
+              "name": "Morc Providence",
+              "postcode": "41516"
+            },
+            {
+              "name": "Pont Blanc",
+              "postcode": "41517"
+            },
+            {
+              "name": "Poste de Flacq",
+              "postcode": "41518"
+            },
+            {
+              "name": "Poste Lafayette",
+              "postcode": "41519"
+            },
+            {
+              "name": "Railway",
+              "postcode": "41520"
+            },
+            {
+              "name": "The Resort(Belle Mare Plage)",
+              "postcode": "41602"
+            },
+            {
+              "name": "One and only (st Geran Hotel)",
+              "postcode": "41521"
+            }
+          ]
+        },
+        {
+          "name": "QUATRE COCOS",
+          "sublocalities": [
+            {
+              "name": "Belle Mare",
+              "postcode": "41601"
+            },
+            {
+              "name": "Camp Marcelin",
+              "postcode": "41602"
+            },
+            {
+              "name": "Camp Rannoo",
+              "postcode": "41603"
+            },
+            {
+              "name": "Palmar",
+              "postcode": "41604"
+            },
+            {
+              "name": "Quatre Cocos",
+              "postcode": "41605"
+            }
+          ]
+        },
+        {
+          "name": "QUEEN VICTORIA",
+          "sublocalities": [
+            {
+              "name": "Bonne Mere",
+              "postcode": "42701"
+            },
+            {
+              "name": "Camp Bonne Mere",
+              "postcode": "42702"
+            },
+            {
+              "name": "NHDC B Mere",
+              "postcode": "42703"
+            },
+            {
+              "name": "Queen Victoria",
+              "postcode": "42704"
+            }
+          ]
+        },
+        {
+          "name": "SAINT JULIEN VILLAGE",
+          "sublocalities": [
+            {
+              "name": "Saint Julien Village",
+              "postcode": "41901"
+            },
+            {
+              "name": "Rich Fund",
+              "postcode": "41902"
+            },
+            {
+              "name": "Union Flacq",
+              "postcode": "41903"
+            }
+          ]
+        },
+        {
+          "name": "SEBASTOPOL",
+          "sublocalities": [
+            {
+              "name": "Cent Gaulettes",
+              "postcode": "42101"
+            },
+            {
+              "name": "Cite Sebastopol",
+              "postcode": "42102"
+            },
+            {
+              "name": "Clavet",
+              "postcode": "42103"
+            },
+            {
+              "name": "Etoile",
+              "postcode": "42104"
+            },
+            {
+              "name": "Lesur",
+              "postcode": "42105"
+            },
+            {
+              "name": "Pellegrin",
+              "postcode": "42106"
+            },
+            {
+              "name": "Sebastopol",
+              "postcode": "42107"
+            }
+          ]
+        },
+        {
+          "name": "TROU D'EAU DOUCE",
+          "sublocalities": [
+            {
+              "name": "Beau Rivage",
+              "postcode": "42201"
+            },
+            {
+              "name": "Camp Nadal",
+              "postcode": "42202"
+            },
+            {
+              "name": "Camp Nowbuth",
+              "postcode": "42203"
+            },
+            {
+              "name": "Camp Toorab",
+              "postcode": "42204"
+            },
+            {
+              "name": "Debarcadere",
+              "postcode": "42205"
+            },
+            {
+              "name": "Desperoux",
+              "postcode": "42206"
+            },
+            {
+              "name": "La Pelouse",
+              "postcode": "42207"
+            },
+            {
+              "name": "Le Maho",
+              "postcode": "42208"
+            },
+            {
+              "name": "Montee Bastille",
+              "postcode": "42209"
+            },
+            {
+              "name": "Palmar Beach",
+              "postcode": "42210"
+            },
+            {
+              "name": "Sept Croisees(inc Montaigu)",
+              "postcode": "42211"
+            },
+            {
+              "name": "Touessrock/Casuarina",
+              "postcode": "42212"
+            },
+            {
+              "name": "Victoria",
+              "postcode": "42213"
+            },
+            {
+              "name": "Trou D'Eau Douce",
+              "postcode": "42214"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "West",
+      "localities": [
+        {
+          "name": "ALBION",
+          "sublocalities": [
+            {
+              "name": "Albion",
+              "postcode": "91001"
+            },
+            {
+              "name": "Camp Creoles",
+              "postcode": "91002"
+            },
+            {
+              "name": "La Croisette",
+              "postcode": "91003"
+            },
+            {
+              "name": "Morc Beerjeeraz",
+              "postcode": "91004"
+            },
+            {
+              "name": "Morc de Chazal",
+              "postcode": "91005"
+            },
+            {
+              "name": "Morc Raffray",
+              "postcode": "91006"
+            },
+            {
+              "name": "Morc Terre Albion",
+              "postcode": "91007"
+            },
+            {
+              "name": "Splendid View",
+              "postcode": "91008"
+            },
+            {
+              "name": "Splendid Village",
+              "postcode": "91009"
+            }
+          ]
+        },
+        {
+          "name": "BAMBOUS",
+          "sublocalities": [
+            {
+              "name": "Allee Tamarin",
+              "postcode": "90101"
+            },
+            {
+              "name": "Bambous",
+              "postcode": "90102"
+            },
+            {
+              "name": "Eaux Bonnes",
+              "postcode": "90103"
+            },
+            {
+              "name": "Geoffroy",
+              "postcode": "90104"
+            },
+            {
+              "name": "La Ferme",
+              "postcode": "90105"
+            },
+            {
+              "name": "Mangues Vert Doux",
+              "postcode": "90106"
+            },
+            {
+              "name": "Mon Repos",
+              "postcode": "90107"
+            },
+            {
+              "name": "Morc Eaux Bonnes",
+              "postcode": "90108"
+            },
+            {
+              "name": "Vaudagne",
+              "postcode": "90109"
+            }
+          ]
+        },
+        {
+          "name": "BLACK RIVER",
+          "sublocalities": [
+            {
+              "name": "Black River",
+              "postcode": "90601"
+            },
+            {
+              "name": "Cite Carre D'As",
+              "postcode": "90602"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "90603"
+            },
+            {
+              "name": "Cite Tamarinier",
+              "postcode": "90604"
+            },
+            {
+              "name": "La Balise",
+              "postcode": "90605"
+            },
+            {
+              "name": "La Balise Marina",
+              "postcode": "90606"
+            },
+            {
+              "name": "La Mivoie",
+              "postcode": "90607"
+            },
+            {
+              "name": "La Preneuse",
+              "postcode": "90608"
+            },
+            {
+              "name": "La Tourelle View",
+              "postcode": "90609"
+            },
+            {
+              "name": "Les Salines/Morc. Plateau",
+              "postcode": "90610"
+            },
+            {
+              "name": "London Complex",
+              "postcode": "90611"
+            },
+            {
+              "name": "Martello Complex",
+              "postcode": "90612"
+            },
+            {
+              "name": "Matala Villa",
+              "postcode": "90613"
+            },
+            {
+              "name": "Morc Carlos",
+              "postcode": "90614"
+            },
+            {
+              "name": "Morc Filature",
+              "postcode": "90615"
+            },
+            {
+              "name": "Morc Majo",
+              "postcode": "90616"
+            },
+            {
+              "name": "Morc Mont Calme",
+              "postcode": "90617"
+            },
+            {
+              "name": "Morc Paul Hein",
+              "postcode": "90618"
+            },
+            {
+              "name": "Morc Ramdenee",
+              "postcode": "90619"
+            },
+            {
+              "name": "Morc. Diocese",
+              "postcode": "90620"
+            },
+            {
+              "name": "Morc. Villaze",
+              "postcode": "90621"
+            },
+            {
+              "name": "Nautica Complex",
+              "postcode": "90622"
+            },
+            {
+              "name": "Plantation Marguery",
+              "postcode": "90623"
+            },
+            {
+              "name": "River view Com Centre",
+              "postcode": "90624"
+            },
+            {
+              "name": "Ruisseau Creole Complex",
+              "postcode": "90625"
+            },
+            {
+              "name": "West Island Villa",
+              "postcode": "90626"
+            }
+          ]
+        },
+        {
+          "name": "CASCAVELLE",
+          "sublocalities": [
+            {
+              "name": "Beau Songes",
+              "postcode": "90201"
+            },
+            {
+              "name": "Camp Creoles",
+              "postcode": "90202"
+            },
+            {
+              "name": "Cascavelle",
+              "postcode": "90203"
+            },
+            {
+              "name": "Xavier",
+              "postcode": "90204"
+            }
+          ]
+        },
+        {
+          "name": "CASE NOYALE",
+          "sublocalities": [
+            {
+              "name": "Carreau Eucalyptus",
+              "postcode": "90301"
+            },
+            {
+              "name": "Case Noyale",
+              "postcode": "90302"
+            },
+            {
+              "name": "Cite CHA",
+              "postcode": "90303"
+            },
+            {
+              "name": "Ilot Fortier",
+              "postcode": "90304"
+            },
+            {
+              "name": "Morc Multipliants",
+              "postcode": "90305"
+            },
+            {
+              "name": "Petite Riviere Noire",
+              "postcode": "90306"
+            }
+          ]
+        },
+        {
+          "name": "CHAMAREL",
+          "sublocalities": [
+            {
+              "name": "Camp Madras",
+              "postcode": "90401"
+            },
+            {
+              "name": "Chamarel",
+              "postcode": "90402"
+            },
+            {
+              "name": "La Vielle Cheminee",
+              "postcode": "90403"
+            },
+            {
+              "name": "La Ville Leon",
+              "postcode": "90404"
+            },
+            {
+              "name": "Les Rouleaux",
+              "postcode": "90405"
+            },
+            {
+              "name": "Piton",
+              "postcode": "90406"
+            },
+            {
+              "name": "Societe St Denis",
+              "postcode": "90407"
+            },
+            {
+              "name": "Ste Anne",
+              "postcode": "90408"
+            },
+            {
+              "name": "Terre 7 Couleurs",
+              "postcode": "90409"
+            }
+          ]
+        },
+        {
+          "name": "FLIC EN FLAC",
+          "sublocalities": [
+            {
+              "name": "Carriere",
+              "postcode": "90501"
+            },
+            {
+              "name": "Flic en Flac",
+              "postcode": "90502"
+            },
+            {
+              "name": "Hilton Hotel",
+              "postcode": "90503"
+            },
+            {
+              "name": "La Pirogue",
+              "postcode": "90504"
+            },
+            {
+              "name": "Manguiers",
+              "postcode": "90505"
+            },
+            {
+              "name": "Morc Anna 1",
+              "postcode": "90506"
+            },
+            {
+              "name": "Morc Anna 2",
+              "postcode": "90507"
+            },
+            {
+              "name": "Morc Bismic",
+              "postcode": "90508"
+            },
+            {
+              "name": "Morc de Chazal",
+              "postcode": "90509"
+            },
+            {
+              "name": "Mouettes",
+              "postcode": "90510"
+            },
+            {
+              "name": "Morc Safeland 1",
+              "postcode": "90511"
+            },
+            {
+              "name": "Morc Safeland 2",
+              "postcode": "90512"
+            },
+            {
+              "name": "Morc Safeland 3",
+              "postcode": "90513"
+            },
+            {
+              "name": "Morc Palmyre",
+              "postcode": "90514"
+            },
+            {
+              "name": "Residence St Jacques",
+              "postcode": "90515"
+            },
+            {
+              "name": "Sand Hotel",
+              "postcode": "90516"
+            },
+            {
+              "name": "Sofitel Hotel",
+              "postcode": "90517"
+            },
+            {
+              "name": "Souffleurs",
+              "postcode": "90518"
+            },
+            {
+              "name": "Taj and Mahadhiva Hotel",
+              "postcode": "90519"
+            },
+            {
+              "name": "Tourtereaux",
+              "postcode": "90520"
+            },
+            {
+              "name": "Wolmar",
+              "postcode": "90521"
+            }
+          ]
+        },
+        {
+          "name": "GROS CAILLOUX",
+          "sublocalities": [
+            {
+              "name": "Croisee Chebel",
+              "postcode": "90701"
+            },
+            {
+              "name": "Gros Cailloux",
+              "postcode": "90702"
+            },
+            {
+              "name": "Morc Domah",
+              "postcode": "90703"
+            },
+            {
+              "name": "Canot",
+              "postcode": "90704"
+            }
+          ]
+        },
+        {
+          "name": "LA GAULETTE",
+          "sublocalities": [
+            {
+              "name": "Coteau Raffin",
+              "postcode": "91101"
+            },
+            {
+              "name": "La Gaulette",
+              "postcode": "91102"
+            },
+            {
+              "name": "Morc Desveaux",
+              "postcode": "91103"
+            },
+            {
+              "name": "Morc La Fleche",
+              "postcode": "91104"
+            }
+          ]
+        },
+        {
+          "name": "LE MORNE",
+          "sublocalities": [
+            {
+              "name": "Dilo Pourie",
+              "postcode": "91201"
+            },
+            {
+              "name": "Le Morne Brabant",
+              "postcode": "91202"
+            },
+            {
+              "name": "Le Morne Village",
+              "postcode": "91203"
+            },
+            {
+              "name": "La Prairie",
+              "postcode": "91204"
+            },
+            {
+              "name": "Morc Gambier",
+              "postcode": "91205"
+            }
+          ]
+        },
+        {
+          "name": "PETITE RIVIERE",
+          "sublocalities": [
+            {
+              "name": "Camp des Embrevades",
+              "postcode": "90801"
+            },
+            {
+              "name": "Camp Racket (Benoit)",
+              "postcode": "90802"
+            },
+            {
+              "name": "Canon Casse",
+              "postcode": "90803"
+            },
+            {
+              "name": "Cite Betel",
+              "postcode": "90804"
+            },
+            {
+              "name": "Cite Flamboyant (NHDC)",
+              "postcode": "90805"
+            },
+            {
+              "name": "Morc Goldsmith",
+              "postcode": "90806"
+            },
+            {
+              "name": "Morc Gros Cailloux",
+              "postcode": "90807"
+            },
+            {
+              "name": "Petite Riviere",
+              "postcode": "90808"
+            }
+          ]
+        },
+        {
+          "name": "RICHE LIEU",
+          "sublocalities": [
+            {
+              "name": "Allee Tamarin",
+              "postcode": "91301"
+            },
+            {
+              "name": "Cite Richelieu",
+              "postcode": "91302"
+            },
+            {
+              "name": "Platform",
+              "postcode": "91303"
+            },
+            {
+              "name": "Richelieu",
+              "postcode": "91304"
+            }
+          ]
+        },
+        {
+          "name": "TAMARIN",
+          "sublocalities": [
+            {
+              "name": "Barachois",
+              "postcode": "90901"
+            },
+            {
+              "name": "Cap Dal",
+              "postcode": "90902"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "90903"
+            },
+            {
+              "name": "Cite Padco",
+              "postcode": "90904"
+            },
+            {
+              "name": "Domaine Mont Calme",
+              "postcode": "90905"
+            },
+            {
+              "name": "La Mivoie",
+              "postcode": "90906"
+            },
+            {
+              "name": "La Tourelle",
+              "postcode": "90907"
+            },
+            {
+              "name": "Morc Black Rock",
+              "postcode": "90908"
+            },
+            {
+              "name": "Morc. Mont Calme",
+              "postcode": "90909"
+            },
+            {
+              "name": "Morc Carlos",
+              "postcode": "90910"
+            },
+            {
+              "name": "Morc Corail",
+              "postcode": "90911"
+            },
+            {
+              "name": "Morc Investors",
+              "postcode": "90912"
+            },
+            {
+              "name": "Morc Le Domain",
+              "postcode": "90913"
+            },
+            {
+              "name": "Morc Les Alizees",
+              "postcode": "90914"
+            },
+            {
+              "name": "Morc Les Salines",
+              "postcode": "90915"
+            },
+            {
+              "name": "Morc Salt Pan",
+              "postcode": "90916"
+            },
+            {
+              "name": "Morc. La Falaise",
+              "postcode": "90917"
+            },
+            {
+              "name": "Morc. St. Benoit",
+              "postcode": "90918"
+            },
+            {
+              "name": "Morc. Verojan",
+              "postcode": "90919"
+            },
+            {
+              "name": "NHDC",
+              "postcode": "90920"
+            },
+            {
+              "name": "Tamarin",
+              "postcode": "90921"
+            },
+            {
+              "name": "Tamarin Golf",
+              "postcode": "90922"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Centre",
+      "localities": [
+        {
+          "name": "16EME MILLE",
+          "sublocalities": [
+            {
+              "name": "Cite Anoushka",
+              "postcode": "52601"
+            },
+            {
+              "name": "Cite Mon Bois",
+              "postcode": "52602"
+            },
+            {
+              "name": "Coriolis",
+              "postcode": "52603"
+            },
+            {
+              "name": "Mon Bois(cnt+ubs+laiterie)",
+              "postcode": "52604"
+            },
+            {
+              "name": "Morc Domah",
+              "postcode": "52605"
+            },
+            {
+              "name": "Morc Soobhany",
+              "postcode": "52606"
+            },
+            {
+              "name": "Morcellement RAMPHUL 1",
+              "postcode": "52607"
+            },
+            {
+              "name": "Morcellement RAMPHUL 2",
+              "postcode": "52608"
+            },
+            {
+              "name": "Seizieme mile",
+              "postcode": "52609"
+            }
+          ]
+        },
+        {
+          "name": "BEAU BASSIN",
+          "sublocalities": [
+            {
+              "name": "Brown Sequard Hospital",
+              "postcode": "71401"
+            },
+            {
+              "name": "Central Prison",
+              "postcode": "71402"
+            },
+            {
+              "name": "Cite Barkly",
+              "postcode": "71403"
+            },
+            {
+              "name": "GOVT  BLOCK",
+              "postcode": "71404"
+            },
+            {
+              "name": "Mont Roches",
+              "postcode": "71405"
+            },
+            {
+              "name": "Morc La Comete",
+              "postcode": "71406"
+            },
+            {
+              "name": "Morc Newtown",
+              "postcode": "71407"
+            },
+            {
+              "name": "Residence St Daniel",
+              "postcode": "71408"
+            },
+            {
+              "name": "Roches Brunes",
+              "postcode": "71409"
+            },
+            {
+              "name": "Verger Bissambar",
+              "postcode": "71410"
+            },
+            {
+              "name": "Beau Bassin Center 1",
+              "postcode": "71501"
+            },
+            {
+              "name": "Beau Bassin Center 2",
+              "postcode": "71502"
+            },
+            {
+              "name": "Beau Bassin Center 3",
+              "postcode": "71503"
+            },
+            {
+              "name": "Beau Bassin Center 4",
+              "postcode": "71504"
+            },
+            {
+              "name": "Beau Bassin Center 5",
+              "postcode": "71505"
+            },
+            {
+              "name": "Beau Bassin Center 6",
+              "postcode": "71506"
+            },
+            {
+              "name": "Beau Bassin Center 7",
+              "postcode": "71507"
+            },
+            {
+              "name": "Cascadella",
+              "postcode": "71508"
+            },
+            {
+              "name": "Cascadelle",
+              "postcode": "71509"
+            },
+            {
+              "name": "Cite De Rosnay",
+              "postcode": "71510"
+            },
+            {
+              "name": "Cite Vuillemin",
+              "postcode": "71511"
+            },
+            {
+              "name": "Harewood Park",
+              "postcode": "71512"
+            },
+            {
+              "name": "Jules Koenig H.E",
+              "postcode": "71513"
+            },
+            {
+              "name": "Mare Gravier",
+              "postcode": "71514"
+            },
+            {
+              "name": "Meldrum Towers",
+              "postcode": "71515"
+            },
+            {
+              "name": "Morc Avrillon",
+              "postcode": "71516"
+            },
+            {
+              "name": "N.H.D.C Vuillemin",
+              "postcode": "71517"
+            },
+            {
+              "name": "Palm Plaza",
+              "postcode": "71518"
+            },
+            {
+              "name": "Vuillemin",
+              "postcode": "71519"
+            },
+            {
+              "name": "Belle Etoile",
+              "postcode": "71601"
+            },
+            {
+              "name": "Belvedere",
+              "postcode": "71602"
+            },
+            {
+              "name": "Camp Berthelot",
+              "postcode": "71603"
+            },
+            {
+              "name": "Chebel",
+              "postcode": "71604"
+            },
+            {
+              "name": "Cite Chebel 1",
+              "postcode": "71605"
+            },
+            {
+              "name": "Cite Chebel 2",
+              "postcode": "71606"
+            },
+            {
+              "name": "Cite CHEBEC",
+              "postcode": "71607"
+            },
+            {
+              "name": "Coromandel",
+              "postcode": "71608"
+            },
+            {
+              "name": "Maingard",
+              "postcode": "71609"
+            },
+            {
+              "name": "Mare Gravier",
+              "postcode": "71610"
+            },
+            {
+              "name": "Morc Clairmont",
+              "postcode": "71611"
+            },
+            {
+              "name": "Morc Hart De Keating",
+              "postcode": "71612"
+            },
+            {
+              "name": "Morc Hermitage",
+              "postcode": "71613"
+            },
+            {
+              "name": "Morc  La Confiance 1",
+              "postcode": "71614"
+            },
+            {
+              "name": "Morc La Confiance 2",
+              "postcode": "71615"
+            },
+            {
+              "name": "Morc Lim Fat",
+              "postcode": "71616"
+            },
+            {
+              "name": "Morc Montreal 1",
+              "postcode": "71617"
+            },
+            {
+              "name": "Morc Montreal 2",
+              "postcode": "71618"
+            },
+            {
+              "name": "Morc Montreal 3",
+              "postcode": "71619"
+            },
+            {
+              "name": "Morc Montreal 4(Chapman Views)",
+              "postcode": "71620"
+            },
+            {
+              "name": "Morc VRS Chebel",
+              "postcode": "71621"
+            },
+            {
+              "name": "Panorama",
+              "postcode": "71622"
+            },
+            {
+              "name": "Police Flats 1",
+              "postcode": "71623"
+            },
+            {
+              "name": "Police Flats 2",
+              "postcode": "71624"
+            },
+            {
+              "name": "Industrial zone Coromandel",
+              "postcode": "71625"
+            }
+          ]
+        },
+        {
+          "name": "CUREPIPE",
+          "sublocalities": [
+            {
+              "name": "Arcades Currimjee",
+              "postcode": "74501"
+            },
+            {
+              "name": "B. Sequard",
+              "postcode": "74503"
+            },
+            {
+              "name": "Barracks",
+              "postcode": "74502"
+            },
+            {
+              "name": "Charles Lees",
+              "postcode": "74404"
+            },
+            {
+              "name": "Clos  de la tour",
+              "postcode": "74433"
+            },
+            {
+              "name": "Commerford",
+              "postcode": "74506"
+            },
+            {
+              "name": "Commerson",
+              "postcode": "74407"
+            },
+            {
+              "name": "E. Laurent",
+              "postcode": "74208"
+            },
+            {
+              "name": "Flat Lotus",
+              "postcode": "74309"
+            },
+            {
+              "name": "Flat Mesnil",
+              "postcode": "74439"
+            },
+            {
+              "name": "Flat St. Antoine",
+              "postcode": "74320"
+            },
+            {
+              "name": "Galeries Y. Palach",
+              "postcode": "74412"
+            },
+            {
+              "name": "Garden",
+              "postcode": "74213"
+            },
+            {
+              "name": "Higginson",
+              "postcode": "74414"
+            },
+            {
+              "name": "Ian Palach",
+              "postcode": "74415"
+            },
+            {
+              "name": "L.Geoffroy",
+              "postcode": "74517"
+            },
+            {
+              "name": "Les Casernes",
+              "postcode": "74216"
+            },
+            {
+              "name": "Malartic",
+              "postcode": "74418"
+            },
+            {
+              "name": "Malherbes",
+              "postcode": "74319"
+            },
+            {
+              "name": "Morc Faucon",
+              "postcode": "74220"
+            },
+            {
+              "name": "Morc Souchon",
+              "postcode": "74453"
+            },
+            {
+              "name": "Morc.Senneville",
+              "postcode": "74221"
+            },
+            {
+              "name": "Municipality",
+              "postcode": "74442"
+            },
+            {
+              "name": "Noelville",
+              "postcode": "74224"
+            },
+            {
+              "name": "Queen Elizabeth",
+              "postcode": "74452"
+            },
+            {
+              "name": "R.Gujadhur",
+              "postcode": "74426"
+            },
+            {
+              "name": "Robinson 1",
+              "postcode": "74527"
+            },
+            {
+              "name": "Robinson 2",
+              "postcode": "74528"
+            },
+            {
+              "name": "Robinson 3",
+              "postcode": "74529"
+            },
+            {
+              "name": "Royal College",
+              "postcode": "74443"
+            },
+            {
+              "name": "Salaffa Region",
+              "postcode": "74431"
+            },
+            {
+              "name": "Ste Therese",
+              "postcode": "74432"
+            },
+            {
+              "name": "Stevenson",
+              "postcode": "74533"
+            },
+            {
+              "name": "Talipots",
+              "postcode": "74234"
+            },
+            {
+              "name": "Thomy D'Arifat",
+              "postcode": "74335"
+            },
+            {
+              "name": "W. Churchill",
+              "postcode": "74536"
+            }
+          ]
+        },
+        {
+          "name": "DAGOTIERE",
+          "sublocalities": [
+            {
+              "name": "L'Assurance",
+              "postcode": "80201"
+            },
+            {
+              "name": "Lower Dagotiere",
+              "postcode": "80202"
+            },
+            {
+              "name": "NHDC Dagotiere",
+              "postcode": "80203"
+            },
+            {
+              "name": "Upper Dagotiere",
+              "postcode": "80204"
+            },
+            {
+              "name": "Valetta",
+              "postcode": "80205"
+            }
+          ]
+        },
+        {
+          "name": "DUBREUIL",
+          "sublocalities": [
+            {
+              "name": "DUBREUIL",
+              "postcode": "81501"
+            },
+            {
+              "name": "NHDC DUBREUIL",
+              "postcode": "81502"
+            },
+            {
+              "name": "RISHI DAYANAND",
+              "postcode": "81503"
+            },
+            {
+              "name": "SAMLO",
+              "postcode": "81504"
+            }
+          ]
+        },
+        {
+          "name": "EAU COULEE",
+          "sublocalities": [
+            {
+              "name": "Abbe de la caille",
+              "postcode": "74301"
+            },
+            {
+              "name": "Abbe Laval",
+              "postcode": "74202"
+            },
+            {
+              "name": "Bougainville",
+              "postcode": "74203"
+            },
+            {
+              "name": "Camp Caval",
+              "postcode": "74504"
+            },
+            {
+              "name": "Camp Dhoby",
+              "postcode": "74305"
+            },
+            {
+              "name": "Camp Levieux",
+              "postcode": "74306"
+            },
+            {
+              "name": "Camp Pierrot",
+              "postcode": "74207"
+            },
+            {
+              "name": "Camp Rouillard",
+              "postcode": "74253"
+            },
+            {
+              "name": "Castel",
+              "postcode": "74109"
+            },
+            {
+              "name": "Cite du Pavillon",
+              "postcode": "74310"
+            },
+            {
+              "name": "Cite Malherbes B",
+              "postcode": "74311"
+            },
+            {
+              "name": "Cite MalherbesA",
+              "postcode": "74312"
+            },
+            {
+              "name": "Cite Rivet",
+              "postcode": "74313"
+            },
+            {
+              "name": "Cite Souchon",
+              "postcode": "74314"
+            },
+            {
+              "name": "Clement Charoux",
+              "postcode": "74315"
+            },
+            {
+              "name": "Couvent De Lorette Road",
+              "postcode": "74316"
+            },
+            {
+              "name": "Cpe Rd (Dove st-De  sornay st)",
+              "postcode": "74217"
+            },
+            {
+              "name": "Daruty De Grand Pre 1",
+              "postcode": "74218"
+            },
+            {
+              "name": "Daruty DE Grand Pre 2",
+              "postcode": "74519"
+            },
+            {
+              "name": "E.Coulee Royal Rd 1",
+              "postcode": "74254"
+            },
+            {
+              "name": "E.Coulee Royal Rd 2",
+              "postcode": "74321"
+            },
+            {
+              "name": "E.Coulee(Hissandee-C.Cheron",
+              "postcode": "74222"
+            },
+            {
+              "name": "Engrais Cathan",
+              "postcode": "74323"
+            },
+            {
+              "name": "Engrais Martial 1",
+              "postcode": "74124"
+            },
+            {
+              "name": "Engrais Martial 2",
+              "postcode": "74225"
+            },
+            {
+              "name": "Flat Bahemia",
+              "postcode": "74226"
+            },
+            {
+              "name": "Flat Baissac",
+              "postcode": "74327"
+            },
+            {
+              "name": "Flat Bonomally",
+              "postcode": "74328"
+            },
+            {
+              "name": "Flat Henessy",
+              "postcode": "74229"
+            },
+            {
+              "name": "Flat Joomun",
+              "postcode": "74330"
+            },
+            {
+              "name": "Hissandee",
+              "postcode": "74231"
+            },
+            {
+              "name": "La Mairee",
+              "postcode": "74232"
+            },
+            {
+              "name": "Lapeyrouse",
+              "postcode": "74233"
+            },
+            {
+              "name": "Morc Burtun 111",
+              "postcode": "74334"
+            },
+            {
+              "name": "Morc Piat",
+              "postcode": "74235"
+            },
+            {
+              "name": "Morc Nasapen",
+              "postcode": "74336"
+            },
+            {
+              "name": "Morc. Adam",
+              "postcode": "74337"
+            },
+            {
+              "name": "Morc. Baptiste",
+              "postcode": "74338"
+            },
+            {
+              "name": "Morc. Camphriers",
+              "postcode": "74339"
+            },
+            {
+              "name": "Morc. Cantin",
+              "postcode": "74340"
+            },
+            {
+              "name": "Morc. Hossenbux",
+              "postcode": "74341"
+            },
+            {
+              "name": "Municipal House",
+              "postcode": "74342"
+            },
+            {
+              "name": "NHDC Complex",
+              "postcode": "74343"
+            },
+            {
+              "name": "NHDC Prevert",
+              "postcode": "74344"
+            },
+            {
+              "name": "Pope Henessy 1",
+              "postcode": "74245"
+            },
+            {
+              "name": "Pope Henessy 2",
+              "postcode": "74446"
+            },
+            {
+              "name": "Quatre Carreaux",
+              "postcode": "74347"
+            },
+            {
+              "name": "Remono",
+              "postcode": "74248"
+            },
+            {
+              "name": "Remono",
+              "postcode": "74449"
+            },
+            {
+              "name": "Robinson",
+              "postcode": "74550"
+            },
+            {
+              "name": "Royal Rd Shell- Pope Henessy",
+              "postcode": "74451"
+            },
+            {
+              "name": "Sir William Newton",
+              "postcode": "74252"
+            },
+            {
+              "name": "Terre Coupe",
+              "postcode": "74553"
+            },
+            {
+              "name": "Tout Court",
+              "postcode": "74354"
+            },
+            {
+              "name": "Trou Aux Cerfs",
+              "postcode": "74555"
+            },
+            {
+              "name": "Villa Chambly",
+              "postcode": "74356"
+            }
+          ]
+        },
+        {
+          "name": "EBENE",
+          "sublocalities": [
+            {
+              "name": "Ebene Cybercity",
+              "postcode": "72201"
+            },
+            {
+              "name": "Ebene S.E (Ebene Housing Estate)",
+              "postcode": "72202"
+            },
+            {
+              "name": "Morc Ebene",
+              "postcode": "72203"
+            }
+          ]
+        },
+        {
+          "name": "FOREST SIDE",
+          "sublocalities": [
+            {
+              "name": "CAMP BOMBAY",
+              "postcode": "74401"
+            },
+            {
+              "name": "CAMP LAGESSE",
+              "postcode": "74402"
+            },
+            {
+              "name": "CAMP LE JUGE",
+              "postcode": "74403"
+            },
+            {
+              "name": "CELICOURT ANTELME",
+              "postcode": "74404"
+            },
+            {
+              "name": "CITE ATLEE",
+              "postcode": "74405"
+            },
+            {
+              "name": "CITE CAMP LE JUGE",
+              "postcode": "74406"
+            },
+            {
+              "name": "CITE DES VERSAILLES",
+              "postcode": "74507"
+            },
+            {
+              "name": "CITE JOACHIM",
+              "postcode": "74508"
+            },
+            {
+              "name": "CITE LA BRASSERIE",
+              "postcode": "74409"
+            },
+            {
+              "name": "Cite ST LUC",
+              "postcode": "74410"
+            },
+            {
+              "name": "FLAT CEZANNE",
+              "postcode": "74511"
+            },
+            {
+              "name": "FLAT RAMDENEE",
+              "postcode": "74512"
+            },
+            {
+              "name": "FOREST SIDE 1",
+              "postcode": "74513"
+            },
+            {
+              "name": "FOREST SIDE 2",
+              "postcode": "74514"
+            },
+            {
+              "name": "HENRI ROBERT (WARD 2)",
+              "postcode": "74215"
+            },
+            {
+              "name": "ICERY",
+              "postcode": "74416"
+            },
+            {
+              "name": "LA BRASSERIE (north)",
+              "postcode": "74517"
+            },
+            {
+              "name": "LA BRASSERIE (soUth)",
+              "postcode": "74418"
+            },
+            {
+              "name": "LA CROIX",
+              "postcode": "74419"
+            },
+            {
+              "name": "les AUBINEAUX",
+              "postcode": "74420"
+            },
+            {
+              "name": "Local Govt Service Commission",
+              "postcode": "74421"
+            },
+            {
+              "name": "L'OKANA",
+              "postcode": "74422"
+            },
+            {
+              "name": "LOUIS PASTEUR",
+              "postcode": "74423"
+            },
+            {
+              "name": "MAGNOLIAS FLATS",
+              "postcode": "74424"
+            },
+            {
+              "name": "MAURICE MARTIN",
+              "postcode": "74425"
+            },
+            {
+              "name": "MORC Antelme",
+              "postcode": "74426"
+            },
+            {
+              "name": "MORC CARBONEL",
+              "postcode": "74427"
+            },
+            {
+              "name": "MORC Devoyenne",
+              "postcode": "74428"
+            },
+            {
+              "name": "MORC Leclezio",
+              "postcode": "74429"
+            },
+            {
+              "name": "MORC PIAT",
+              "postcode": "74430"
+            },
+            {
+              "name": "MORC Pilot",
+              "postcode": "74431"
+            },
+            {
+              "name": "MORCE DARUTY",
+              "postcode": "74532"
+            },
+            {
+              "name": "MORC RAMALINGUM",
+              "postcode": "74533"
+            },
+            {
+              "name": "PUBLIC SERVICE COMMISSION",
+              "postcode": "74434"
+            },
+            {
+              "name": "RESIDENCE LA COLOMBE",
+              "postcode": "74435"
+            },
+            {
+              "name": "RESIDENCE LES COLONIES",
+              "postcode": "74436"
+            },
+            {
+              "name": "RESIDENCE LES JASMINS",
+              "postcode": "74437"
+            },
+            {
+              "name": "ROCHECOUSTE",
+              "postcode": "74438"
+            }
+          ]
+        },
+        {
+          "name": "L'AVENIR",
+          "sublocalities": [
+            {
+              "name": "Beau Bois",
+              "postcode": "80401"
+            },
+            {
+              "name": "L'Avenir",
+              "postcode": "80402"
+            }
+          ]
+        },
+        {
+          "name": "L'ESPERANCE",
+          "sublocalities": [
+            {
+              "name": "L'Esperance",
+              "postcode": "80301"
+            }
+          ]
+        },
+        {
+          "name": "LA LAURA/MALENGA",
+          "sublocalities": [
+            {
+              "name": "La Laura",
+              "postcode": "80501"
+            },
+            {
+              "name": "LA LAURA/Riv Baptiste",
+              "postcode": "80502"
+            },
+            {
+              "name": "Malinga",
+              "postcode": "80503"
+            }
+          ]
+        },
+        {
+          "name": "MELROSE",
+          "sublocalities": [
+            {
+              "name": "Melrose",
+              "postcode": "80701"
+            },
+            {
+              "name": "NHDC Melrose",
+              "postcode": "80702"
+            }
+          ]
+        },
+        {
+          "name": "MIDLANDS",
+          "sublocalities": [
+            {
+              "name": "Midlands",
+              "postcode": "52501"
+            },
+            {
+              "name": "Morc Ferret",
+              "postcode": "52502"
+            },
+            {
+              "name": "Morc Ramdanee",
+              "postcode": "52503"
+            },
+            {
+              "name": "Morc St Therese",
+              "postcode": "52504"
+            }
+          ]
+        },
+        {
+          "name": "MOKA",
+          "sublocalities": [
+            {
+              "name": "Appartment Le Ravin",
+              "postcode": "80801"
+            },
+            {
+              "name": "Baboolall RD",
+              "postcode": "80802"
+            },
+            {
+              "name": "Bocage",
+              "postcode": "80803"
+            },
+            {
+              "name": "Bois Cheri",
+              "postcode": "80804"
+            },
+            {
+              "name": "Bon Air(+ villa road)",
+              "postcode": "80805"
+            },
+            {
+              "name": "Camp Samy",
+              "postcode": "80806"
+            },
+            {
+              "name": "Chantenay",
+              "postcode": "80807"
+            },
+            {
+              "name": "Cite Mahatma Gandhi",
+              "postcode": "80808"
+            },
+            {
+              "name": "Cite Telfair",
+              "postcode": "80809"
+            },
+            {
+              "name": "Gentilly",
+              "postcode": "80810"
+            },
+            {
+              "name": "Gentilly Estate (new morc MDA)",
+              "postcode": "80811"
+            },
+            {
+              "name": "Mauritius Broadcasting Corporation( M B C )",
+              "postcode": "80812"
+            },
+            {
+              "name": "Moka Business Centre",
+              "postcode": "80813"
+            },
+            {
+              "name": "MOKA EYE HOSPITAL",
+              "postcode": "80814"
+            },
+            {
+              "name": "Moka Village",
+              "postcode": "80815"
+            },
+            {
+              "name": "Morc Bagatelle",
+              "postcode": "80816"
+            },
+            {
+              "name": "Morc Bega-Ebene",
+              "postcode": "80817"
+            },
+            {
+              "name": "Morc Bout Du Monde-Ebene",
+              "postcode": "80818"
+            },
+            {
+              "name": "Morc Eureka",
+              "postcode": "80819"
+            },
+            {
+              "name": "Morc Hein",
+              "postcode": "80820"
+            },
+            {
+              "name": "Morc Mon Desert",
+              "postcode": "80821"
+            },
+            {
+              "name": "Morc Mon Plaisir",
+              "postcode": "80822"
+            },
+            {
+              "name": "Morc Noel",
+              "postcode": "80823"
+            },
+            {
+              "name": "Morc Paratian",
+              "postcode": "80824"
+            },
+            {
+              "name": "Mount ORY",
+              "postcode": "80825"
+            },
+            {
+              "name": "Pont Souillac",
+              "postcode": "80826"
+            },
+            {
+              "name": "Railway Square",
+              "postcode": "80827"
+            },
+            {
+              "name": "Residence Cybervillage",
+              "postcode": "80828"
+            },
+            {
+              "name": "Telfair",
+              "postcode": "80829"
+            },
+            {
+              "name": "Valory",
+              "postcode": "80830"
+            },
+            {
+              "name": "Vinson",
+              "postcode": "80831"
+            },
+            {
+              "name": "Bagatelle Mall",
+              "postcode": "80832"
+            },
+            {
+              "name": "Martindale",
+              "postcode": "80833"
+            },
+            {
+              "name": "Mauritius Examination Syndicate ( M. E. S )",
+              "postcode": "80834"
+            },
+            {
+              "name": "Reduit",
+              "postcode": "80835"
+            },
+            {
+              "name": "STATE HOUSE",
+              "postcode": "80836"
+            },
+            {
+              "name": "University Of Mauritius",
+              "postcode": "80837"
+            },
+            {
+              "name": "Les Allees d'Helvetia 1",
+              "postcode": "80840"
+            },
+            {
+              "name": "Les Allees d'Helvetia 2",
+              "postcode": "80838"
+            },
+            {
+              "name": "Les Allees d'Helvetia 3",
+              "postcode": "80839"
+            }
+          ]
+        },
+        {
+          "name": "MONTAGNE BLANCHE",
+          "sublocalities": [
+            {
+              "name": "Cite St Joseph",
+              "postcode": "80901"
+            },
+            {
+              "name": "Montagne Blanche",
+              "postcode": "80902"
+            },
+            {
+              "name": "Morc Sans Souci",
+              "postcode": "80903"
+            },
+            {
+              "name": "Petit Paquet",
+              "postcode": "80905"
+            },
+            {
+              "name": "Sans Souci",
+              "postcode": "80906"
+            }
+          ]
+        },
+        {
+          "name": "NOUVELLE DECOUVERTE",
+          "sublocalities": [
+            {
+              "name": "Nouvelle Decouverte",
+              "postcode": "81201"
+            }
+          ]
+        },
+        {
+          "name": "PHOENIX",
+          "sublocalities": [
+            {
+              "name": "Allee Brillant",
+              "postcode": "73501"
+            },
+            {
+              "name": "Allee Jacques",
+              "postcode": "73502"
+            },
+            {
+              "name": "Bassin",
+              "postcode": "73603"
+            },
+            {
+              "name": "Belle Terre",
+              "postcode": "73604"
+            },
+            {
+              "name": "Boundary",
+              "postcode": "73605"
+            },
+            {
+              "name": "Camp Fouquereaux 1",
+              "postcode": "73606"
+            },
+            {
+              "name": "Camp Fouquereaux 2",
+              "postcode": "73607"
+            },
+            {
+              "name": "Camp Fouquereaux 3",
+              "postcode": "73608"
+            },
+            {
+              "name": "Camp Fouquereaux Bch Rd",
+              "postcode": "73609"
+            },
+            {
+              "name": "Camp Hosany",
+              "postcode": "73610"
+            },
+            {
+              "name": "Castel",
+              "postcode": "73611"
+            },
+            {
+              "name": "Cinq Arpents",
+              "postcode": "73612"
+            },
+            {
+              "name": "Cite 50",
+              "postcode": "73613"
+            },
+            {
+              "name": "Clairfonds 1",
+              "postcode": "73514"
+            },
+            {
+              "name": "Clairfonds 3",
+              "postcode": "73515"
+            },
+            {
+              "name": "Clairfonds 2",
+              "postcode": "73516"
+            },
+            {
+              "name": "Closel",
+              "postcode": "73417"
+            },
+            {
+              "name": "Flat River Islands",
+              "postcode": "73518"
+            },
+            {
+              "name": "Hassen Raffa",
+              "postcode": "73619"
+            },
+            {
+              "name": "Hermitage",
+              "postcode": "73620"
+            },
+            {
+              "name": "Highlands",
+              "postcode": "73621"
+            },
+            {
+              "name": "Highlands Branch Rd",
+              "postcode": "73622"
+            },
+            {
+              "name": "Independence",
+              "postcode": "73423"
+            },
+            {
+              "name": "Jumbo",
+              "postcode": "73524"
+            },
+            {
+              "name": "LE Meritt",
+              "postcode": "73525"
+            },
+            {
+              "name": "Les Halles",
+              "postcode": "73526"
+            },
+            {
+              "name": "Mesnil",
+              "postcode": "73627"
+            },
+            {
+              "name": "Morc Blue Print",
+              "postcode": "73628"
+            },
+            {
+              "name": "Morc Boucan",
+              "postcode": "73529"
+            },
+            {
+              "name": "Morc Koenig",
+              "postcode": "73630"
+            },
+            {
+              "name": "Morc Lonrho",
+              "postcode": "73631"
+            },
+            {
+              "name": "Morc Lenoir",
+              "postcode": "73532"
+            },
+            {
+              "name": "Morc MTMD",
+              "postcode": "73633"
+            },
+            {
+              "name": "Morc Nazroo",
+              "postcode": "73634"
+            },
+            {
+              "name": "Morc Noel",
+              "postcode": "73535"
+            },
+            {
+              "name": "Morc Trianon",
+              "postcode": "73536"
+            },
+            {
+              "name": "Mosque Rd",
+              "postcode": "73637"
+            },
+            {
+              "name": "Nalletamby",
+              "postcode": "73538"
+            },
+            {
+              "name": "Nehru",
+              "postcode": "73539"
+            },
+            {
+              "name": "Ollier",
+              "postcode": "73440"
+            },
+            {
+              "name": "Palmerstone",
+              "postcode": "73541"
+            },
+            {
+              "name": "Petit Camp",
+              "postcode": "73542"
+            },
+            {
+              "name": "Pine wood Garden",
+              "postcode": "73643"
+            },
+            {
+              "name": "Pont Fer",
+              "postcode": "73544"
+            },
+            {
+              "name": "Riverside",
+              "postcode": "73645"
+            },
+            {
+              "name": "Robinson 1",
+              "postcode": "73546"
+            },
+            {
+              "name": "Robinson 3",
+              "postcode": "73547"
+            },
+            {
+              "name": "Robinson2",
+              "postcode": "73548"
+            },
+            {
+              "name": "Sawmill",
+              "postcode": "73549"
+            },
+            {
+              "name": "Sayed Hossen Highlands Bch",
+              "postcode": "73650"
+            },
+            {
+              "name": "St. Paul",
+              "postcode": "73551"
+            },
+            {
+              "name": "Tout Court",
+              "postcode": "73652"
+            },
+            {
+              "name": "Valentina",
+              "postcode": "73553"
+            }
+          ]
+        },
+        {
+          "name": "PROVIDENCE",
+          "sublocalities": [
+            {
+              "name": "Cite Providence",
+              "postcode": "81601"
+            },
+            {
+              "name": "Providence",
+              "postcode": "81602"
+            },
+            {
+              "name": "Providencia  1",
+              "postcode": "81603"
+            },
+            {
+              "name": "Providencia  2",
+              "postcode": "81604"
+            },
+            {
+              "name": "Providencia  3",
+              "postcode": "81605"
+            }
+          ]
+        },
+        {
+          "name": "QUARTIER MILITAIRE",
+          "sublocalities": [
+            {
+              "name": "Betuel",
+              "postcode": "81101"
+            },
+            {
+              "name": "Bonne Veine",
+              "postcode": "81102"
+            },
+            {
+              "name": "Cite Bonne Veine",
+              "postcode": "81103"
+            },
+            {
+              "name": "Cite Padco(A.Ravaton)",
+              "postcode": "81104"
+            },
+            {
+              "name": "New Road***",
+              "postcode": "81105"
+            },
+            {
+              "name": "Quartier Militaire",
+              "postcode": "81106"
+            },
+            {
+              "name": "Vuillemin",
+              "postcode": "81107"
+            }
+          ]
+        },
+        {
+          "name": "QUATRE BORNES",
+          "sublocalities": [
+            {
+              "name": "Bassin",
+              "postcode": "72501"
+            },
+            {
+              "name": "Bassin S.E",
+              "postcode": "72502"
+            },
+            {
+              "name": "Beau Sejour 1",
+              "postcode": "72103"
+            },
+            {
+              "name": "Beau Sejour 2",
+              "postcode": "72104"
+            },
+            {
+              "name": "Belle Rose 1",
+              "postcode": "72105"
+            },
+            {
+              "name": "Belle Rose 2",
+              "postcode": "72206"
+            },
+            {
+              "name": "Belle Rose 3",
+              "postcode": "72207"
+            },
+            {
+              "name": "Belle Rose 4",
+              "postcode": "72208"
+            },
+            {
+              "name": "Belle Rose 5",
+              "postcode": "72109"
+            },
+            {
+              "name": "Boundary",
+              "postcode": "72310"
+            },
+            {
+              "name": "Candos",
+              "postcode": "72211"
+            },
+            {
+              "name": "Cite Bassin",
+              "postcode": "72512"
+            },
+            {
+              "name": "Cite Beau Sejour",
+              "postcode": "72313"
+            },
+            {
+              "name": "Cite Candos",
+              "postcode": "72314"
+            },
+            {
+              "name": "Cite Kennedy",
+              "postcode": "72515"
+            },
+            {
+              "name": "Cite NHDC",
+              "postcode": "72416"
+            },
+            {
+              "name": "Cite Pere Laval",
+              "postcode": "72317"
+            },
+            {
+              "name": "Cite St Jean",
+              "postcode": "72218"
+            },
+            {
+              "name": "Dreamton Park",
+              "postcode": "72219"
+            },
+            {
+              "name": "Ebene Cybercity",
+              "postcode": "72220"
+            },
+            {
+              "name": "Ebene H.E",
+              "postcode": "72221"
+            },
+            {
+              "name": "Emerald Park",
+              "postcode": "72222"
+            },
+            {
+              "name": "Jackson",
+              "postcode": "72523"
+            },
+            {
+              "name": "La Colline",
+              "postcode": "72224"
+            },
+            {
+              "name": "La Ferme Rd",
+              "postcode": "72425"
+            },
+            {
+              "name": "La Louise",
+              "postcode": "72326"
+            },
+            {
+              "name": "La Source",
+              "postcode": "72427"
+            },
+            {
+              "name": "Le Meritt",
+              "postcode": "72228"
+            },
+            {
+              "name": "Morc Cerisier",
+              "postcode": "72529"
+            },
+            {
+              "name": "Morc Dookun",
+              "postcode": "72230"
+            },
+            {
+              "name": "Morc Ebene",
+              "postcode": "72231"
+            },
+            {
+              "name": "Morc Gaya",
+              "postcode": "72432"
+            },
+            {
+              "name": "Morc Medine",
+              "postcode": "72533"
+            },
+            {
+              "name": "Morc Nuckcheddy",
+              "postcode": "72534"
+            },
+            {
+              "name": "Morc Pierrefonds",
+              "postcode": "72435"
+            },
+            {
+              "name": "Morc Poonith",
+              "postcode": "72436"
+            },
+            {
+              "name": "Morc Riverside",
+              "postcode": "72437"
+            },
+            {
+              "name": "Morc St Jean",
+              "postcode": "72238"
+            },
+            {
+              "name": "Nehru Rd",
+              "postcode": "72539"
+            },
+            {
+              "name": "NHDC Palm",
+              "postcode": "72440"
+            },
+            {
+              "name": "NHDC Villeneuve",
+              "postcode": "72241"
+            },
+            {
+              "name": "Orchard Centre",
+              "postcode": "72242"
+            },
+            {
+              "name": "Orchard Tower",
+              "postcode": "72243"
+            },
+            {
+              "name": "Palma 1",
+              "postcode": "72444"
+            },
+            {
+              "name": "Palma 2",
+              "postcode": "72445"
+            },
+            {
+              "name": "Palma Junction",
+              "postcode": "72446"
+            },
+            {
+              "name": "Pellegrin",
+              "postcode": "72247"
+            },
+            {
+              "name": "Pierrefonds",
+              "postcode": "72448"
+            },
+            {
+              "name": "Q Bornes 1",
+              "postcode": "72249"
+            },
+            {
+              "name": "Q Bornes 2",
+              "postcode": "72350"
+            },
+            {
+              "name": "Q Bornes 3",
+              "postcode": "72351"
+            },
+            {
+              "name": "Q Bornes 4",
+              "postcode": "72352"
+            },
+            {
+              "name": "Q Bornes 5",
+              "postcode": "72253"
+            },
+            {
+              "name": "Residence D'Epinay",
+              "postcode": "72254"
+            },
+            {
+              "name": "Seeneevassen",
+              "postcode": "72455"
+            },
+            {
+              "name": "Sodnac",
+              "postcode": "72256"
+            },
+            {
+              "name": "Trianon",
+              "postcode": "72257"
+            },
+            {
+              "name": "Trianon Shopping Centre",
+              "postcode": "72258"
+            },
+            {
+              "name": "Victoria Hospital",
+              "postcode": "72259"
+            }
+          ]
+        },
+        {
+          "name": "RIPAILLES",
+          "sublocalities": [
+            {
+              "name": "Ripailles",
+              "postcode": "82001"
+            }
+          ]
+        },
+        {
+          "name": "ROSE HILL",
+          "sublocalities": [
+            {
+              "name": "ARAB TOWN",
+              "postcode": "71301"
+            },
+            {
+              "name": "ARCADES REETOO",
+              "postcode": "71302"
+            },
+            {
+              "name": "BEAU SEJOUR  3",
+              "postcode": "72101"
+            },
+            {
+              "name": "BEAU SEJOUR  4",
+              "postcode": "72102"
+            },
+            {
+              "name": "BEAU SEJOUR  5",
+              "postcode": "72301"
+            },
+            {
+              "name": "Belle Rose 6 ( Coriolis)",
+              "postcode": "72106"
+            },
+            {
+              "name": "Belle Rose 8",
+              "postcode": "72107"
+            },
+            {
+              "name": "Belle Rose 9",
+              "postcode": "72204"
+            },
+            {
+              "name": "Belle Rose7",
+              "postcode": "72108"
+            },
+            {
+              "name": "Camp Levieux",
+              "postcode": "71203"
+            },
+            {
+              "name": "Camp Levieux 2",
+              "postcode": "71204"
+            },
+            {
+              "name": "CHINESE EMBASSY",
+              "postcode": "72205"
+            },
+            {
+              "name": "Cite  Corp D Garde",
+              "postcode": "71205"
+            },
+            {
+              "name": "Domaine de l'Intendance",
+              "postcode": "71306"
+            },
+            {
+              "name": "Espace Concorde (C.Levieux)",
+              "postcode": "71207"
+            },
+            {
+              "name": "FLAT ABDOOLAH",
+              "postcode": "71308"
+            },
+            {
+              "name": "FLAT BADAMIERS",
+              "postcode": "71309"
+            },
+            {
+              "name": "FLAT BHUNJUN(village de la montagne)",
+              "postcode": "71210"
+            },
+            {
+              "name": "FLAT HOLLYWOOD",
+              "postcode": "71311"
+            },
+            {
+              "name": "FLAT MONMARTRE",
+              "postcode": "71312"
+            },
+            {
+              "name": "FLAT PEM",
+              "postcode": "71313"
+            },
+            {
+              "name": "Flat Poupinel de Valence",
+              "postcode": "71314"
+            },
+            {
+              "name": "FLAT ROBINSON",
+              "postcode": "71315"
+            },
+            {
+              "name": "FLAT ROCHES BRUNES",
+              "postcode": "71216"
+            },
+            {
+              "name": "GALERIE ATCHIA",
+              "postcode": "71317"
+            },
+            {
+              "name": "GALERIE EVERSHINE",
+              "postcode": "71318"
+            },
+            {
+              "name": "GALERIE ROYALE",
+              "postcode": "71319"
+            },
+            {
+              "name": "GOVINDEN COURT",
+              "postcode": "71320"
+            },
+            {
+              "name": "HEAVEN HEIGHTS",
+              "postcode": "71321"
+            },
+            {
+              "name": "MANDARIN COURT",
+              "postcode": "71322"
+            },
+            {
+              "name": "MARKET ROSE HILL",
+              "postcode": "71323"
+            },
+            {
+              "name": "MONT ROYAL",
+              "postcode": "71324"
+            },
+            {
+              "name": "Morc  Gaya",
+              "postcode": "71225"
+            },
+            {
+              "name": "Morc AH FOUYE",
+              "postcode": "71126"
+            },
+            {
+              "name": "Morc Balgobin",
+              "postcode": "71327"
+            },
+            {
+              "name": "Morc Berthaud",
+              "postcode": "71128"
+            },
+            {
+              "name": "Morc Bholah",
+              "postcode": "71129"
+            },
+            {
+              "name": "Morc Chady",
+              "postcode": "71230"
+            },
+            {
+              "name": "MORC GOPAL",
+              "postcode": "71231"
+            },
+            {
+              "name": "Morc NARAIN(terrain)",
+              "postcode": "71132"
+            },
+            {
+              "name": "MORC Nouvelle Ville",
+              "postcode": "71233"
+            },
+            {
+              "name": "MORC SEEBURN",
+              "postcode": "71234"
+            },
+            {
+              "name": "Morc SOOKIA",
+              "postcode": "71135"
+            },
+            {
+              "name": "Morc St Andrews",
+              "postcode": "71336"
+            },
+            {
+              "name": "MORCELLEMENT LARCHER",
+              "postcode": "71337"
+            },
+            {
+              "name": "MORCELLEMENT NARAIN",
+              "postcode": "71238"
+            },
+            {
+              "name": "MORCELLEMENT ROGERS",
+              "postcode": "71339"
+            },
+            {
+              "name": "N.P.F BUILDING",
+              "postcode": "71340"
+            },
+            {
+              "name": "NHDC C LEVIEUX -Geranium)",
+              "postcode": "71241"
+            },
+            {
+              "name": "NHDC C LEVIEUX-Begonia )",
+              "postcode": "71242"
+            },
+            {
+              "name": "NHDC C LEVIEUX-Chrysanteme )",
+              "postcode": "71243"
+            },
+            {
+              "name": "NHDC C LEVIEUX-Dalhia )",
+              "postcode": "71244"
+            },
+            {
+              "name": "NHDC C LEVIEUX-Eglantine )",
+              "postcode": "71245"
+            },
+            {
+              "name": "NHDC C LEVIEUX-Flamboyant )",
+              "postcode": "71246"
+            },
+            {
+              "name": "PLACE MARGEOT",
+              "postcode": "71347"
+            },
+            {
+              "name": "PLAISANCE 1",
+              "postcode": "71348"
+            },
+            {
+              "name": "PLAISANCE 2",
+              "postcode": "71349"
+            },
+            {
+              "name": "Plaisance H.E",
+              "postcode": "71350"
+            },
+            {
+              "name": "QUEEN ELIZABETH COLLEGE",
+              "postcode": "71351"
+            },
+            {
+              "name": "QUEEN.COURTS",
+              "postcode": "71352"
+            },
+            {
+              "name": "RENOWN BUILDING",
+              "postcode": "71353"
+            },
+            {
+              "name": "Residence Clos Verger",
+              "postcode": "71354"
+            },
+            {
+              "name": "Residence La Concorde (NHDC)",
+              "postcode": "71255"
+            },
+            {
+              "name": "RESIDENCE MALARTIC",
+              "postcode": "71356"
+            },
+            {
+              "name": "ROCHES BRUNES/PLAISANCE",
+              "postcode": "71257"
+            },
+            {
+              "name": "ROCHES BRUNES/PLAISANCE 1",
+              "postcode": "71258"
+            },
+            {
+              "name": "ROCHES BRUNES/PLAISANCE 2",
+              "postcode": "71259"
+            },
+            {
+              "name": "Rose Hill Centre1",
+              "postcode": "71360"
+            },
+            {
+              "name": "Rose Hill Centre 2",
+              "postcode": "71361"
+            },
+            {
+              "name": "Rose Hill Centre 3",
+              "postcode": "71362"
+            },
+            {
+              "name": "Rose Hill Centre 4",
+              "postcode": "71363"
+            },
+            {
+              "name": "Rose Hill Centre 5",
+              "postcode": "71364"
+            },
+            {
+              "name": "Rose Hill Centre 6",
+              "postcode": "71365"
+            },
+            {
+              "name": "Rose Hill Centre 7",
+              "postcode": "71366"
+            },
+            {
+              "name": "Rose Hill Centre 8",
+              "postcode": "71367"
+            },
+            {
+              "name": "Rose Hill Centre 9",
+              "postcode": "71368"
+            },
+            {
+              "name": "Sites and Services",
+              "postcode": "71269"
+            },
+            {
+              "name": "Stanley 1",
+              "postcode": "71170"
+            },
+            {
+              "name": "STANLEY 2",
+              "postcode": "71171"
+            },
+            {
+              "name": "State Land",
+              "postcode": "71272"
+            },
+            {
+              "name": "TREFLES 1",
+              "postcode": "71173"
+            },
+            {
+              "name": "TREFLES 2",
+              "postcode": "71174"
+            },
+            {
+              "name": "TREFLES 3 CANDA  (Q.Bornes)",
+              "postcode": "71175"
+            },
+            {
+              "name": "Trefles H.E",
+              "postcode": "71176"
+            }
+          ]
+        },
+        {
+          "name": "SAINT JULIEN D'HOTMAN",
+          "sublocalities": [
+            {
+              "name": "Camp Thorel",
+              "postcode": "80101"
+            },
+            {
+              "name": "Saint Julien d'Hotman",
+              "postcode": "80102"
+            }
+          ]
+        },
+        {
+          "name": "SAINT PIERRE",
+          "sublocalities": [
+            {
+              "name": "Camp Auguste",
+              "postcode": "81401"
+            },
+            {
+              "name": "Circonstance",
+              "postcode": "81402"
+            },
+            {
+              "name": "Cite Cote D'Or",
+              "postcode": "81403"
+            },
+            {
+              "name": "Cote d'Or VRS 1",
+              "postcode": "81404"
+            },
+            {
+              "name": "Helvetia",
+              "postcode": "81405"
+            },
+            {
+              "name": "Industrial Zone-Old Post Office",
+              "postcode": "81406"
+            },
+            {
+              "name": "Kendra",
+              "postcode": "81407"
+            },
+            {
+              "name": "L'Agrement",
+              "postcode": "81408"
+            },
+            {
+              "name": "Mont Fleuri",
+              "postcode": "81409"
+            },
+            {
+              "name": "Morc Frangipanne Phase 2",
+              "postcode": "81410"
+            },
+            {
+              "name": "Morc Frangipanne Phase 3",
+              "postcode": "81411"
+            },
+            {
+              "name": "Morc MDA circonstance",
+              "postcode": "81412"
+            },
+            {
+              "name": "Morc Merrytown",
+              "postcode": "81413"
+            },
+            {
+              "name": "Morc Raffray",
+              "postcode": "81414"
+            },
+            {
+              "name": "Morc Traffic Centre",
+              "postcode": "81415"
+            },
+            {
+              "name": "Morc VRS 1",
+              "postcode": "81416"
+            },
+            {
+              "name": "Petit Verger",
+              "postcode": "81417"
+            },
+            {
+              "name": "Roselyn Cottage",
+              "postcode": "81418"
+            },
+            {
+              "name": "Rte Bois Cheri",
+              "postcode": "81419"
+            },
+            {
+              "name": "SAINT PIERRE 114+162",
+              "postcode": "81420"
+            },
+            {
+              "name": "Sites and Services",
+              "postcode": "81421"
+            },
+            {
+              "name": "Traffic Commercial centre",
+              "postcode": "81422"
+            },
+            {
+              "name": "Morc Mont Desser Alma L'Agrement",
+              "postcode": "81424"
+            },
+            {
+              "name": "Cite SILWF L'Agrement",
+              "postcode": "81425"
+            },
+            {
+              "name": "Cite St Catherine L'Agrement",
+              "postcode": "81426"
+            },
+            {
+              "name": "Cite EDC Cirsconstance",
+              "postcode": "81427"
+            },
+            {
+              "name": "Tamil Temple L'Agrement",
+              "postcode": "81428"
+            },
+            {
+              "name": "Chantenay",
+              "postcode": "81429"
+            }
+          ]
+        },
+        {
+          "name": "VACOAS",
+          "sublocalities": [
+            {
+              "name": "Allee Brillant",
+              "postcode": "74101"
+            },
+            {
+              "name": "Berthaud",
+              "postcode": "74102"
+            },
+            {
+              "name": "Cite EDC",
+              "postcode": "74103"
+            },
+            {
+              "name": "Cite Loiseau",
+              "postcode": "74104"
+            },
+            {
+              "name": "Cite Mangalkhan",
+              "postcode": "74105"
+            },
+            {
+              "name": "De Burg Edwards",
+              "postcode": "74106"
+            },
+            {
+              "name": "John Kennedy",
+              "postcode": "74107"
+            },
+            {
+              "name": "King George V",
+              "postcode": "74108"
+            },
+            {
+              "name": "Morc GIDC",
+              "postcode": "74109"
+            },
+            {
+              "name": "Queen Mary",
+              "postcode": "74110"
+            },
+            {
+              "name": "Riviere Seche",
+              "postcode": "74111"
+            },
+            {
+              "name": "Simonet",
+              "postcode": "74112"
+            },
+            {
+              "name": "Allee Brillant",
+              "postcode": "73401"
+            },
+            {
+              "name": "Angus",
+              "postcode": "73402"
+            },
+            {
+              "name": "Beard",
+              "postcode": "73103"
+            },
+            {
+              "name": "Bonne Terre",
+              "postcode": "73304"
+            },
+            {
+              "name": "Camp Belin",
+              "postcode": "73105"
+            },
+            {
+              "name": "Camp Mapou",
+              "postcode": "73106"
+            },
+            {
+              "name": "Camp Roches",
+              "postcode": "73107"
+            },
+            {
+              "name": "Carreau Lalianne",
+              "postcode": "73108"
+            },
+            {
+              "name": "Cite Henriette",
+              "postcode": "73109"
+            },
+            {
+              "name": "Cite La Caverne",
+              "postcode": "73310"
+            },
+            {
+              "name": "Clairfonds No.1",
+              "postcode": "73411"
+            },
+            {
+              "name": "Clairfonds No.2",
+              "postcode": "73412"
+            },
+            {
+              "name": "Clairfonds No.3",
+              "postcode": "73413"
+            },
+            {
+              "name": "Diolle",
+              "postcode": "73114"
+            },
+            {
+              "name": "E.Anquetil",
+              "postcode": "73215"
+            },
+            {
+              "name": "Glen Park",
+              "postcode": "73116"
+            },
+            {
+              "name": "Glen Park NHDC",
+              "postcode": "73117"
+            },
+            {
+              "name": "Grannum",
+              "postcode": "73418"
+            },
+            {
+              "name": "Gymkhana",
+              "postcode": "73419"
+            },
+            {
+              "name": "Henrietta",
+              "postcode": "73120"
+            },
+            {
+              "name": "Hollyrood No.1",
+              "postcode": "73221"
+            },
+            {
+              "name": "Hollyrood No.2",
+              "postcode": "73222"
+            },
+            {
+              "name": "Jackson",
+              "postcode": "73423"
+            },
+            {
+              "name": "La Caverne No.1",
+              "postcode": "73324"
+            },
+            {
+              "name": "La Caverne No.2",
+              "postcode": "73325"
+            },
+            {
+              "name": "La Marie",
+              "postcode": "73126"
+            },
+            {
+              "name": "La Vanille",
+              "postcode": "73227"
+            },
+            {
+              "name": "Ligne Berthaud",
+              "postcode": "73328"
+            },
+            {
+              "name": "Modern",
+              "postcode": "73329"
+            },
+            {
+              "name": "Mon Desir",
+              "postcode": "73330"
+            },
+            {
+              "name": "Morc Fleuriot",
+              "postcode": "73431"
+            },
+            {
+              "name": "Morc Medine",
+              "postcode": "73132"
+            },
+            {
+              "name": "Morc Munbodh",
+              "postcode": "73233"
+            },
+            {
+              "name": "Morc Peerun",
+              "postcode": "73234"
+            },
+            {
+              "name": "Morc Pousson",
+              "postcode": "73135"
+            },
+            {
+              "name": "Morc Sauba",
+              "postcode": "73436"
+            },
+            {
+              "name": "Morc Seetaram",
+              "postcode": "73137"
+            },
+            {
+              "name": "Quinze Cantons No.1",
+              "postcode": "73238"
+            },
+            {
+              "name": "Quinze Cantons No.2",
+              "postcode": "73239"
+            },
+            {
+              "name": "Reunion",
+              "postcode": "73240"
+            },
+            {
+              "name": "Riverwalk",
+              "postcode": "73441"
+            },
+            {
+              "name": "Sadally",
+              "postcode": "73242"
+            },
+            {
+              "name": "SMF QTRS",
+              "postcode": "73443"
+            },
+            {
+              "name": "Solferino No. 1",
+              "postcode": "73344"
+            },
+            {
+              "name": "Solferino No. 2",
+              "postcode": "73345"
+            },
+            {
+              "name": "Solferino No. 3",
+              "postcode": "73346"
+            },
+            {
+              "name": "Solferino No. 4",
+              "postcode": "73347"
+            },
+            {
+              "name": "Solferino No. 5",
+              "postcode": "73348"
+            },
+            {
+              "name": "St Paul",
+              "postcode": "73449"
+            },
+            {
+              "name": "Thompson",
+              "postcode": "73250"
+            },
+            {
+              "name": "Trair D’Union",
+              "postcode": "73451"
+            },
+            {
+              "name": "Tres Bon No. 1",
+              "postcode": "73252"
+            },
+            {
+              "name": "Tres Bon No. 2",
+              "postcode": "73253"
+            },
+            {
+              "name": "Tres Bon No. 3",
+              "postcode": "73254"
+            },
+            {
+              "name": "Tres Bon No. 4",
+              "postcode": "73255"
+            },
+            {
+              "name": "Vingta No. 1",
+              "postcode": "73356"
+            },
+            {
+              "name": "Vingta No. 2",
+              "postcode": "73357"
+            },
+            {
+              "name": "Vingta No. 3",
+              "postcode": "73358"
+            },
+            {
+              "name": "Visitation",
+              "postcode": "73359"
+            }
+          ]
+        },
+        {
+          "name": "VERDUN",
+          "sublocalities": [
+            {
+              "name": "Alma",
+              "postcode": "81801"
+            },
+            {
+              "name": "Cite EDC Verdun",
+              "postcode": "81802"
+            },
+            {
+              "name": "Verdun",
+              "postcode": "81803"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -196,6 +196,26 @@
                 android:layout_marginBottom="15dp"
                 android:visibility="gone"/>
 
+            <TextView
+                android:id="@+id/vehicleCategoryLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Vehicle Category"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="6dp"
+                android:visibility="gone"/>
+
+            <Spinner
+                android:id="@+id/vehicleCategorySpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="52dp"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone"
+                android:spinnerMode="dropdown"/>
 
             <!-- Car registration -->
             <EditText
@@ -264,6 +284,57 @@
                 android:backgroundTint="@color/teal"
                 android:visibility="gone"
                 android:layout_marginTop="10dp"/>
+
+            <!-- Driver Operating Areas -->
+            <TextView
+                android:id="@+id/driverLocationTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Operating Areas"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/operatingAreasDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Search for a town, village or neighbourhood. Select an entire locality or choose individual sublocalities."
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginBottom="14dp"
+                android:visibility="gone"/>
+
+            <!-- Selected operating areas -->
+            <LinearLayout
+                android:id="@+id/selectedOperatingAreasContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="12dp"
+                android:visibility="gone"/>
+
+            <!-- Search results -->
+            <LinearLayout
+                android:id="@+id/operatingAreasContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"/>
+
+            <!-- Selection summary -->
+            <TextView
+                android:id="@+id/operatingAreasSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No operating areas selected"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"/>
 
             <!-- Register button -->
             <Button

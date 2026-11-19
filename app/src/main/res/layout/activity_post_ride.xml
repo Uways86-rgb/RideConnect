@@ -4,13 +4,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="30dp">
+
+        <!-- TITLE -->
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,6 +67,133 @@
             android:inputType="textCapWords"
             android:layout_marginTop="8dp"/>
 
+        <!-- CALCULATE ROUTE -->
+
+        <Button
+            android:id="@+id/calculateRouteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CALCULATE ROUTE"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"/>
+
+        <!-- ROUTE STATUS -->
+
+        <TextView
+            android:id="@+id/routeStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your pickup and destination, then calculate your route."
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- MAP -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Route Map"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"/>
+
+        <org.osmdroid.views.MapView
+            android:id="@+id/postRideMap"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="10dp"/>
+
+        <!-- EXACT LOCATION SELECTION -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select the point you want to adjust"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="18dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choose Pickup or Destination below, then tap or long-press the exact position on the map."
+            android:textSize="14sp"
+            android:layout_marginTop="6dp"/>
+
+        <RadioGroup
+            android:id="@+id/locationSelectionGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/selectPickupRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adjust Pickup Point"
+                android:checked="true"
+                android:padding="8dp"/>
+
+            <RadioButton
+                android:id="@+id/selectDestinationRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adjust Destination Point"
+                android:padding="8dp"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/pickupPointText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pickup point: Not selected"
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"
+            android:background="#F1F5F9"/>
+
+        <TextView
+            android:id="@+id/destinationPointText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destination point: Not selected"
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:layout_marginTop="8dp"
+            android:background="#F1F5F9"/>
+
+        <!-- AVAILABLE ROUTES -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available Routes"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/routeOptionsGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"/>
+
+        <!-- SELECTED ROUTE SUMMARY -->
+
+        <TextView
+            android:id="@+id/routeSummaryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your selected route details will appear here."
+            android:textSize="15sp"
+            android:padding="12dp"
+            android:layout_marginTop="10dp"
+            android:background="#F1F5F9"/>
+
         <!-- DATE -->
 
         <TextView
@@ -73,7 +203,7 @@
             android:text="Date: Not selected"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="25dp"/>
 
         <Button
             android:id="@+id/selectDateButton"
@@ -136,7 +266,7 @@
             android:inputType="numberDecimal"
             android:layout_marginTop="8dp"/>
 
-        <!-- POST -->
+        <!-- POST RIDE -->
 
         <Button
             android:id="@+id/postRideButton"
