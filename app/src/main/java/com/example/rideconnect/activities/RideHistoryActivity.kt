@@ -1,8 +1,9 @@
+
 package com.example.rideconnect.activities
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.view.Gravity
+import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.rideconnect.R
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -28,72 +30,57 @@ class RideHistoryActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_ride_history)
 
-        auth =
-            FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
-        db =
-            FirebaseFirestore.getInstance()
-
-        historyContainer =
-            findViewById(R.id.historyContainer)
-
-        emptyHistoryText =
-            findViewById(R.id.emptyHistoryText)
+        historyContainer = findViewById(R.id.historyContainer)
+        emptyHistoryText = findViewById(R.id.emptyHistoryText)
 
         loadRideHistory()
     }
 
+    // ============================================================
+    // LOAD COMPLETED AND REJECTED RIDES
+    // ============================================================
+
     private fun loadRideHistory() {
 
-        val userId =
-            auth.currentUser?.uid
+        val userId = auth.currentUser?.uid
 
         if (userId == null) {
-
-            emptyHistoryText.text =
-                "User is not logged in."
-
-            emptyHistoryText.visibility =
-                android.view.View.VISIBLE
-
+            emptyHistoryText.text = "User is not logged in."
+            emptyHistoryText.visibility = View.VISIBLE
             return
         }
 
         db.collection("rides")
-            .whereEqualTo(
-                "passengerId",
-                userId
-            )
-            .whereEqualTo(
-                "status",
-                "Completed"
-            )
+            .whereEqualTo("passengerId", userId)
             .get()
             .addOnSuccessListener { documents ->
 
                 historyContainer.removeAllViews()
 
-                if (documents.isEmpty) {
+                // Keep completed and rejected instant ride requests.
+                val rides = documents.documents
+                    .filter { document ->
+                        val status = document.getString("status")
+
+                        status == "Completed" || status == "Rejected"
+                    }
+                    .sortedByDescending { document ->
+                        getHistoryTimestamp(document)
+                    }
+
+                if (rides.isEmpty()) {
 
                     emptyHistoryText.text =
-                        "No completed rides yet."
+                        "No completed rides or rejected requests yet."
 
-                    emptyHistoryText.visibility =
-                        android.view.View.VISIBLE
-
+                    emptyHistoryText.visibility = View.VISIBLE
                     return@addOnSuccessListener
                 }
 
-                emptyHistoryText.visibility =
-                    android.view.View.GONE
-
-                val rides =
-                    documents.documents.sortedByDescending {
-
-                        it.getTimestamp("endTime")
-                            ?.seconds
-                            ?: 0
-                    }
+                emptyHistoryText.visibility = View.GONE
 
                 for (ride in rides) {
                     createRideHistoryCard(ride)
@@ -104,8 +91,7 @@ class RideHistoryActivity : AppCompatActivity() {
                 emptyHistoryText.text =
                     "Unable to load ride history."
 
-                emptyHistoryText.visibility =
-                    android.view.View.VISIBLE
+                emptyHistoryText.visibility = View.VISIBLE
 
                 Toast.makeText(
                     this,
@@ -115,15 +101,54 @@ class RideHistoryActivity : AppCompatActivity() {
             }
     }
 
+    // ============================================================
+    // GET TIMESTAMP FOR HISTORY SORTING
+    // ============================================================
+
+    private fun getHistoryTimestamp(
+        ride: DocumentSnapshot
+    ): Long {
+
+        val status = ride.getString("status")
+
+        val timestamp = if (status == "Completed") {
+            ride.getTimestamp("endTime")
+                ?: ride.getTimestamp("timestamp")
+        } else {
+            ride.getTimestamp("rejectedAt")
+                ?: ride.getTimestamp("timestamp")
+        }
+
+        return timestamp?.toDate()?.time ?: 0L
+    }
+
+    // ============================================================
+    // CREATE COMPLETED OR REJECTED HISTORY CARD
+    // ============================================================
+
     private fun createRideHistoryCard(
-        ride: com.google.firebase.firestore.DocumentSnapshot
+        ride: DocumentSnapshot
     ) {
 
-        val rideCard =
-            LinearLayout(this)
+        when (ride.getString("status")) {
 
-        rideCard.orientation =
-            LinearLayout.VERTICAL
+            "Completed" -> createCompletedRideCard(ride)
+
+            "Rejected" -> createRejectedRideCard(ride)
+        }
+    }
+
+    // ============================================================
+    // COMPLETED RIDE CARD
+    // ============================================================
+
+    private fun createCompletedRideCard(
+        ride: DocumentSnapshot
+    ) {
+
+        val rideCard = LinearLayout(this)
+
+        rideCard.orientation = LinearLayout.VERTICAL
 
         rideCard.setPadding(
             30,
@@ -132,11 +157,10 @@ class RideHistoryActivity : AppCompatActivity() {
             25
         )
 
-        val cardParams =
-            LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+        val cardParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
 
         cardParams.setMargins(
             20,
@@ -145,56 +169,42 @@ class RideHistoryActivity : AppCompatActivity() {
             20
         )
 
-        rideCard.layoutParams =
-            cardParams
+        rideCard.layoutParams = cardParams
 
         rideCard.setBackgroundResource(
             android.R.drawable.dialog_holo_light_frame
         )
 
-        val pickup =
-            ride.getString("pickup")
-                ?: "Unknown"
+        val pickup = ride.getString("pickup") ?: "Unknown"
 
         val destination =
-            ride.getString("destination")
-                ?: "Unknown"
+            ride.getString("destination") ?: "Unknown"
 
         val driverName =
-            ride.getString("driverName")
-                ?: "Unknown driver"
+            ride.getString("driverName") ?: "Unknown driver"
 
         val driverPhone =
-            ride.getString("driverPhone")
-                ?: "Phone unavailable"
+            ride.getString("driverPhone") ?: "Phone unavailable"
 
         val carMake =
-            ride.getString("carMake")
-                ?: "Unknown"
+            ride.getString("carMake") ?: "Unknown"
 
         val carModel =
-            ride.getString("carModel")
-                ?: "Unknown"
+            ride.getString("carModel") ?: "Unknown"
 
         val carColor =
-            ride.getString("carColor")
-                ?: "Unknown"
+            ride.getString("carColor") ?: "Unknown"
 
         val carRegistration =
-            ride.getString("carRegistration")
-                ?: "Unknown"
+            ride.getString("carRegistration") ?: "Unknown"
 
-        val startTime =
-            ride.getTimestamp("startTime")
+        val startTime = ride.getTimestamp("startTime")
+        val endTime = ride.getTimestamp("endTime")
 
-        val endTime =
-            ride.getTimestamp("endTime")
-
-        val duration =
-            calculateDuration(
-                startTime,
-                endTime
-            )
+        val duration = calculateDuration(
+            startTime,
+            endTime
+        )
 
         addText(
             rideCard,
@@ -273,11 +283,130 @@ class RideHistoryActivity : AppCompatActivity() {
             true
         )
 
-        val deleteButton =
-            Button(this)
+        addDeleteButton(
+            rideCard,
+            ride.id
+        )
 
-        deleteButton.text =
-            "🗑 DELETE RIDE"
+        historyContainer.addView(rideCard)
+    }
+
+    // ============================================================
+    // REJECTED RIDE REQUEST CARD
+    // ============================================================
+
+    private fun createRejectedRideCard(
+        ride: DocumentSnapshot
+    ) {
+
+        val rideCard = LinearLayout(this)
+
+        rideCard.orientation = LinearLayout.VERTICAL
+
+        rideCard.setPadding(
+            30,
+            25,
+            30,
+            25
+        )
+
+        val cardParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+
+        cardParams.setMargins(
+            20,
+            10,
+            20,
+            20
+        )
+
+        rideCard.layoutParams = cardParams
+
+        rideCard.setBackgroundResource(
+            android.R.drawable.dialog_holo_light_frame
+        )
+
+        val pickup =
+            ride.getString("pickup") ?: "Unknown"
+
+        val destination =
+            ride.getString("destination") ?: "Unknown"
+
+        val requestTime =
+            ride.getTimestamp("timestamp")
+                ?: ride.getTimestamp("rejectedAt")
+
+        addText(
+            rideCard,
+            "❌ REJECTED RIDE REQUEST",
+            20,
+            true
+        )
+
+        addText(
+            rideCard,
+            "Status: Rejected",
+            17,
+            true
+        )
+
+        addText(
+            rideCard,
+            "📍 Pickup: $pickup",
+            17,
+            false
+        )
+
+        addText(
+            rideCard,
+            "📍 Destination: $destination",
+            17,
+            false
+        )
+
+        addText(
+            rideCard,
+            "🕐 Request Date: ${formatTimestamp(requestTime)}",
+            17,
+            false
+        )
+
+        addText(
+            rideCard,
+            "Unfortunately, the driver declined your ride request.",
+            16,
+            true
+        )
+
+        addText(
+            rideCard,
+            "You can submit another ride request.",
+            16,
+            false
+        )
+
+        addDeleteButton(
+            rideCard,
+            ride.id
+        )
+
+        historyContainer.addView(rideCard)
+    }
+
+    // ============================================================
+    // DELETE BUTTON
+    // ============================================================
+
+    private fun addDeleteButton(
+        rideCard: LinearLayout,
+        rideId: String
+    ) {
+
+        val deleteButton = Button(this)
+
+        deleteButton.text = "🗑 DELETE RIDE"
 
         deleteButton.layoutParams =
             LinearLayout.LayoutParams(
@@ -286,20 +415,15 @@ class RideHistoryActivity : AppCompatActivity() {
             )
 
         deleteButton.setOnClickListener {
-
-            showDeleteConfirmation(
-                ride.id
-            )
+            showDeleteConfirmation(rideId)
         }
 
-        rideCard.addView(
-            deleteButton
-        )
-
-        historyContainer.addView(
-            rideCard
-        )
+        rideCard.addView(deleteButton)
     }
+
+    // ============================================================
+    // ADD TEXT TO CARD
+    // ============================================================
 
     private fun addText(
         container: LinearLayout,
@@ -308,14 +432,10 @@ class RideHistoryActivity : AppCompatActivity() {
         bold: Boolean
     ) {
 
-        val textView =
-            TextView(this)
+        val textView = TextView(this)
 
-        textView.text =
-            text
-
-        textView.textSize =
-            size.toFloat()
+        textView.text = text
+        textView.textSize = size.toFloat()
 
         if (bold) {
             textView.setTypeface(
@@ -324,11 +444,10 @@ class RideHistoryActivity : AppCompatActivity() {
             )
         }
 
-        val params =
-            LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
 
         params.setMargins(
             0,
@@ -337,14 +456,14 @@ class RideHistoryActivity : AppCompatActivity() {
             6
         )
 
-        textView.layoutParams =
-            params
+        textView.layoutParams = params
 
-        container.addView(
-            textView
-        )
+        container.addView(textView)
     }
 
+    // ============================================================
+    // FORMAT TIMESTAMP
+    // ============================================================
 
     private fun formatTimestamp(
         timestamp: Timestamp?
@@ -354,25 +473,24 @@ class RideHistoryActivity : AppCompatActivity() {
             return "Not available"
         }
 
-        val formatter =
-            SimpleDateFormat(
-                "dd MMM yyyy, HH:mm",
-                Locale.getDefault()
-            )
-
-        return formatter.format(
-            timestamp.toDate()
+        val formatter = SimpleDateFormat(
+            "dd MMM yyyy, HH:mm",
+            Locale.getDefault()
         )
+
+        return formatter.format(timestamp.toDate())
     }
+
+    // ============================================================
+    // CALCULATE COMPLETED RIDE DURATION
+    // ============================================================
 
     private fun calculateDuration(
         startTime: Timestamp?,
         endTime: Timestamp?
     ): String {
 
-        if (startTime == null ||
-            endTime == null
-        ) {
+        if (startTime == null || endTime == null) {
             return "Not available"
         }
 
@@ -384,14 +502,10 @@ class RideHistoryActivity : AppCompatActivity() {
             return "Not available"
         }
 
-        val totalMinutes =
-            difference / (1000 * 60)
+        val totalMinutes = difference / (1000 * 60)
 
-        val hours =
-            totalMinutes / 60
-
-        val minutes =
-            totalMinutes % 60
+        val hours = totalMinutes / 60
+        val minutes = totalMinutes % 60
 
         return if (hours > 0) {
             "${hours}h ${minutes}min"
@@ -399,6 +513,10 @@ class RideHistoryActivity : AppCompatActivity() {
             "${minutes} min"
         }
     }
+
+    // ============================================================
+    // DELETE CONFIRMATION
+    // ============================================================
 
     private fun showDeleteConfirmation(
         rideId: String
@@ -416,13 +534,14 @@ class RideHistoryActivity : AppCompatActivity() {
             .setPositiveButton(
                 "DELETE"
             ) { _, _ ->
-
-                deleteRide(
-                    rideId
-                )
+                deleteRide(rideId)
             }
             .show()
     }
+
+    // ============================================================
+    // DELETE RIDE FROM FIRESTORE
+    // ============================================================
 
     private fun deleteRide(
         rideId: String

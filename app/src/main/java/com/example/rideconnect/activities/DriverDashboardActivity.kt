@@ -4,17 +4,25 @@ package com.example.rideconnect.activities
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.Typeface
+import android.graphics.drawable.GradientDrawable
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.provider.Settings
+import android.view.Gravity
+import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.rideconnect.R
 import com.example.rideconnect.notifications.NotificationPermissionHelper
 import com.google.firebase.auth.FirebaseAuth
@@ -28,12 +36,6 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
 
-
-import android.view.View
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
-
 class DriverDashboardActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
@@ -46,16 +48,22 @@ class DriverDashboardActivity : AppCompatActivity() {
     private lateinit var startRideButton: Button
     private lateinit var completeRideButton: Button
 
+    private lateinit var instantRideRequestsContainer: LinearLayout
+    private lateinit var instantRideRequestsEmptyText: TextView
+
     private lateinit var driverMap: MapView
     private lateinit var locationManager: LocationManager
 
     private var driverLocationMarker: Marker? = null
     private var currentRideId: String? = null
 
-    // Live listener for approved bookings on a posted ride.
+    // Real-time listener for all available instant ride requests.
+    private var instantRideRequestsListener: ListenerRegistration? = null
+
+    // Listener for approved bookings on a posted ride.
     private var approvedBookingsListener: ListenerRegistration? = null
 
-    // Each booking has its own pickup marker.
+    // Individual pickup markers for approved passengers.
     private val passengerPickupMarkers =
         mutableMapOf<String, Marker>()
 
@@ -89,10 +97,7 @@ class DriverDashboardActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_driver_dashboard)
 
-        // ---------------------------------------------------------
-        // HANDLE ANDROID SYSTEM NAVIGATION BAR INSETS
-        // ---------------------------------------------------------
-
+        // SYSTEM NAVIGATION BAR INSETS
         val bottomNavigation = findViewById<View>(
             R.id.driverBottomNavigation
         )
@@ -100,7 +105,6 @@ class DriverDashboardActivity : AppCompatActivity() {
         val initialBottomPadding = bottomNavigation.paddingBottom
 
         ViewCompat.setOnApplyWindowInsetsListener(bottomNavigation) { view, insets ->
-
             val navigationBarInsets = insets.getInsets(
                 WindowInsetsCompat.Type.navigationBars()
             )
@@ -136,71 +140,41 @@ class DriverDashboardActivity : AppCompatActivity() {
         // DRIVER NAME
         loadDriverName()
 
-        // ACCOUNT BUTTON
-        findViewById<Button>(R.id.accountButton)
-            .setOnClickListener {
-                startActivity(
-                    Intent(this, DriverAccountActivity::class.java)
-                )
-            }
+        // LEGACY NAVIGATION BUTTONS
+        findViewById<Button>(R.id.accountButton).setOnClickListener {
+            startActivity(Intent(this, DriverAccountActivity::class.java))
+        }
 
-        // POST RIDE BUTTON
-        findViewById<Button>(R.id.postRideButton)
-            .setOnClickListener {
-                startActivity(
-                    Intent(this, PostRideActivity::class.java)
-                )
-            }
+        findViewById<Button>(R.id.postRideButton).setOnClickListener {
+            startActivity(Intent(this, PostRideActivity::class.java))
+        }
 
-        // BOOKING REQUESTS BUTTON
-        findViewById<Button>(R.id.bookingRequestsButton)
-            .setOnClickListener {
-                startActivity(
-                    Intent(
-                        this,
-                        DriverBookingRequestsActivity::class.java
-                    )
-                )
-            }
+        findViewById<Button>(R.id.bookingRequestsButton).setOnClickListener {
+            startActivity(
+                Intent(this, DriverBookingRequestsActivity::class.java)
+            )
+        }
 
-        // ---------------------------------------------------------
-        // DRIVER BOTTOM NAVIGATION
-        // ---------------------------------------------------------
+        // BOTTOM NAVIGATION
+        findViewById<TextView>(R.id.driverHomeNavItem).setOnClickListener {
+            // Already on this screen.
+        }
 
-        // HOME
-        findViewById<TextView>(R.id.driverHomeNavItem)
-            .setOnClickListener {
-                // Already on the Driver Dashboard.
-            }
+        findViewById<TextView>(R.id.driverPostRideNavItem).setOnClickListener {
+            startActivity(Intent(this, PostRideActivity::class.java))
+        }
 
-        // POST RIDE
-        findViewById<TextView>(R.id.driverPostRideNavItem)
-            .setOnClickListener {
-                startActivity(
-                    Intent(this, PostRideActivity::class.java)
-                )
-            }
+        findViewById<TextView>(R.id.driverRequestsNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, DriverBookingRequestsActivity::class.java)
+            )
+        }
 
-        // REQUESTS
-        findViewById<TextView>(R.id.driverRequestsNavItem)
-            .setOnClickListener {
-                startActivity(
-                    Intent(
-                        this,
-                        DriverBookingRequestsActivity::class.java
-                    )
-                )
-            }
+        findViewById<TextView>(R.id.driverAccountNavItem).setOnClickListener {
+            startActivity(Intent(this, DriverAccountActivity::class.java))
+        }
 
-        // ACCOUNT
-        findViewById<TextView>(R.id.driverAccountNavItem)
-            .setOnClickListener {
-                startActivity(
-                    Intent(this, DriverAccountActivity::class.java)
-                )
-            }
-
-        // RIDE VIEWS
+        // CURRENT RIDE VIEWS
         pickupText = findViewById(R.id.pickupText)
         destinationText = findViewById(R.id.destinationText)
 
@@ -208,13 +182,24 @@ class DriverDashboardActivity : AppCompatActivity() {
         startRideButton = findViewById(R.id.startRideButton)
         completeRideButton = findViewById(R.id.completeRideButton)
 
-        // Load approved passenger pickup markers independently of
-        // the instant-ride card displayed below the map.
+        // DYNAMIC REQUEST LIST VIEWS
+        instantRideRequestsContainer =
+            findViewById(R.id.instantRideRequestsContainer)
+
+        instantRideRequestsEmptyText =
+            findViewById(R.id.instantRideRequestsEmptyText)
+
+        // APPROVED PASSENGER PICKUP MARKERS
         loadPostedRideForMarkers()
 
-        // LOCATION AND RIDE
+        // LOCATION
         checkLocationPermission()
+
+        // LOAD CURRENT RIDE
         loadDriverRide()
+
+        // LISTEN FOR ALL AVAILABLE INSTANT REQUESTS
+        listenForAvailableInstantRideRequests()
     }
 
     private val notificationPermissionLauncher =
@@ -295,11 +280,7 @@ class DriverDashboardActivity : AppCompatActivity() {
         if (!hasLocationPermission()) return
 
         try {
-            if (
-                locationManager.isProviderEnabled(
-                    LocationManager.GPS_PROVIDER
-                )
-            ) {
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 locationManager.requestLocationUpdates(
                     LocationManager.GPS_PROVIDER,
                     3000L,
@@ -308,11 +289,7 @@ class DriverDashboardActivity : AppCompatActivity() {
                 )
             }
 
-            if (
-                locationManager.isProviderEnabled(
-                    LocationManager.NETWORK_PROVIDER
-                )
-            ) {
+            if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
                 locationManager.requestLocationUpdates(
                     LocationManager.NETWORK_PROVIDER,
                     5000L,
@@ -366,9 +343,6 @@ class DriverDashboardActivity : AppCompatActivity() {
         driverLocationMarker?.title = "🚗 You are here"
         driverLocationMarker?.snippet = "Live driver location"
 
-        // Centre on the driver initially, but do not recenter on
-        // every GPS update; otherwise the passenger markers are
-        // difficult to inspect by moving around the map.
         if (firstDriverLocation) {
             driverMap.controller.animateTo(driverPosition)
         }
@@ -403,7 +377,7 @@ class DriverDashboardActivity : AppCompatActivity() {
     }
 
     // ============================================================
-    // LOAD DRIVER RIDE
+    // LOAD DRIVER'S CURRENT RIDE
     // ============================================================
 
     private fun loadDriverRide() {
@@ -418,17 +392,17 @@ class DriverDashboardActivity : AppCompatActivity() {
             return
         }
 
-        // First look for an instant ride already assigned to this driver.
         db.collection("rides")
             .whereEqualTo("driverId", driverId)
             .whereIn("status", listOf("Accepted", "In Progress"))
             .limit(1)
             .get()
             .addOnSuccessListener { documents ->
+
                 if (!documents.isEmpty) {
                     displayRide(documents.documents[0])
                 } else {
-                    loadSearchingRide()
+                    loadPostedRide()
                 }
             }
             .addOnFailureListener { exception ->
@@ -441,40 +415,410 @@ class DriverDashboardActivity : AppCompatActivity() {
     }
 
     // ============================================================
-    // FIND AN UNASSIGNED INSTANT RIDE REQUEST
+    // REAL-TIME LISTENER FOR ALL AVAILABLE INSTANT REQUESTS
     // ============================================================
 
-    private fun loadSearchingRide() {
-        db.collection("rides")
-            .whereEqualTo("status", "Searching")
+    private fun listenForAvailableInstantRideRequests() {
+        instantRideRequestsListener?.remove()
+
+        instantRideRequestsListener =
+            db.collection("rides")
+                .whereEqualTo("status", "Searching")
+                .addSnapshotListener { snapshot, error ->
+
+                    if (error != null) {
+                        Toast.makeText(
+                            this,
+                            "Error loading ride requests: ${error.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        return@addSnapshotListener
+                    }
+
+                    if (snapshot == null) return@addSnapshotListener
+
+                    val availableRequests = snapshot.documents
+                        .filter { document ->
+                            document.getString("driverId").isNullOrBlank()
+                        }
+                        .sortedByDescending { document ->
+                            document.getTimestamp("timestamp")
+                                ?.toDate()
+                                ?.time
+                                ?: document.getTimestamp("createdAt")
+                                    ?.toDate()
+                                    ?.time
+                                ?: 0L
+                        }
+
+                    displayInstantRideRequests(availableRequests)
+                }
+    }
+
+    // ============================================================
+    // DISPLAY ALL NUMBERED INSTANT REQUEST CARDS
+    // ============================================================
+
+    private fun displayInstantRideRequests(
+        requests: List<DocumentSnapshot>
+    ) {
+        instantRideRequestsContainer.removeAllViews()
+
+        if (requests.isEmpty()) {
+            instantRideRequestsEmptyText.visibility = View.VISIBLE
+            instantRideRequestsEmptyText.text =
+                "No available ride requests at the moment."
+            return
+        }
+
+        instantRideRequestsEmptyText.visibility = View.GONE
+
+        requests.forEachIndexed { index, document ->
+            val requestCard = createInstantRideRequestCard(
+                document,
+                index + 1
+            )
+
+            instantRideRequestsContainer.addView(requestCard)
+        }
+    }
+
+    // ============================================================
+    // CREATE AN INDIVIDUAL NUMBERED REQUEST CARD
+    // ============================================================
+
+    private fun createInstantRideRequestCard(
+        document: DocumentSnapshot,
+        requestNumber: Int
+    ): LinearLayout {
+
+        val rideId = document.id
+
+        val card = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(dp(16), dp(16), dp(16), dp(16))
+            background = GradientDrawable().apply {
+                setColor(Color.WHITE)
+                cornerRadius = dp(14).toFloat()
+                setStroke(dp(1), Color.rgb(225, 232, 238))
+            }
+            elevation = dp(3).toFloat()
+        }
+
+        val cardParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        ).apply {
+            bottomMargin = dp(14)
+        }
+
+        card.layoutParams = cardParams
+
+        // NUMBER AND TITLE
+        val heading = TextView(this).apply {
+            text = "#$requestNumber  |  Ride Request"
+            textSize = 18f
+            setTextColor(Color.rgb(20, 45, 65))
+            setTypeface(null, Typeface.BOLD)
+        }
+
+        card.addView(heading)
+
+        // PICKUP
+        val pickup = TextView(this).apply {
+            text = "Pickup: ${
+                document.getString("pickup") ?: "Unavailable"
+            }"
+            textSize = 15f
+            setTextColor(Color.rgb(65, 75, 85))
+            setPadding(0, dp(14), 0, 0)
+        }
+
+        card.addView(pickup)
+
+        // DESTINATION
+        val destination = TextView(this).apply {
+            text = "Destination: ${
+                document.getString("destination") ?: "Unavailable"
+            }"
+            textSize = 15f
+            setTextColor(Color.rgb(65, 75, 85))
+            setPadding(0, dp(9), 0, dp(14))
+        }
+
+        card.addView(destination)
+
+        // BUTTON ROW
+        val buttonRow = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.CENTER
+        }
+
+        val acceptButton = Button(this).apply {
+            text = "ACCEPT"
+            isAllCaps = true
+        }
+
+        val declineButton = Button(this).apply {
+            text = "DECLINE"
+            isAllCaps = true
+        }
+
+        val buttonParams = LinearLayout.LayoutParams(
+            0,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            1f
+        ).apply {
+            marginEnd = dp(6)
+        }
+
+        val declineParams = LinearLayout.LayoutParams(
+            0,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            1f
+        ).apply {
+            marginStart = dp(6)
+        }
+
+        buttonRow.addView(acceptButton, buttonParams)
+        buttonRow.addView(declineButton, declineParams)
+
+        card.addView(buttonRow)
+
+        // EACH BUTTON USES THIS CARD'S OWN FIRESTORE DOCUMENT ID.
+        acceptButton.setOnClickListener {
+            acceptRide(rideId, acceptButton, declineButton)
+        }
+
+        declineButton.setOnClickListener {
+            declineRide(rideId, acceptButton, declineButton)
+        }
+
+        return card
+    }
+
+    private fun dp(value: Int): Int {
+        return (value * resources.displayMetrics.density).toInt()
+    }
+
+    // ============================================================
+    // ACCEPT A SPECIFIC INSTANT RIDE REQUEST
+    // ============================================================
+
+    private fun acceptRide(
+        rideId: String,
+        acceptButton: Button,
+        declineButton: Button
+    ) {
+        val driverId = auth.currentUser?.uid
+
+        if (driverId == null) {
+            Toast.makeText(
+                this,
+                "Driver is not logged in",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        acceptButton.isEnabled = false
+        declineButton.isEnabled = false
+
+        db.collection("users")
+            .document(driverId)
             .get()
-            .addOnSuccessListener { documents ->
+            .addOnSuccessListener { driverDocument ->
 
-                // Do not display a request already assigned to a driver.
-                val unassignedRide = documents.documents.firstOrNull {
-                    val assignedDriverId =
-                        it.getString("driverId")
+                if (!driverDocument.exists()) {
+                    acceptButton.isEnabled = true
+                    declineButton.isEnabled = true
 
-                    assignedDriverId.isNullOrBlank()
+                    Toast.makeText(
+                        this,
+                        "Driver profile not found",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return@addOnSuccessListener
                 }
 
-                if (unassignedRide != null) {
-                    displayRide(unassignedRide)
-                } else {
-                    loadPostedRide()
+                val rideReference = db.collection("rides")
+                    .document(rideId)
+
+                db.runTransaction { transaction ->
+
+                    val rideDocument = transaction.get(rideReference)
+
+                    val status = rideDocument.getString("status")
+                    val assignedDriver =
+                        rideDocument.getString("driverId")
+
+                    // Do not accept a request that has already been
+                    // accepted, assigned or declined.
+                    if (
+                        status != "Searching" ||
+                        !assignedDriver.isNullOrBlank()
+                    ) {
+                        return@runTransaction false
+                    }
+
+                    val rideUpdates = hashMapOf<String, Any>(
+                        "driverId" to driverId,
+                        "driverName" to (
+                                driverDocument.getString("name") ?: ""
+                                ),
+                        "driverPhone" to (
+                                driverDocument.getString("phone") ?: ""
+                                ),
+                        "carMake" to (
+                                driverDocument.getString("carMake") ?: ""
+                                ),
+                        "carModel" to (
+                                driverDocument.getString("carModel") ?: ""
+                                ),
+                        "carColor" to (
+                                driverDocument.getString("carColor") ?: ""
+                                ),
+                        "carRegistration" to (
+                                driverDocument.getString("carRegistration") ?: ""
+                                ),
+                        "status" to "Accepted"
+                    )
+
+                    transaction.update(rideReference, rideUpdates)
+
+                    true
+                }.addOnSuccessListener { accepted ->
+
+                    if (accepted) {
+                        Toast.makeText(
+                            this,
+                            "Ride accepted successfully!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        loadDriverRide()
+                    } else {
+                        acceptButton.isEnabled = true
+                        declineButton.isEnabled = true
+
+                        Toast.makeText(
+                            this,
+                            "This request is no longer available.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }.addOnFailureListener { exception ->
+
+                    acceptButton.isEnabled = true
+                    declineButton.isEnabled = true
+
+                    Toast.makeText(
+                        this,
+                        "Failed to accept ride: ${exception.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
             .addOnFailureListener { exception ->
+
+                acceptButton.isEnabled = true
+                declineButton.isEnabled = true
+
                 Toast.makeText(
                     this,
-                    "Error loading ride requests: ${exception.message}",
+                    "Could not load driver profile: ${exception.message}",
                     Toast.LENGTH_LONG
                 ).show()
             }
     }
 
     // ============================================================
-    // LOAD THE DRIVER'S POSTED RIDE FOR THE RIDE CARD
+    // DECLINE A SPECIFIC INSTANT RIDE REQUEST
+    // ============================================================
+
+    private fun declineRide(
+        rideId: String,
+        acceptButton: Button,
+        declineButton: Button
+    ) {
+        val driverId = auth.currentUser?.uid
+
+        if (driverId == null) {
+            Toast.makeText(
+                this,
+                "Driver is not logged in",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+
+        acceptButton.isEnabled = false
+        declineButton.isEnabled = false
+
+        val rideReference = db.collection("rides")
+            .document(rideId)
+
+        db.runTransaction { transaction ->
+
+            val rideDocument = transaction.get(rideReference)
+
+            val status = rideDocument.getString("status")
+            val assignedDriver = rideDocument.getString("driverId")
+
+            // Only decline a request that is still available.
+            if (
+                status != "Searching" ||
+                !assignedDriver.isNullOrBlank()
+            ) {
+                return@runTransaction false
+            }
+
+            transaction.update(
+                rideReference,
+                mapOf(
+                    "status" to "Rejected",
+                    "rejectedByDriverId" to driverId,
+                    "rejectedAt" to FieldValue.serverTimestamp()
+                )
+            )
+
+            true
+        }.addOnSuccessListener { declined ->
+
+            if (declined) {
+                Toast.makeText(
+                    this,
+                    "Ride request declined.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                // The real-time listener will automatically remove
+                // this request from the available request list.
+            } else {
+                acceptButton.isEnabled = true
+                declineButton.isEnabled = true
+
+                Toast.makeText(
+                    this,
+                    "This request is no longer available.",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }.addOnFailureListener { exception ->
+
+            acceptButton.isEnabled = true
+            declineButton.isEnabled = true
+
+            Toast.makeText(
+                this,
+                "Failed to decline ride: ${exception.message}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    // ============================================================
+    // LOAD THE DRIVER'S POSTED RIDE FOR THE CURRENT RIDE CARD
     // ============================================================
 
     private fun loadPostedRide() {
@@ -517,15 +861,18 @@ class DriverDashboardActivity : AppCompatActivity() {
     // ============================================================
 
     private fun displayPostedRide(document: DocumentSnapshot) {
-        currentRideId = document.id
+        currentRideId = null
 
         pickupText.text =
-            "Posted ride pickup: ${document.getString("pickup") ?: "Unavailable"}"
+            "Posted ride pickup: ${
+                document.getString("pickup") ?: "Unavailable"
+            }"
 
         destinationText.text =
-            "Destination: ${document.getString("destination") ?: "Unavailable"}"
+            "Destination: ${
+                document.getString("destination") ?: "Unavailable"
+            }"
 
-        // Posted rides use booking approval, not the instant-ride buttons.
         acceptRideButton.isEnabled = false
         startRideButton.isEnabled = false
         completeRideButton.isEnabled = false
@@ -598,7 +945,6 @@ class DriverDashboardActivity : AppCompatActivity() {
 
                     if (snapshot == null) return@addSnapshotListener
 
-                    // Only approved bookings should have pickup markers.
                     val approvedBookings =
                         snapshot.documents.filter {
                             it.getString("status") == "Approved"
@@ -607,7 +953,6 @@ class DriverDashboardActivity : AppCompatActivity() {
                     val approvedBookingIds =
                         approvedBookings.map { it.id }.toSet()
 
-                    // Remove markers for rejected, pending, or removed bookings.
                     val obsoleteMarkerIds =
                         passengerPickupMarkers.keys.filter {
                             it !in approvedBookingIds
@@ -620,7 +965,6 @@ class DriverDashboardActivity : AppCompatActivity() {
                         passengerPickupMarkers.remove(bookingId)
                     }
 
-                    // Add or update each passenger's individual marker.
                     for (booking in approvedBookings) {
                         val latitude =
                             booking.getDouble("pickupLatitude")
@@ -630,8 +974,6 @@ class DriverDashboardActivity : AppCompatActivity() {
                             booking.getDouble("pickupLongitude")
                                 ?: continue
 
-                        // Ignore invalid coordinates rather than placing
-                        // markers at an arbitrary location.
                         if (
                             latitude !in -90.0..90.0 ||
                             longitude !in -180.0..180.0
@@ -691,36 +1033,25 @@ class DriverDashboardActivity : AppCompatActivity() {
     }
 
     // ============================================================
-    // DISPLAY AN INSTANT RIDE
+    // DISPLAY AN ACCEPTED OR IN-PROGRESS INSTANT RIDE
     // ============================================================
 
     private fun displayRide(document: DocumentSnapshot) {
-        // Do not stop the posted-ride booking listener here.
-        // Approved passenger markers must remain visible even when
-        // the ride card is displaying an instant ride request.
-
         currentRideId = document.id
 
-        val pickup = document.getString("pickup")
-        val destination = document.getString("destination")
-        val status = document.getString("status")
+        pickupText.text =
+            "Pickup: ${document.getString("pickup") ?: "Unavailable"}"
 
-        pickupText.text = "Pickup: $pickup"
-        destinationText.text = "Destination: $destination"
+        destinationText.text =
+            "Destination: ${
+                document.getString("destination") ?: "Unavailable"
+            }"
 
-        when (status) {
-            "Searching" -> {
-                acceptRideButton.isEnabled = true
-                startRideButton.isEnabled = false
-                completeRideButton.isEnabled = false
+        acceptRideButton.isEnabled = false
 
-                acceptRideButton.setOnClickListener {
-                    acceptRide()
-                }
-            }
+        when (document.getString("status")) {
 
             "Accepted" -> {
-                acceptRideButton.isEnabled = false
                 startRideButton.isEnabled = true
                 completeRideButton.isEnabled = false
 
@@ -730,7 +1061,6 @@ class DriverDashboardActivity : AppCompatActivity() {
             }
 
             "In Progress" -> {
-                acceptRideButton.isEnabled = false
                 startRideButton.isEnabled = false
                 completeRideButton.isEnabled = true
 
@@ -739,102 +1069,11 @@ class DriverDashboardActivity : AppCompatActivity() {
                 }
             }
 
-            "Completed" -> {
-                acceptRideButton.isEnabled = false
+            else -> {
                 startRideButton.isEnabled = false
                 completeRideButton.isEnabled = false
-
-                pickupText.text = "Pickup: Ride completed"
-                destinationText.text = "Destination: Ride completed"
             }
         }
-    }
-
-    // ============================================================
-    // ACCEPT INSTANT RIDE
-    // ============================================================
-
-    private fun acceptRide() {
-        val rideId = currentRideId
-        val driverId = auth.currentUser?.uid
-
-        if (rideId == null || driverId == null) {
-            Toast.makeText(
-                this,
-                "Unable to accept ride",
-                Toast.LENGTH_LONG
-            ).show()
-            return
-        }
-
-        acceptRideButton.isEnabled = false
-
-        db.collection("users")
-            .document(driverId)
-            .get()
-            .addOnSuccessListener { driverDocument ->
-
-                if (!driverDocument.exists()) {
-                    acceptRideButton.isEnabled = true
-                    Toast.makeText(
-                        this,
-                        "Driver profile not found",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    return@addOnSuccessListener
-                }
-
-                val rideUpdates = hashMapOf<String, Any>(
-                    "driverId" to driverId,
-                    "driverName" to (
-                            driverDocument.getString("name") ?: ""
-                            ),
-                    "driverPhone" to (
-                            driverDocument.getString("phone") ?: ""
-                            ),
-                    "carMake" to (
-                            driverDocument.getString("carMake") ?: ""
-                            ),
-                    "carModel" to (
-                            driverDocument.getString("carModel") ?: ""
-                            ),
-                    "carColor" to (
-                            driverDocument.getString("carColor") ?: ""
-                            ),
-                    "carRegistration" to (
-                            driverDocument.getString("carRegistration") ?: ""
-                            ),
-                    "status" to "Accepted"
-                )
-
-                db.collection("rides")
-                    .document(rideId)
-                    .update(rideUpdates)
-                    .addOnSuccessListener {
-                        Toast.makeText(
-                            this,
-                            "Ride accepted successfully!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        loadDriverRide()
-                    }
-                    .addOnFailureListener { exception ->
-                        acceptRideButton.isEnabled = true
-                        Toast.makeText(
-                            this,
-                            "Failed to accept ride: ${exception.message}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-            }
-            .addOnFailureListener { exception ->
-                acceptRideButton.isEnabled = true
-                Toast.makeText(
-                    this,
-                    "Could not load driver profile: ${exception.message}",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
     }
 
     // ============================================================
@@ -869,10 +1108,12 @@ class DriverDashboardActivity : AppCompatActivity() {
                     "Ride started!",
                     Toast.LENGTH_SHORT
                 ).show()
+
                 loadDriverRide()
             }
             .addOnFailureListener { exception ->
                 startRideButton.isEnabled = true
+
                 Toast.makeText(
                     this,
                     "Failed to start ride: ${exception.message}",
@@ -915,20 +1156,19 @@ class DriverDashboardActivity : AppCompatActivity() {
                 ).show()
 
                 currentRideId = null
-                pickupText.text = "Pickup: Ride completed"
-                destinationText.text = "Destination: Ride completed"
 
-                acceptRideButton.isEnabled = false
+                pickupText.text = "Pickup: No active ride"
+                destinationText.text = "Destination: -"
+
                 startRideButton.isEnabled = false
                 completeRideButton.isEnabled = false
 
-                // Refresh the ride card; do not remove posted-ride
-                // passenger markers unless the posted ride is gone.
                 loadDriverRide()
                 loadPostedRideForMarkers()
             }
             .addOnFailureListener { exception ->
                 completeRideButton.isEnabled = true
+
                 Toast.makeText(
                     this,
                     "Failed to complete ride: ${exception.message}",
@@ -938,13 +1178,13 @@ class DriverDashboardActivity : AppCompatActivity() {
     }
 
     // ============================================================
-    // NO RIDE AVAILABLE
+    // NO CURRENT RIDE
     // ============================================================
 
     private fun showNoRide() {
         currentRideId = null
 
-        pickupText.text = "Pickup: No rides available"
+        pickupText.text = "Pickup: No active ride"
         destinationText.text = "Destination: -"
 
         acceptRideButton.isEnabled = false
@@ -1081,15 +1321,15 @@ class DriverDashboardActivity : AppCompatActivity() {
     // ============================================================
 
     override fun onDestroy() {
-        // Stop the Firestore listener and remove passenger markers.
+        instantRideRequestsListener?.remove()
+        instantRideRequestsListener = null
+
         stopApprovedPassengerPickupTracking()
 
-        // Stop publishing driver location when the activity is destroyed.
         if (::locationManager.isInitialized) {
             locationManager.removeUpdates(driverLocationListener)
         }
 
-        // Remove the driver's own marker.
         driverLocationMarker?.let { marker ->
             if (::driverMap.isInitialized) {
                 driverMap.overlays.remove(marker)

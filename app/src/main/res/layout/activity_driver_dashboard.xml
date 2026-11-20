@@ -26,6 +26,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+            <!-- DASHBOARD TITLE -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,10 +46,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_gravity="center_horizontal" />
 
-            <!-- LEGACY ACTION BUTTONS
-                 Hidden because navigation is now at the bottom.
-                 IDs are retained for existing Kotlin references. -->
-
+            <!-- LEGACY NAVIGATION BUTTONS -->
             <Button
                 android:id="@+id/accountButton"
                 android:layout_width="match_parent"
@@ -70,7 +68,7 @@
                 android:text="BOOKING REQUESTS"
                 android:visibility="gone" />
 
-            <!-- RIDE REQUEST SECTION -->
+            <!-- AVAILABLE INSTANT RIDE REQUESTS -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,6 +77,35 @@
                 android:textSize="21sp"
                 android:textStyle="bold"
                 android:layout_marginTop="25dp" />
+
+            <TextView
+                android:id="@+id/instantRideRequestsEmptyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No available ride requests at the moment."
+                android:textColor="@color/text_secondary"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginTop="12dp" />
+
+            <!-- DYNAMIC REQUEST CARDS WILL BE ADDED HERE -->
+            <LinearLayout
+                android:id="@+id/instantRideRequestsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="12dp" />
+
+            <!-- CURRENT RIDE SECTION -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Current Ride"
+                android:textColor="@color/text_primary"
+                android:textSize="21sp"
+                android:textStyle="bold"
+                android:layout_marginTop="28dp" />
 
             <LinearLayout
                 android:id="@+id/rideRequestContainer"
@@ -94,7 +121,7 @@
                     android:id="@+id/pickupText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pickup: Waiting..."
+                    android:text="Pickup: No active ride"
                     android:textColor="@color/text_primary"
                     android:textSize="17sp" />
 
@@ -102,24 +129,25 @@
                     android:id="@+id/destinationText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Destination: Waiting..."
+                    android:text="Destination: -"
                     android:textColor="@color/text_primary"
                     android:textSize="17sp"
                     android:layout_marginTop="12dp" />
 
+                <!-- ACCEPT IS HANDLED BY EACH DYNAMIC REQUEST CARD -->
                 <Button
                     android:id="@+id/acceptRideButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:text="ACCEPT RIDE" />
+                    android:text="ACCEPT RIDE"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/startRideButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="START RIDE"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="18dp"
                     android:enabled="false" />
 
                 <Button

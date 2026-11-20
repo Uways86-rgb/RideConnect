@@ -988,6 +988,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
     // RIDE STATUS LISTENER
     // ---------------------------------------------------------
 
+
     private fun listenForRideStatus(
         rideId: String,
         statusText: TextView,
@@ -1025,11 +1026,13 @@ class PassengerDashboardActivity : AppCompatActivity() {
                     "Pickup: $pickup\nDestination: $destination"
 
                 when (status) {
+
                     "Searching" -> {
                         statusText.text = "🔍 Searching for a driver..."
                         driverNameText.text = ""
                         driverPhoneText.text = ""
                         driverCarText.text = ""
+
                         stopDriverLocationTracking()
                     }
 
@@ -1050,23 +1053,44 @@ class PassengerDashboardActivity : AppCompatActivity() {
                                 driverPhoneText,
                                 driverCarText
                             )
+
                             startDriverLocationTracking(driverId)
+
                         } else {
                             driverNameText.text =
                                 "🚘 Driver information unavailable"
                             driverPhoneText.text = ""
                             driverCarText.text = ""
+
                             stopDriverLocationTracking()
                         }
                     }
 
+                    "Rejected" -> {
+                        statusText.text = "❌ Ride Request Declined"
+
+                        driverNameText.text =
+                            "Unfortunately, the driver declined your request."
+
+                        driverPhoneText.text =
+                            "You can submit another ride request."
+
+                        driverCarText.text = ""
+
+                        stopDriverLocationTracking()
+                    }
+
                     "Completed" -> {
                         statusText.text = "✅ Ride Completed"
+
                         driverNameText.text =
                             "Your ride has been completed."
+
                         driverPhoneText.text =
                             "View it in Ride History."
+
                         driverCarText.text = ""
+
                         stopDriverLocationTracking()
                     }
 
@@ -1075,11 +1099,13 @@ class PassengerDashboardActivity : AppCompatActivity() {
                         driverNameText.text = ""
                         driverPhoneText.text = ""
                         driverCarText.text = ""
+
                         stopDriverLocationTracking()
                     }
                 }
             }
     }
+
 
     // ---------------------------------------------------------
     // DRIVER LOCATION TRACKING
