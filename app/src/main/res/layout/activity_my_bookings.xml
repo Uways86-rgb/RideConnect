@@ -1,40 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="@color/screen_background">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="📋 My Bookings"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:paddingBottom="10dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="View and manage your ride bookings"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:paddingBottom="20dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/bookingsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="📋 My Bookings"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:textColor="#172B4D"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="View and manage your ride bookings"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingBottom="20dp"
+                android:textColor="#64748B"/>
+
+            <LinearLayout
+                android:id="@+id/bookingsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- FIXED PASSENGER BOTTOM NAVIGATION -->
+
+    <LinearLayout
+        android:id="@+id/bookingsBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <TextView
+            android:id="@+id/bookingsHomeNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠\nHome"
+            android:textSize="13sp"
+            android:textColor="#64748B"/>
+
+        <TextView
+            android:id="@+id/bookingsExploreNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🔎\nExplore"
+            android:textSize="13sp"
+            android:textColor="#64748B"/>
+
+        <TextView
+            android:id="@+id/bookingsBookingsNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📋\nBookings"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="#0F766E"/>
+
+        <TextView
+            android:id="@+id/bookingsAccountNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👤\nAccount"
+            android:textSize="13sp"
+            android:textColor="#64748B"/>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

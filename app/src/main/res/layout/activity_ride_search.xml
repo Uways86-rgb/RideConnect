@@ -311,8 +311,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="⌂\nHome"
-            android:textSize="12sp"
+            android:text="🏠\nHome"
+            android:textSize="13sp"
             android:textColor="@color/text_secondary"/>
 
         <TextView
@@ -321,8 +321,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="⌕\nExplore"
-            android:textSize="12sp"
+            android:text="🔎\nExplore"
+            android:textSize="13sp"
             android:textStyle="bold"
             android:textColor="@color/teal"/>
 
@@ -332,8 +332,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="▣\nBookings"
-            android:textSize="12sp"
+            android:text="📋\nBookings"
+            android:textSize="13sp"
             android:textColor="@color/text_secondary"/>
 
         <TextView
@@ -342,8 +342,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="●\nAccount"
-            android:textSize="12sp"
+            android:text="👤\nAccount"
+            android:textSize="13sp"
             android:textColor="@color/text_secondary"/>
 
     </LinearLayout>

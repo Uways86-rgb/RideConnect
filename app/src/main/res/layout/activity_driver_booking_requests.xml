@@ -1,71 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#FFFFFF">
 
-    <LinearLayout
+    <!-- SCROLLABLE BOOKING REQUESTS CONTENT -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <!-- BMW IMAGE HEADER -->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginStart="-24dp"
-            android:layout_marginEnd="-24dp"
-            android:background="@color/navy">
-
-            <ImageView
-                android:id="@+id/bookingRequestsCarImage"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/rideconnect_splash"
-                android:scaleType="fitXY"
-                android:contentDescription="BMW car photograph"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center_horizontal|bottom"
-                android:background="#55041E42"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="18dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Booking Requests"
-                    android:textSize="27sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Passengers requesting your posted rides"
-                    android:textSize="12sp"
-                    android:textColor="#F5B82E"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"/>
-
-            </LinearLayout>
-
-        </FrameLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/bookingsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="30dp"/>
+            android:padding="24dp">
+
+            <!-- BMW IMAGE HEADER -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginStart="-24dp"
+                android:layout_marginEnd="-24dp"
+                android:background="@color/navy">
+
+                <ImageView
+                    android:id="@+id/bookingRequestsCarImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/rideconnect_splash"
+                    android:scaleType="fitXY"
+                    android:contentDescription="BMW car photograph"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal|bottom"
+                    android:background="#55041E42"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Booking Requests"
+                        android:textSize="27sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Passengers requesting your posted rides"
+                        android:textSize="12sp"
+                        android:textColor="#F5B82E"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- BOOKING CARDS ARE ADDED HERE -->
+            <LinearLayout
+                android:id="@+id/bookingsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- DRIVER BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:id="@+id/driverRequestsHomeNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠&#10;Home"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/driverRequestsPostRideNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="➕&#10;Post Ride"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/driverRequestsBookingsNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📋&#10;Bookings"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/teal"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/driverRequestsAccountNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👤&#10;Account"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

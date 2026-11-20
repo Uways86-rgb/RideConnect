@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -311,5 +318,68 @@
             android:layout_marginBottom="30dp"/>
 
     </LinearLayout>
+    </ScrollView>
 
-</ScrollView>
+    <!-- BOTTOM NAVIGATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:id="@+id/driverPostHomeNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠\nHome"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/driverPostRideNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="➕\nPost Ride"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/teal"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/driverPostBookingsNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📋\nBookings"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/driverPostAccountNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👤\nAccount"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </LinearLayout>
+
+</LinearLayout>

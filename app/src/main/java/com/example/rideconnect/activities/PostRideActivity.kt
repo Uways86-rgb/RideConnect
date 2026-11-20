@@ -46,6 +46,11 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 import org.osmdroid.util.GeoPoint as OsmGeoPoint
 
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import android.content.Intent
+
 class PostRideActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
@@ -106,6 +111,8 @@ class PostRideActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_ride)
+
+        setupBottomNavigation()
 
         db = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
@@ -174,6 +181,62 @@ class PostRideActivity : AppCompatActivity() {
 
         pickupInput.addTextChangedListener(createLocationTextWatcher(true))
         destinationInput.addTextChangedListener(createLocationTextWatcher(false))
+    }
+
+    // ------------------------------------------------------------
+// BOTTOM NAVIGATION AND SYSTEM BAR INSETS
+// ------------------------------------------------------------
+
+    private fun setupBottomNavigation() {
+
+        val contentContainer = findViewById<View>(android.R.id.content)
+
+        val initialLeftPadding = contentContainer.paddingLeft
+        val initialTopPadding = contentContainer.paddingTop
+        val initialRightPadding = contentContainer.paddingRight
+        val initialBottomPadding = contentContainer.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(contentContainer) { view, insets ->
+
+            val navigationBarInsets =
+                insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+
+            view.setPadding(
+                initialLeftPadding,
+                initialTopPadding,
+                initialRightPadding,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(contentContainer)
+
+        findViewById<TextView>(R.id.driverPostHomeNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, DriverDashboardActivity::class.java)
+            )
+            finish()
+        }
+
+        findViewById<TextView>(R.id.driverPostRideNavItem).setOnClickListener {
+            // Already on the Post Ride screen.
+        }
+
+        findViewById<TextView>(R.id.driverPostBookingsNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, DriverBookingRequestsActivity::class.java)
+            )
+            finish()
+        }
+
+        findViewById<TextView>(R.id.driverPostAccountNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, DriverAccountActivity::class.java)
+            )
+            finish()
+        }
     }
 
     // ------------------------------------------------------------

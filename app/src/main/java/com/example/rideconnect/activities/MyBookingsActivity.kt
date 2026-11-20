@@ -1,17 +1,20 @@
+
 package com.example.rideconnect.activities
 
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.rideconnect.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.Query
 import java.util.Locale
 
 class MyBookingsActivity : AppCompatActivity() {
@@ -24,17 +27,91 @@ class MyBookingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(
-            R.layout.activity_my_bookings
-        )
+        setContentView(R.layout.activity_my_bookings)
+
+        // ------------------------------------------------------------
+        // DYNAMIC ANDROID SYSTEM NAVIGATION BAR INSETS
+        // ------------------------------------------------------------
+
+        val contentContainer = findViewById<View>(android.R.id.content)
+
+        val initialLeftPadding = contentContainer.paddingLeft
+        val initialTopPadding = contentContainer.paddingTop
+        val initialRightPadding = contentContainer.paddingRight
+        val initialBottomPadding = contentContainer.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(contentContainer) { view, insets ->
+
+            val navigationBarInsets =
+                insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+
+            view.setPadding(
+                initialLeftPadding,
+                initialTopPadding,
+                initialRightPadding,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(contentContainer)
+
+        // ------------------------------------------------------------
+        // FIREBASE
+        // ------------------------------------------------------------
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        bookingsContainer =
-            findViewById(
-                R.id.bookingsContainer
-            )
+        bookingsContainer = findViewById(R.id.bookingsContainer)
+
+        // ------------------------------------------------------------
+        // BOTTOM NAVIGATION
+        // ------------------------------------------------------------
+
+        // HOME
+        findViewById<TextView>(R.id.bookingsHomeNavItem)
+            .setOnClickListener {
+                startActivity(
+                    android.content.Intent(
+                        this,
+                        PassengerDashboardActivity::class.java
+                    )
+                )
+            }
+
+        // EXPLORE
+        findViewById<TextView>(R.id.bookingsExploreNavItem)
+            .setOnClickListener {
+                startActivity(
+                    android.content.Intent(
+                        this,
+                        RideSearchActivity::class.java
+                    )
+                )
+            }
+
+        // BOOKINGS
+        findViewById<TextView>(R.id.bookingsBookingsNavItem)
+            .setOnClickListener {
+                // Already on Bookings screen.
+            }
+
+        // ACCOUNT
+        findViewById<TextView>(R.id.bookingsAccountNavItem)
+            .setOnClickListener {
+                startActivity(
+                    android.content.Intent(
+                        this,
+                        PassengerAccountActivity::class.java
+                    )
+                )
+            }
+
+        // ------------------------------------------------------------
+        // LOAD BOOKINGS
+        // ------------------------------------------------------------
 
         loadMyBookings()
     }
@@ -45,8 +122,7 @@ class MyBookingsActivity : AppCompatActivity() {
 
     private fun loadMyBookings() {
 
-        val userId =
-            auth.currentUser?.uid
+        val userId = auth.currentUser?.uid
 
         if (userId == null) {
 
@@ -61,24 +137,15 @@ class MyBookingsActivity : AppCompatActivity() {
 
         bookingsContainer.removeAllViews()
 
-        val loadingText =
-            TextView(this)
+        val loadingText = TextView(this)
 
-        loadingText.text =
-            "Loading your bookings..."
+        loadingText.text = "Loading your bookings..."
+        loadingText.textSize = 18f
 
-        loadingText.textSize =
-            18f
-
-        bookingsContainer.addView(
-            loadingText
-        )
+        bookingsContainer.addView(loadingText)
 
         db.collection("bookings")
-            .whereEqualTo(
-                "passengerId",
-                userId
-            )
+            .whereEqualTo("passengerId", userId)
             .get()
             .addOnSuccessListener { documents ->
 
@@ -86,34 +153,22 @@ class MyBookingsActivity : AppCompatActivity() {
 
                 if (documents.isEmpty) {
 
-                    val noBookingsText =
-                        TextView(this)
+                    val noBookingsText = TextView(this)
 
-                    noBookingsText.text =
-                        "You have no bookings yet."
-
-                    noBookingsText.textSize =
-                        18f
+                    noBookingsText.text = "You have no bookings yet."
+                    noBookingsText.textSize = 18f
 
                     noBookingsText.setPadding(
-                        10,
-                        30,
-                        10,
-                        30
+                        10, 30, 10, 30
                     )
 
-                    bookingsContainer.addView(
-                        noBookingsText
-                    )
+                    bookingsContainer.addView(noBookingsText)
 
                     return@addOnSuccessListener
                 }
 
                 for (document in documents) {
-
-                    addBookingCard(
-                        document
-                    )
+                    addBookingCard(document)
                 }
             }
             .addOnFailureListener { exception ->
@@ -133,132 +188,86 @@ class MyBookingsActivity : AppCompatActivity() {
     // ============================================================
 
     private fun addBookingCard(
-        document:
-        com.google.firebase.firestore.DocumentSnapshot
+        document: com.google.firebase.firestore.DocumentSnapshot
     ) {
 
-        val card =
-            LinearLayout(this)
+        val card = LinearLayout(this)
 
-        card.orientation =
-            LinearLayout.VERTICAL
+        card.orientation = LinearLayout.VERTICAL
 
         card.setPadding(
-            25,
-            25,
-            25,
-            25
+            25, 25, 25, 25
         )
 
-        card.setBackgroundColor(
-            0xFFEEEEEE.toInt()
-        )
+        card.setBackgroundColor(0xFFEEEEEE.toInt())
 
         val pickup =
-            document.getString(
-                "pickup"
-            ) ?: ""
+            document.getString("pickup") ?: ""
 
         val destination =
-            document.getString(
-                "destination"
-            ) ?: ""
+            document.getString("destination") ?: ""
 
         val driverName =
-            document.getString(
-                "driverName"
-            ) ?: "Unknown driver"
+            document.getString("driverName") ?: "Unknown driver"
 
         val driverPhone =
-            document.getString(
-                "driverPhone"
-            ) ?: ""
+            document.getString("driverPhone") ?: ""
 
         val carMake =
-            document.getString(
-                "carMake"
-            ) ?: ""
+            document.getString("carMake") ?: ""
 
         val carModel =
-            document.getString(
-                "carModel"
-            ) ?: ""
+            document.getString("carModel") ?: ""
 
         val carColor =
-            document.getString(
-                "carColor"
-            ) ?: ""
+            document.getString("carColor") ?: ""
 
         val carRegistration =
-            document.getString(
-                "carRegistration"
-            ) ?: ""
+            document.getString("carRegistration") ?: ""
 
         val date =
-            document.getString(
-                "date"
-            ) ?: ""
+            document.getString("date") ?: ""
 
         val time =
-            document.getString(
-                "time"
-            ) ?: ""
+            document.getString("time") ?: ""
 
         val price =
-            document.getDouble(
-                "pricePerPassenger"
-            ) ?: 0.0
+            (document.get("pricePerPassenger") as? Number)
+                ?.toDouble() ?: 0.0
 
         val status =
-            document.getString(
-                "status"
-            ) ?: "Unknown"
+            document.getString("status") ?: "Unknown"
 
         // --------------------------------------------------------
         // ROUTE
         // --------------------------------------------------------
 
-        val routeText =
-            TextView(this)
+        val routeText = TextView(this)
 
-        routeText.text =
-            "🚗 $pickup → $destination"
-
-        routeText.textSize =
-            20f
+        routeText.text = "🚗 $pickup → $destination"
+        routeText.textSize = 20f
 
         routeText.setTypeface(
             null,
             Typeface.BOLD
         )
 
-        card.addView(
-            routeText
-        )
+        card.addView(routeText)
 
         // --------------------------------------------------------
         // DRIVER
         // --------------------------------------------------------
 
-        val driverText =
-            TextView(this)
+        val driverText = TextView(this)
 
-        driverText.text =
-            "Driver: $driverName"
-
-        driverText.textSize =
-            17f
+        driverText.text = "Driver: $driverName"
+        driverText.textSize = 17f
 
         driverText.setPadding(
-            0,
-            15,
-            0,
-            0
+            0, 15, 0, 0
         )
 
-        card.addView(
-            driverText
-        )
+        card.addView(driverText)
 
         // --------------------------------------------------------
         // DRIVER PHONE
@@ -266,105 +275,72 @@ class MyBookingsActivity : AppCompatActivity() {
 
         if (driverPhone.isNotEmpty()) {
 
-            val phoneText =
-                TextView(this)
+            val phoneText = TextView(this)
 
-            phoneText.text =
-                "📞 Phone: $driverPhone"
-
-            phoneText.textSize =
-                16f
+            phoneText.text = "📞 Phone: $driverPhone"
+            phoneText.textSize = 16f
 
             phoneText.setPadding(
-                0,
-                8,
-                0,
-                0
+                0, 8, 0, 0
             )
 
-            card.addView(
-                phoneText
-            )
+            card.addView(phoneText)
         }
 
         // --------------------------------------------------------
         // VEHICLE
         // --------------------------------------------------------
 
-        val vehicleText =
-            TextView(this)
+        val vehicleText = TextView(this)
 
         vehicleText.text =
             "Vehicle: $carMake $carModel ($carColor)"
 
-        vehicleText.textSize =
-            16f
+        vehicleText.textSize = 16f
 
         vehicleText.setPadding(
-            0,
-            8,
-            0,
-            0
+            0, 8, 0, 0
         )
 
-        card.addView(
-            vehicleText
-        )
+        card.addView(vehicleText)
 
         // --------------------------------------------------------
         // CAR REGISTRATION
         // --------------------------------------------------------
 
-        val registrationText =
-            TextView(this)
+        val registrationText = TextView(this)
 
         registrationText.text =
             "🚘 Car Number: $carRegistration"
 
-        registrationText.textSize =
-            16f
+        registrationText.textSize = 16f
 
         registrationText.setPadding(
-            0,
-            8,
-            0,
-            0
+            0, 8, 0, 0
         )
 
-        card.addView(
-            registrationText
-        )
+        card.addView(registrationText)
 
         // --------------------------------------------------------
         // DATE AND TIME
         // --------------------------------------------------------
 
-        val dateTimeText =
-            TextView(this)
+        val dateTimeText = TextView(this)
 
-        dateTimeText.text =
-            "📅 $date    🕐 $time"
-
-        dateTimeText.textSize =
-            16f
+        dateTimeText.text = "📅 $date    🕐 $time"
+        dateTimeText.textSize = 16f
 
         dateTimeText.setPadding(
-            0,
-            8,
-            0,
-            0
+            0, 8, 0, 0
         )
 
-        card.addView(
-            dateTimeText
-        )
+        card.addView(dateTimeText)
 
         // --------------------------------------------------------
         // PRICE
         // --------------------------------------------------------
 
-        val priceText =
-            TextView(this)
+        val priceText = TextView(this)
 
         priceText.text =
             "💰 Price: Rs ${
@@ -375,8 +351,7 @@ class MyBookingsActivity : AppCompatActivity() {
                 )
             } per passenger"
 
-        priceText.textSize =
-            17f
+        priceText.textSize = 17f
 
         priceText.setTypeface(
             null,
@@ -384,44 +359,36 @@ class MyBookingsActivity : AppCompatActivity() {
         )
 
         priceText.setPadding(
-            0,
-            8,
-            0,
-            0
+            0, 8, 0, 0
         )
 
-        card.addView(
-            priceText
-        )
+        card.addView(priceText)
 
         // --------------------------------------------------------
         // STATUS
         // --------------------------------------------------------
 
-        val statusText =
-            TextView(this)
+        val statusText = TextView(this)
 
-        statusText.text =
-            when (status) {
+        statusText.text = when (status) {
 
-                "Pending" ->
-                    "🟡 Status: PENDING"
+            "Pending" ->
+                "🟡 Status: PENDING"
 
-                "Approved" ->
-                    "🟢 Status: APPROVED"
+            "Approved" ->
+                "🟢 Status: APPROVED"
 
-                "Rejected" ->
-                    "🔴 Status: REJECTED"
+            "Rejected" ->
+                "🔴 Status: REJECTED"
 
-                "Cancelled" ->
-                    "⚫ Status: CANCELLED"
+            "Cancelled" ->
+                "⚫ Status: CANCELLED"
 
-                else ->
-                    "Status: $status"
-            }
+            else ->
+                "Status: $status"
+        }
 
-        statusText.textSize =
-            17f
+        statusText.textSize = 17f
 
         statusText.setTypeface(
             null,
@@ -429,15 +396,10 @@ class MyBookingsActivity : AppCompatActivity() {
         )
 
         statusText.setPadding(
-            0,
-            12,
-            0,
-            0
+            0, 12, 0, 0
         )
 
-        card.addView(
-            statusText
-        )
+        card.addView(statusText)
 
         // --------------------------------------------------------
         // CANCEL BUTTON
@@ -448,55 +410,40 @@ class MyBookingsActivity : AppCompatActivity() {
             status == "Approved"
         ) {
 
-            val cancelButton =
-                Button(this)
+            val cancelButton = Button(this)
 
-            cancelButton.text =
-                "CANCEL BOOKING"
+            cancelButton.text = "CANCEL BOOKING"
 
             cancelButton.setOnClickListener {
-
-                cancelBooking(
-                    document.id
-                )
+                cancelBooking(document.id)
             }
 
-            card.addView(
-                cancelButton
-            )
+            card.addView(cancelButton)
         }
 
         // --------------------------------------------------------
         // CARD MARGIN
         // --------------------------------------------------------
 
-        val layoutParams =
-            LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
+        val layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
 
         layoutParams.setMargins(
-            0,
-            0,
-            0,
-            25
+            0, 0, 0, 25
         )
 
-        card.layoutParams =
-            layoutParams
+        card.layoutParams = layoutParams
 
-        bookingsContainer.addView(
-            card
-        )
+        bookingsContainer.addView(card)
     }
 
     // ============================================================
     // CANCEL BOOKING
     // ============================================================
-    private fun cancelBooking(
-        bookingId: String
-    ) {
+
+    private fun cancelBooking(bookingId: String) {
 
         val passengerId = auth.currentUser?.uid
 
@@ -525,12 +472,11 @@ class MyBookingsActivity : AppCompatActivity() {
                 transaction.get(bookingReference)
 
             if (!bookingSnapshot.exists()) {
-                throw Exception(
-                    "Booking no longer exists."
-                )
+                throw Exception("Booking no longer exists.")
             }
 
-            // Verify that this booking belongs to the logged-in passenger.
+            // Verify booking ownership.
+
             val bookingPassengerId =
                 bookingSnapshot.getString("passengerId") ?: ""
 
@@ -556,9 +502,7 @@ class MyBookingsActivity : AppCompatActivity() {
                 bookingSnapshot.getString("rideId")
 
             if (rideId.isNullOrBlank()) {
-                throw Exception(
-                    "Ride information is missing."
-                )
+                throw Exception("Ride information is missing.")
             }
 
             // ----------------------------------------------------
@@ -589,9 +533,7 @@ class MyBookingsActivity : AppCompatActivity() {
                     transaction.get(rideReference)
 
                 if (!rideSnapshot.exists()) {
-                    throw Exception(
-                        "Ride no longer exists."
-                    )
+                    throw Exception("Ride no longer exists.")
                 }
 
                 val availableSeats =
@@ -608,11 +550,10 @@ class MyBookingsActivity : AppCompatActivity() {
                     )
                 }
 
-                val newAvailableSeats =
-                    minOf(
-                        availableSeats + numberOfPassengers,
-                        totalSeats
-                    )
+                val newAvailableSeats = minOf(
+                    availableSeats + numberOfPassengers,
+                    totalSeats
+                )
 
                 transaction.update(
                     rideReference,
@@ -656,6 +597,4 @@ class MyBookingsActivity : AppCompatActivity() {
             ).show()
         }
     }
-
-
 }

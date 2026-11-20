@@ -13,6 +13,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FieldValue
 import java.util.Locale
 
+import android.content.Intent
+import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+
 class DriverBookingRequestsActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
@@ -27,6 +32,8 @@ class DriverBookingRequestsActivity : AppCompatActivity() {
             R.layout.activity_driver_booking_requests
         )
 
+        setupBottomNavigation()
+
         db =
             FirebaseFirestore.getInstance()
 
@@ -39,6 +46,66 @@ class DriverBookingRequestsActivity : AppCompatActivity() {
             )
 
         loadBookingRequests()
+    }
+
+    // ============================================================
+// BOTTOM NAVIGATION AND SYSTEM BAR INSETS
+// ============================================================
+
+    private fun setupBottomNavigation() {
+
+        val contentContainer = findViewById<View>(android.R.id.content)
+
+        val initialLeftPadding = contentContainer.paddingLeft
+        val initialTopPadding = contentContainer.paddingTop
+        val initialRightPadding = contentContainer.paddingRight
+        val initialBottomPadding = contentContainer.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(contentContainer) { view, insets ->
+
+            val navigationBarInsets =
+                insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+
+            view.setPadding(
+                initialLeftPadding,
+                initialTopPadding,
+                initialRightPadding,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(contentContainer)
+
+        findViewById<TextView>(R.id.driverRequestsHomeNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, DriverDashboardActivity::class.java)
+                )
+                finish()
+            }
+
+        findViewById<TextView>(R.id.driverRequestsPostRideNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, PostRideActivity::class.java)
+                )
+                finish()
+            }
+
+        findViewById<TextView>(R.id.driverRequestsBookingsNavItem)
+            .setOnClickListener {
+                // Already on Booking Requests.
+            }
+
+        findViewById<TextView>(R.id.driverRequestsAccountNavItem)
+            .setOnClickListener {
+                startActivity(
+                    Intent(this, DriverAccountActivity::class.java)
+                )
+                finish()
+            }
     }
 
     // ============================================================

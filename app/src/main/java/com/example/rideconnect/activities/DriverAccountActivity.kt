@@ -1,20 +1,20 @@
 package com.example.rideconnect.activities
 
 import android.content.Intent
-
 import android.app.DatePickerDialog
 import java.util.Calendar
-
 import android.app.AlertDialog
 import android.text.InputType
-import com.google.firebase.auth.EmailAuthProvider
-
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.rideconnect.R
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -28,11 +28,9 @@ class DriverAccountActivity : AppCompatActivity() {
     private lateinit var emailInput: EditText
     private lateinit var phoneInput: EditText
 
-
     // Driving information
     private lateinit var registrationDateInput: EditText
     private lateinit var drivingExperienceInput: EditText
-
 
     // Vehicle information
     private lateinit var carMakeInput: EditText
@@ -44,12 +42,35 @@ class DriverAccountActivity : AppCompatActivity() {
     private lateinit var saveButton: Button
     private lateinit var selectedLocationsButton: Button
     private lateinit var logoutButton: Button
-
     private lateinit var deleteAccountButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_driver_account)
+
+        // Keep the screen content above the phone's system navigation bar.
+        val contentContainer = findViewById<View>(android.R.id.content)
+
+        val initialLeftPadding = contentContainer.paddingLeft
+        val initialTopPadding = contentContainer.paddingTop
+        val initialRightPadding = contentContainer.paddingRight
+        val initialBottomPadding = contentContainer.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(contentContainer) { view, insets ->
+            val navigationBarInsets =
+                insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+
+            view.setPadding(
+                initialLeftPadding,
+                initialTopPadding,
+                initialRightPadding,
+                initialBottomPadding + navigationBarInsets.bottom
+            )
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(contentContainer)
 
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
@@ -60,11 +81,8 @@ class DriverAccountActivity : AppCompatActivity() {
         phoneInput = findViewById(R.id.phoneInput)
 
         // Driving information
-        registrationDateInput =
-            findViewById(R.id.registrationDateInput)
-
-        drivingExperienceInput =
-            findViewById(R.id.drivingExperienceInput)
+        registrationDateInput = findViewById(R.id.registrationDateInput)
+        drivingExperienceInput = findViewById(R.id.drivingExperienceInput)
 
         // Vehicle information
         carMakeInput = findViewById(R.id.carMakeInput)
@@ -76,9 +94,7 @@ class DriverAccountActivity : AppCompatActivity() {
         saveButton = findViewById(R.id.saveButton)
         selectedLocationsButton = findViewById(R.id.selectedLocationsButton)
         logoutButton = findViewById(R.id.driverLogoutButton)
-
-        deleteAccountButton =
-            findViewById(R.id.deleteDriverAccountButton)
+        deleteAccountButton = findViewById(R.id.deleteDriverAccountButton)
 
         // Open the separate Selected Locations page
         selectedLocationsButton.setOnClickListener {
@@ -89,7 +105,6 @@ class DriverAccountActivity : AppCompatActivity() {
 
         // Allow the driver to select a registration date
         registrationDateInput.setOnClickListener {
-
             val calendar = Calendar.getInstance()
 
             val year = calendar.get(Calendar.YEAR)
@@ -99,7 +114,6 @@ class DriverAccountActivity : AppCompatActivity() {
             val datePicker = DatePickerDialog(
                 this,
                 { _, selectedYear, selectedMonth, selectedDay ->
-
                     val formattedDate = String.format(
                         "%02d/%02d/%04d",
                         selectedDay,
@@ -133,6 +147,32 @@ class DriverAccountActivity : AppCompatActivity() {
 
         deleteAccountButton.setOnClickListener {
             confirmDeleteDriverAccount()
+        }
+
+        // Bottom navigation
+        findViewById<View>(R.id.driverAccountHomeNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, DriverDashboardActivity::class.java)
+            )
+            finish()
+        }
+
+        findViewById<View>(R.id.driverAccountExploreNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, PostRideActivity::class.java)
+            )
+            finish()
+        }
+
+        findViewById<View>(R.id.driverAccountBookingsNavItem).setOnClickListener {
+            startActivity(
+                Intent(this, DriverBookingRequestsActivity::class.java)
+            )
+            finish()
+        }
+
+        findViewById<View>(R.id.driverAccountAccountNavItem).setOnClickListener {
+            // Already on the Driver Account screen.
         }
     }
 
@@ -209,7 +249,6 @@ class DriverAccountActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-
                 Toast.makeText(
                     this,
                     "Failed to load account: ${exception.message}",
@@ -268,13 +307,12 @@ class DriverAccountActivity : AppCompatActivity() {
             return
         }
 
-        // Update only personal and vehicle information.
         // Operating-area fields are managed separately by SelectedLocationsActivity.
         val updates = hashMapOf<String, Any>(
             "name" to name,
             "phone" to phone,
             "registrationDate" to registrationDate,
-            "drivingExperienceYears" to drivingExperienceYears!!,
+            "drivingExperienceYears" to drivingExperienceYears,
             "carMake" to carMake,
             "carModel" to carModel,
             "carColor" to carColor,
@@ -285,7 +323,6 @@ class DriverAccountActivity : AppCompatActivity() {
             .document(driverId)
             .update(updates)
             .addOnSuccessListener {
-
                 Toast.makeText(
                     this,
                     "Account information updated successfully.",
@@ -293,7 +330,6 @@ class DriverAccountActivity : AppCompatActivity() {
                 ).show()
             }
             .addOnFailureListener { exception ->
-
                 Toast.makeText(
                     this,
                     "Failed to update account: ${exception.message}",
@@ -316,7 +352,6 @@ class DriverAccountActivity : AppCompatActivity() {
             .setNegativeButton("Cancel", null)
             .show()
     }
-
 
     private fun showDeletePasswordDialog() {
 
@@ -432,8 +467,9 @@ class DriverAccountActivity : AppCompatActivity() {
         auth.signOut()
 
         val intent = Intent(this, SplashActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or
-                    Intent.FLAG_ACTIVITY_CLEAR_TASK
+            flags =
+                Intent.FLAG_ACTIVITY_NEW_TASK or
+                        Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
         startActivity(intent)

@@ -1,344 +1,418 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/screen_background"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:background="@color/screen_background">
 
-    <LinearLayout
+    <!-- Scrollable Driver Account Content -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/navy"
             android:padding="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="👤"
-                android:textSize="38sp"/>
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/navy"
+                android:padding="20dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Driver Account"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤"
+                    android:textSize="38sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Manage your profile, vehicle and travel preferences"
-                android:textSize="12sp"
-                android:textColor="#F5B82E"
-                android:layout_marginTop="5dp"
-                android:gravity="center"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Driver Account"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="8dp"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage your profile, vehicle and travel preferences"
+                    android:textSize="12sp"
+                    android:textColor="#F5B82E"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
 
-        <!-- Personal Information -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:padding="20dp"
-            android:layout_marginTop="18dp"
-            android:elevation="3dp">
+            </LinearLayout>
 
-            <TextView
+            <!-- Personal Information -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Personal Information"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/navy"/>
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="20dp"
+                android:layout_marginTop="18dp"
+                android:elevation="3dp">
 
-            <EditText
-                android:id="@+id/nameInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Full Name"
-                android:inputType="textPersonName|textCapWords"
-                android:singleLine="true"
-                android:layout_marginTop="15dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textColor="@color/text_primary"
-                android:backgroundTint="@color/teal"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Information"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/navy"/>
 
-            <EditText
-                android:id="@+id/emailInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Email Address"
-                android:inputType="textEmailAddress"
-                android:enabled="false"
-                android:singleLine="true"
-                android:layout_marginTop="12dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textColor="@color/text_primary"
-                android:backgroundTint="@color/teal"/>
+                <EditText
+                    android:id="@+id/nameInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Full Name"
+                    android:inputType="textPersonName|textCapWords"
+                    android:singleLine="true"
+                    android:layout_marginTop="15dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
 
-            <EditText
-                android:id="@+id/phoneInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Mobile Phone Number"
-                android:inputType="phone"
-                android:singleLine="true"
-                android:layout_marginTop="12dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textColor="@color/text_primary"
-                android:backgroundTint="@color/teal"/>
+                <EditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Email Address"
+                    android:inputType="textEmailAddress"
+                    android:enabled="false"
+                    android:singleLine="true"
+                    android:layout_marginTop="12dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
 
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/phoneInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Mobile Phone Number"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:layout_marginTop="12dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
 
-        <!-- Driving Information -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:padding="20dp"
-            android:layout_marginTop="18dp"
-            android:elevation="3dp">
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Driving Information"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/navy"/>
-
-            <!-- Date Registered -->
-            <TextView
+            <!-- Driving Information -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date Registered with RideConnect"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="6dp"/>
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="20dp"
+                android:layout_marginTop="18dp"
+                android:elevation="3dp">
 
-            <EditText
-                android:id="@+id/registrationDateInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Select registration date"
-                android:focusable="false"
-                android:clickable="true"
-                android:singleLine="true"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textSize="15sp"
-                android:textColor="@color/text_primary"
-                android:backgroundTint="@color/teal"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Driving Information"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/navy"/>
 
-            <!-- Years of Driving Experience -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Years of Driving Experience"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="6dp"/>
+                <!-- Date Registered -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Date Registered with RideConnect"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="6dp"/>
 
-            <EditText
-                android:id="@+id/drivingExperienceInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Enter years of experience"
-                android:inputType="number"
-                android:singleLine="true"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:textSize="15sp"
-                android:textColor="@color/text_primary"
-                android:backgroundTint="@color/teal"/>
+                <EditText
+                    android:id="@+id/registrationDateInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Select registration date"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:singleLine="true"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
 
-        </LinearLayout>
+                <!-- Years of Driving Experience -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Years of Driving Experience"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="6dp"/>
 
-        <!-- Travel Preferences -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:padding="20dp"
-            android:layout_marginTop="18dp"
-            android:elevation="3dp">
+                <EditText
+                    android:id="@+id/drivingExperienceInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Enter years of experience"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_primary"
+                    android:backgroundTint="@color/teal"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Travel Preferences"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/navy"/>
+            </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Operating Areas in Mauritius"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:layout_marginTop="16dp"/>
-
-            <TextView
+            <!-- Travel Preferences -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Manage the regions and locations where you want to operate for shared rides."
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary"
-                android:layout_marginTop="6dp"
-                android:lineSpacingExtra="3dp"/>
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="20dp"
+                android:layout_marginTop="18dp"
+                android:elevation="3dp">
 
-            <!-- Selected Locations Button -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Travel Preferences"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/navy"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Operating Areas in Mauritius"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Manage the regions and locations where you want to operate for shared rides."
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingExtra="3dp"/>
+
+                <!-- Selected Locations Button -->
+                <Button
+                    android:id="@+id/selectedLocationsButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:text="📍  MANAGE SELECTED LOCATIONS"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/teal"
+                    android:layout_marginTop="16dp"
+                    android:elevation="2dp"/>
+
+            </LinearLayout>
+
+            <!-- Vehicle Information -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="20dp"
+                android:layout_marginTop="18dp"
+                android:elevation="3dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle Information"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/navy"/>
+
+                <EditText
+                    android:id="@+id/carMakeInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Car Make"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:layout_marginTop="15dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <EditText
+                    android:id="@+id/carModelInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Car Model"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:layout_marginTop="12dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <EditText
+                    android:id="@+id/carColorInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Car Colour"
+                    android:inputType="textCapWords"
+                    android:singleLine="true"
+                    android:layout_marginTop="12dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:backgroundTint="@color/teal"/>
+
+                <EditText
+                    android:id="@+id/carRegistrationInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:hint="Car Registration Number"
+                    android:inputType="textCapCharacters"
+                    android:singleLine="true"
+                    android:layout_marginTop="12dp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:backgroundTint="@color/teal"/>
+
+            </LinearLayout>
+
+            <!-- Save Changes -->
             <Button
-                android:id="@+id/selectedLocationsButton"
+                android:id="@+id/saveButton"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:text="📍  MANAGE SELECTED LOCATIONS"
-                android:textSize="14sp"
+                android:text="SAVE CHANGES"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/teal"
-                android:layout_marginTop="16dp"
-                android:elevation="2dp"/>
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="25dp"
+                android:elevation="3dp"/>
 
-        </LinearLayout>
-
-        <!-- Vehicle Information -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white"
-            android:padding="20dp"
-            android:layout_marginTop="18dp"
-            android:elevation="3dp">
-
-            <TextView
+            <!-- Delete Driver Account -->
+            <Button
+                android:id="@+id/deleteDriverAccountButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Vehicle Information"
-                android:textSize="20sp"
+                android:layout_height="55dp"
+                android:text="DELETE DRIVER ACCOUNT"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="@color/navy"/>
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/error"
+                android:layout_marginBottom="12dp"
+                android:elevation="3dp"/>
 
-            <EditText
-                android:id="@+id/carMakeInput"
+            <!-- Logout -->
+            <Button
+                android:id="@+id/driverLogoutButton"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:hint="Car Make"
-                android:inputType="textCapWords"
-                android:singleLine="true"
-                android:layout_marginTop="15dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:backgroundTint="@color/teal"/>
-
-            <EditText
-                android:id="@+id/carModelInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Car Model"
-                android:inputType="textCapWords"
-                android:singleLine="true"
-                android:layout_marginTop="12dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:backgroundTint="@color/teal"/>
-
-            <EditText
-                android:id="@+id/carColorInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Car Colour"
-                android:inputType="textCapWords"
-                android:singleLine="true"
-                android:layout_marginTop="12dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:backgroundTint="@color/teal"/>
-
-            <EditText
-                android:id="@+id/carRegistrationInput"
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:hint="Car Registration Number"
-                android:inputType="textCapCharacters"
-                android:singleLine="true"
-                android:layout_marginTop="12dp"
-                android:paddingStart="14dp"
-                android:paddingEnd="14dp"
-                android:backgroundTint="@color/teal"/>
+                android:text="LOG OUT"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/error"
+                android:layout_marginBottom="20dp"
+                android:elevation="3dp"/>
 
         </LinearLayout>
 
-        <!-- Save -->
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:text="SAVE CHANGES"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/teal"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="25dp"
-            android:elevation="3dp"/>
+    </ScrollView>
 
-        <!-- Delete Driver Account -->
-        <Button
-            android:id="@+id/deleteDriverAccountButton"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="DELETE DRIVER ACCOUNT"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/error"
-            android:layout_marginBottom="12dp"
-            android:elevation="3dp"/>
+    <!-- Driver Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/driverAccountBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:elevation="8dp">
 
-        <!-- Logout -->
-        <Button
-            android:id="@+id/driverLogoutButton"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="LOG OUT"
-            android:textSize="15sp"
+        <!-- Home -->
+        <TextView
+            android:id="@+id/driverAccountHomeNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="🏠&#10;Home"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Post Ride -->
+        <TextView
+            android:id="@+id/driverAccountExploreNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="➕&#10;Post Ride"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Bookings -->
+        <TextView
+            android:id="@+id/driverAccountBookingsNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="📋&#10;Bookings"
+            android:textSize="13sp"
+            android:textColor="#64748B"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <!-- Account -->
+        <TextView
+            android:id="@+id/driverAccountAccountNavItem"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="👤&#10;Account"
+            android:textSize="13sp"
             android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/error"
-            android:layout_marginBottom="20dp"
-            android:elevation="3dp"/>
+            android:textColor="@color/teal"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

@@ -2,9 +2,11 @@
 package com.example.rideconnect.activities
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -14,19 +16,14 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.example.rideconnect.R
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-
-import android.view.View
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
-import android.app.TimePickerDialog
-
 
 class RideSearchActivity : AppCompatActivity() {
 
@@ -62,27 +59,43 @@ class RideSearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ride_search)
 
-        // Bottom navigation system bar spacing
-        val bottomNavigation = findViewById<View>(R.id.exploreBottomNavigation)
-        val initialBottomPadding = bottomNavigation.paddingBottom
+        // ------------------------------------------------------------
+        // DYNAMIC ANDROID SYSTEM NAVIGATION BAR INSETS
+        // ------------------------------------------------------------
 
-        ViewCompat.setOnApplyWindowInsetsListener(bottomNavigation) { view, insets ->
+        val contentContainer = findViewById<View>(android.R.id.content)
+
+        val initialLeftPadding = contentContainer.paddingLeft
+        val initialTopPadding = contentContainer.paddingTop
+        val initialRightPadding = contentContainer.paddingRight
+        val initialBottomPadding = contentContainer.paddingBottom
+
+        ViewCompat.setOnApplyWindowInsetsListener(contentContainer) { view, insets ->
+
             val navigationBarInsets =
                 insets.getInsets(WindowInsetsCompat.Type.navigationBars())
 
             view.setPadding(
-                view.paddingLeft,
-                view.paddingTop,
-                view.paddingRight,
+                initialLeftPadding,
+                initialTopPadding,
+                initialRightPadding,
                 initialBottomPadding + navigationBarInsets.bottom
             )
 
             insets
         }
 
-        ViewCompat.requestApplyInsets(bottomNavigation)
+        ViewCompat.requestApplyInsets(contentContainer)
+
+        // ------------------------------------------------------------
+        // FIRESTORE
+        // ------------------------------------------------------------
 
         db = FirebaseFirestore.getInstance()
+
+        // ------------------------------------------------------------
+        // INITIALISE INPUTS
+        // ------------------------------------------------------------
 
         pickupInput = findViewById(R.id.searchPickupInput)
         destinationInput = findViewById(R.id.searchDestinationInput)
@@ -90,9 +103,15 @@ class RideSearchActivity : AppCompatActivity() {
         dateText = findViewById(R.id.searchDateText)
         timeText = findViewById(R.id.searchTimeText)
         regionSpinner = findViewById(R.id.searchRegionSpinner)
+
         timeFlexibilitySpinner =
             findViewById(R.id.searchTimeFlexibilitySpinner)
+
         resultsContainer = findViewById(R.id.resultsContainer)
+
+        // ------------------------------------------------------------
+        // REGION SPINNER
+        // ------------------------------------------------------------
 
         val regionAdapter = ArrayAdapter(
             this,
@@ -106,6 +125,10 @@ class RideSearchActivity : AppCompatActivity() {
 
         regionSpinner.adapter = regionAdapter
         regionSpinner.setSelection(0)
+
+        // ------------------------------------------------------------
+        // TIME FLEXIBILITY SPINNER
+        // ------------------------------------------------------------
 
         val timeFlexibilityOptions = listOf(
             "Exact time",
@@ -127,6 +150,10 @@ class RideSearchActivity : AppCompatActivity() {
         timeFlexibilitySpinner.adapter = timeFlexibilityAdapter
         timeFlexibilitySpinner.setSelection(0)
 
+        // ------------------------------------------------------------
+        // BUTTONS
+        // ------------------------------------------------------------
+
         val selectDateButton =
             findViewById<Button>(R.id.selectSearchDateButton)
 
@@ -146,6 +173,10 @@ class RideSearchActivity : AppCompatActivity() {
         selectTimeButton.setOnClickListener {
             showTimePicker()
         }
+
+        // ------------------------------------------------------------
+        // BOTTOM NAVIGATION
+        // ------------------------------------------------------------
 
         // HOME
         findViewById<TextView>(R.id.exploreHomeNavItem)
@@ -177,6 +208,10 @@ class RideSearchActivity : AppCompatActivity() {
                 )
             }
 
+        // ------------------------------------------------------------
+        // SEARCH AND CLEAR
+        // ------------------------------------------------------------
+
         searchButton.setOnClickListener {
             searchRides()
         }
@@ -194,6 +229,7 @@ class RideSearchActivity : AppCompatActivity() {
     // ------------------------------------------------------------
 
     private fun showDatePicker() {
+
         val calendar = Calendar.getInstance()
 
         val datePicker = DatePickerDialog(
@@ -214,6 +250,7 @@ class RideSearchActivity : AppCompatActivity() {
                 )
 
                 selectedDate = formatter.format(selectedCalendar.time)
+
                 dateText.text = "Date: $selectedDate"
             },
             calendar.get(Calendar.YEAR),
@@ -222,6 +259,7 @@ class RideSearchActivity : AppCompatActivity() {
         )
 
         datePicker.datePicker.minDate = System.currentTimeMillis()
+
         datePicker.show()
     }
 
@@ -230,6 +268,7 @@ class RideSearchActivity : AppCompatActivity() {
     // ------------------------------------------------------------
 
     private fun showTimePicker() {
+
         val calendar = Calendar.getInstance()
 
         val timePicker = TimePickerDialog(
@@ -253,8 +292,7 @@ class RideSearchActivity : AppCompatActivity() {
                     Locale.getDefault()
                 )
 
-                selectedTime =
-                    formatter.format(selectedCalendar.time)
+                selectedTime = formatter.format(selectedCalendar.time)
 
                 timeText.text = "Preferred departure: $selectedTime"
             },
@@ -274,6 +312,7 @@ class RideSearchActivity : AppCompatActivity() {
 
         val pickup = pickupInput.text.toString().trim()
         val destination = destinationInput.text.toString().trim()
+
         val passengerCountText =
             passengerCountInput.text.toString().trim()
 
@@ -344,13 +383,7 @@ class RideSearchActivity : AppCompatActivity() {
                     val availableSeats =
                         document.getLong("availableSeats")?.toInt() ?: 0
 
-                    val price =
-                        (document.get("pricePerPassenger") as? Number)
-                            ?.toDouble() ?: 0.0
-
                     // REGION FILTER
-                    // Older rides without a region are shown only when
-                    // "All regions" is selected.
 
                     if (
                         selectedRegion != "All regions" &&
@@ -425,10 +458,12 @@ class RideSearchActivity : AppCompatActivity() {
                         document,
                         numberOfPassengers
                     )
+
                     resultCount++
                 }
 
                 if (resultCount == 0) {
+
                     val noResultsText = TextView(this).apply {
                         text = "No available rides match your search."
                         textSize = 18f
@@ -508,7 +543,9 @@ class RideSearchActivity : AppCompatActivity() {
             bold: Boolean = false,
             topPadding: Int = 8
         ) {
+
             val textView = TextView(this).apply {
+
                 this.text = text
                 textSize = size
 
@@ -560,9 +597,11 @@ class RideSearchActivity : AppCompatActivity() {
         )
 
         val bookButton = Button(this).apply {
+
             text = "BOOK RIDE"
 
             setOnClickListener {
+
                 val intent = Intent(
                     this@RideSearchActivity,
                     BookingConfirmationActivity::class.java
@@ -589,6 +628,7 @@ class RideSearchActivity : AppCompatActivity() {
         }
 
         card.layoutParams = layoutParams
+
         resultsContainer.addView(card)
     }
 
@@ -609,7 +649,6 @@ class RideSearchActivity : AppCompatActivity() {
         timeText.text = "Preferred departure: Any time"
 
         timeFlexibilitySpinner.setSelection(0)
-
         regionSpinner.setSelection(0)
 
         searchRides()
