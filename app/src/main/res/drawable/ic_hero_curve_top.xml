@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="46dp"
+    android:viewportWidth="360"
+    android:viewportHeight="46">
+    <!-- Teal peek on the right -->
+    <path
+        android:fillColor="#00B4BD"
+        android:pathData="M140,8 Q250,6 360,26 L360,46 L140,46 Z" />
+    <!-- Main white arch -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,34 Q165,-4 360,36 L360,46 L0,46 Z" />
+</vector>

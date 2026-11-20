@@ -9,48 +9,60 @@
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="26dp">
+        android:gravity="center_horizontal">
 
-        <!-- Brand section -->
-        <LinearLayout
+        <!-- Full-width BMW hero section -->
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/navy"
-            android:padding="20dp">
+            android:layout_height="380dp"
+            android:background="@color/navy">
 
-            <TextView
-                android:layout_width="85dp"
-                android:layout_height="85dp"
+            <ImageView
+                android:id="@+id/loginCarImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/rideconnect_splash"
+                android:scaleType="fitXY"
+                android:contentDescription="Red BMW M5"/>
+
+            <!-- Dark overlay -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#55041E42"/>
+
+            <!-- Brand title and tagline -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
                 android:gravity="center"
-                android:text="🚗"
-                android:textSize="48sp"
-                android:background="@color/white"/>
+                android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RideConnect"
-                android:textSize="31sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RideConnect"
+                    android:textSize="31sp"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/white"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SMARTER RIDES. BETTER CONNECTIONS."
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:textColor="@color/gold"
-                android:letterSpacing="0.08"
-                android:layout_marginTop="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SMARTER RIDES. BETTER CONNECTIONS."
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gold"
+                    android:letterSpacing="0.08"
+                    android:layout_marginTop="7dp"/>
 
-        </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
 
         <!-- Login form -->
         <LinearLayout
@@ -59,6 +71,8 @@
             android:orientation="vertical"
             android:background="@color/white"
             android:padding="22dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginEnd="26dp"
             android:layout_marginTop="22dp"
             android:elevation="3dp">
 
@@ -114,19 +128,56 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="7dp"/>
 
-            <EditText
-                android:id="@+id/passwordInput"
+            <!-- Password field with visibility toggle -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:hint="Enter your password"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:textSize="15sp"
-                android:textColor="@color/text_primary"
-                android:textColorHint="@color/text_secondary"
-                android:backgroundTint="@color/teal"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@android:drawable/edit_text">
+
+                <EditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:background="@android:color/transparent"/>
+
+                <ImageButton
+                    android:id="@+id/togglePasswordVisibility"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_visibility"
+                    android:scaleType="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Show password"
+                    android:padding="12dp"/>
+
+            </LinearLayout>
+
+            <!-- Forgot Password -->
+            <TextView
+                android:id="@+id/forgotPasswordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/teal"
+                android:padding="8dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"/>
 
             <!-- Login button -->
             <Button
@@ -139,7 +190,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/teal"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="18dp"
                 android:elevation="3dp"/>
 
             <!-- Register button -->
@@ -157,6 +208,7 @@
 
         </LinearLayout>
 
+        <!-- Footer -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

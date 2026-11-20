@@ -2,6 +2,10 @@
 package com.example.rideconnect.activities
 
 import android.content.Intent
+
+import android.app.DatePickerDialog
+import java.util.Calendar
+
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.Gravity
@@ -23,6 +27,10 @@ import com.example.rideconnect.models.OperatingSublocality
 import com.example.rideconnect.models.VehicleCategories
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
+import android.widget.ImageButton
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -82,6 +90,45 @@ class RegisterActivity : AppCompatActivity() {
         val phoneInput = findViewById<EditText>(R.id.phoneInput)
         val passwordInput = findViewById<EditText>(R.id.passwordInput)
 
+        // Password visibility toggle
+        val togglePasswordVisibility =
+            findViewById<ImageButton>(R.id.togglePasswordVisibility)
+
+        var isPasswordVisible = false
+
+        togglePasswordVisibility.setOnClickListener {
+
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+
+                // Show password
+                passwordInput.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+
+                togglePasswordVisibility.setImageResource(
+                    R.drawable.ic_visibility_off
+                )
+
+                togglePasswordVisibility.contentDescription = "Hide password"
+
+            } else {
+
+                // Hide password
+                passwordInput.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+
+                togglePasswordVisibility.setImageResource(
+                    R.drawable.ic_visibility
+                )
+
+                togglePasswordVisibility.contentDescription = "Show password"
+            }
+
+            // Keep cursor at the end of the password
+            passwordInput.setSelection(passwordInput.text.length)
+        }
+
         val vehicleInformationTitle =
             findViewById<TextView>(R.id.vehicleInformationTitle)
 
@@ -123,6 +170,21 @@ class RegisterActivity : AppCompatActivity() {
         val carColorInput =
             findViewById<EditText>(R.id.carColorInput)
 
+        val drivingInformationTitle =
+            findViewById<TextView>(R.id.drivingInformationTitle)
+
+        val registrationDateLabel =
+            findViewById<TextView>(R.id.registrationDateLabel)
+
+        val registrationDateInput =
+            findViewById<EditText>(R.id.registrationDateInput)
+
+        val drivingExperienceLabel =
+            findViewById<TextView>(R.id.drivingExperienceLabel)
+
+        val drivingExperienceInput =
+            findViewById<EditText>(R.id.drivingExperienceInput)
+
         val selectedRoleText =
             findViewById<TextView>(R.id.selectedRoleText)
 
@@ -141,6 +203,12 @@ class RegisterActivity : AppCompatActivity() {
             carModelInput.visibility = View.VISIBLE
             carColorInput.visibility = View.VISIBLE
 
+            drivingInformationTitle.visibility = View.VISIBLE
+            registrationDateLabel.visibility = View.VISIBLE
+            registrationDateInput.visibility = View.VISIBLE
+            drivingExperienceLabel.visibility = View.VISIBLE
+            drivingExperienceInput.visibility = View.VISIBLE
+
             initializeOperatingAreaSelector()
 
         } else {
@@ -152,6 +220,42 @@ class RegisterActivity : AppCompatActivity() {
             carMakeInput.visibility = View.GONE
             carModelInput.visibility = View.GONE
             carColorInput.visibility = View.GONE
+
+            drivingInformationTitle.visibility = View.GONE
+            registrationDateLabel.visibility = View.GONE
+            registrationDateInput.visibility = View.GONE
+            drivingExperienceLabel.visibility = View.GONE
+            drivingExperienceInput.visibility = View.GONE
+        }
+
+        registrationDateInput.setOnClickListener {
+
+            val calendar = Calendar.getInstance()
+
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(
+                this,
+                { _, selectedYear, selectedMonth, selectedDay ->
+
+                    val formattedDate = String.format(
+                        "%02d/%02d/%04d",
+                        selectedDay,
+                        selectedMonth + 1,
+                        selectedYear
+                    )
+
+                    registrationDateInput.setText(formattedDate)
+                },
+                year,
+                month,
+                day
+            )
+
+            datePicker.datePicker.maxDate = calendar.timeInMillis
+            datePicker.show()
         }
 
         registerButton.setOnClickListener {
@@ -186,6 +290,12 @@ class RegisterActivity : AppCompatActivity() {
             val carModel = carModelInput.text.toString().trim()
             val carColor = carColorInput.text.toString().trim()
 
+            val registrationDate =
+                registrationDateInput.text.toString().trim()
+
+            val drivingExperienceYears =
+                drivingExperienceInput.text.toString().trim().toIntOrNull()
+
             if (
                 name.isEmpty() ||
                 email.isEmpty() ||
@@ -201,6 +311,20 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             if (selectedRole == "Driver") {
+
+                if (
+                    registrationDate.isEmpty() ||
+                    drivingExperienceYears == null ||
+                    drivingExperienceYears < 0
+                ) {
+                    Toast.makeText(
+                        this,
+                        "Please enter a valid registration date and years of driving experience.",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    return@setOnClickListener
+                }
 
                 if (
                     carRegistration.isEmpty() ||
@@ -260,6 +384,9 @@ class RegisterActivity : AppCompatActivity() {
 
 
                     if (selectedRole == "Driver") {
+
+                        user["registrationDate"] = registrationDate
+                        user["drivingExperienceYears"] = drivingExperienceYears ?: 0
 
                         user["carRegistration"] = carRegistration
                         user["carMake"] = carMake

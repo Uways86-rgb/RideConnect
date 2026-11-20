@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="44dp"
+    android:viewportWidth="360"
+    android:viewportHeight="44">
+    <!-- Teal top ribbon -->
+    <path
+        android:fillColor="#00A6B4"
+        android:pathData="M0,6 Q180,36 360,2 L360,44 L0,44 Z" />
+    <!-- Deep navy base -->
+    <path
+        android:fillColor="#041E42"
+        android:pathData="M0,15 Q180,43 360,12 L360,44 L0,44 Z" />
+    <!-- Thin teal highlight line inside bottom right -->
+    <path
+        android:strokeColor="#00B8C4"
+        android:strokeWidth="1.5"
+        android:pathData="M175,41 Q275,38 360,24" />
+</vector>

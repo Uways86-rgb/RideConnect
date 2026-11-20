@@ -18,23 +18,42 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="My Account"
-                android:textColor="#102C46"
-                android:textSize="26sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="6dp"/>
+            <!-- PASSENGER ACCOUNT HEADER -->
 
-            <TextView
-                android:id="@+id/passengerAccountGreetingText"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Manage your personal information"
-                android:textColor="#718096"
-                android:textSize="14sp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_height="160dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/navy"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="👤"
+                    android:textSize="38sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Passenger Account"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:id="@+id/passengerAccountGreetingText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Manage your personal information"
+                    android:textSize="12sp"
+                    android:textColor="#F5B82E"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
 
             <!-- PERSONAL INFORMATION CARD -->
 
@@ -45,6 +64,7 @@
                 android:padding="18dp"
                 android:background="@color/card_white"
                 android:elevation="3dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="18dp">
 
                 <TextView
@@ -185,7 +205,7 @@
             android:layout_height="61dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="⌂\nHome"
+            android:text="⌂&#10;Home"
             android:textColor="#718096"
             android:textSize="13sp"
             android:clickable="true"
@@ -198,7 +218,7 @@
             android:layout_height="61dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="⌕\nExplore"
+            android:text="⌕&#10;Explore"
             android:textColor="#718096"
             android:textSize="13sp"
             android:clickable="true"
@@ -211,7 +231,7 @@
             android:layout_height="61dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="▤\nBookings"
+            android:text="▤&#10;Bookings"
             android:textColor="#718096"
             android:textSize="13sp"
             android:clickable="true"
@@ -224,7 +244,7 @@
             android:layout_height="61dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="●\nAccount"
+            android:text="●&#10;Account"
             android:textColor="#167D83"
             android:textStyle="bold"
             android:textSize="13sp"

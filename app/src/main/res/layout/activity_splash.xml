@@ -1,136 +1,293 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/screen_background"
+    android:background="#041E42"
     android:fillViewport="true"
     android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#FFFFFF">
 
-        <!-- Brand header -->
-        <LinearLayout
+        <!-- TOP HERO SECTION (Drifting BMW M5 UV 2208 + Overlaid Logo) -->
+        <FrameLayout
+            android:id="@+id/heroContainer"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/navy"
-            android:padding="28dp">
+            android:layout_height="495dp"
+            android:background="#061A33">
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="🚗"
-                android:textSize="55sp"
-                android:background="@color/white"
-                android:elevation="5dp"/>
+            <ImageView
+                android:id="@+id/carDriftImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/rideconnect_splash"
+                android:scaleType="fitXY"
+                android:contentDescription="Red BMW M5 drifting at night" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Subtle bottom vignette for crisp text contrast -->
+            <View
+                android:id="@+id/heroScrim"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/bg_hero_scrim" />
+
+            <!-- LOGO, TAGLINE, GLOW DIVIDER & JOURNEY SUBTITLE -->
+            <LinearLayout
+                android:id="@+id/brandOverlayGroup"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RideConnect"
-                android:textSize="34sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:fontFamily="sans"
-                android:layout_marginTop="22dp"
-                android:letterSpacing="0.02"/>
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="42dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SMARTER RIDES. BETTER CONNECTIONS."
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:textColor="@color/gold"
-                android:letterSpacing="0.12"
-                android:gravity="center"
-                android:layout_marginTop="12dp"/>
+                <!-- Car Roof Silhouette -->
+                <ImageView
+                    android:id="@+id/logoCarRoof"
+                    android:layout_width="205dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginBottom="-6dp"
+                    android:src="@drawable/ic_logo_car_roof"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="@null" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your journey starts here."
-                android:textSize="15sp"
-                android:textColor="#DCE6EF"
-                android:layout_marginTop="12dp"/>
+                <!-- Speed Lines + "RideConnect" -->
+                <LinearLayout
+                    android:id="@+id/brandTitleRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/logoSpeedLines"
+                        android:layout_width="28dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="4dp"
+                        android:src="@drawable/ic_logo_speed_lines"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="@null" />
 
-        <!-- Role selection section -->
+                    <TextView
+                        android:id="@+id/brandRideText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ride"
+                        android:textSize="42sp"
+                        android:textStyle="bold|italic"
+                        android:textColor="#FFFFFF"
+                        android:letterSpacing="-0.02"
+                        android:shadowColor="#B3000000"
+                        android:shadowDx="0"
+                        android:shadowDy="3"
+                        android:shadowRadius="8" />
+
+                    <TextView
+                        android:id="@+id/brandConnectText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Connect"
+                        android:textSize="42sp"
+                        android:textStyle="bold|italic"
+                        android:textColor="#00C4CC"
+                        android:letterSpacing="-0.02"
+                        android:shadowColor="#B3000000"
+                        android:shadowDx="0"
+                        android:shadowDy="3"
+                        android:shadowRadius="8" />
+                </LinearLayout>
+
+                <!-- Gold Tagline -->
+                <TextView
+                    android:id="@+id/taglineText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SMARTER RIDES. BETTER CONNECTIONS."
+                    android:textSize="12sp"
+                    android:textStyle="bold|italic"
+                    android:textColor="#F5B82E"
+                    android:letterSpacing="0.11"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="6" />
+
+                <!-- Glowing Gold Divider -->
+                <View
+                    android:id="@+id/goldDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginEnd="28dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_gold_glow_line" />
+
+                <!-- Journey Subtitle -->
+                <TextView
+                    android:id="@+id/journeySubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your journey starts here."
+                    android:textSize="19sp"
+                    android:textStyle="italic"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="10dp"
+                    android:shadowColor="#CC000000"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="6" />
+            </LinearLayout>
+
+            <!-- Curved White + Teal Transition -->
+            <ImageView
+                android:id="@+id/heroCurveTop"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/ic_hero_curve_top"
+                android:scaleType="fitXY"
+                android:contentDescription="@null" />
+        </FrameLayout>
+
+        <!-- LOWER WHITE SECTION (Welcome + Role Buttons) -->
         <LinearLayout
+            android:id="@+id/lowerSectionContainer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="vertical"
+            android:gravity="center_horizontal"
             android:paddingStart="26dp"
             android:paddingEnd="26dp"
-            android:paddingTop="32dp"
-            android:paddingBottom="28dp"
-            android:background="@color/white">
+            android:paddingTop="4dp"
+            android:paddingBottom="10dp"
+            android:background="#FFFFFF">
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/welcomeHeaderGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome to RideConnect"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary"
-                android:gravity="center"/>
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Choose how you would like to use the app."
-                android:textSize="14sp"
-                android:textColor="@color/text_secondary"
-                android:gravity="center"
-                android:layout_marginTop="9dp"
-                android:layout_marginBottom="27dp"/>
+                <TextView
+                    android:id="@+id/welcomeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Welcome to RideConnect"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="#0B223E"
+                    android:gravity="center" />
 
-            <!-- Passenger button -->
-            <Button
+                <TextView
+                    android:id="@+id/welcomeSubtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choose how you would like to use the app."
+                    android:textSize="15sp"
+                    android:textColor="#4A5D73"
+                    android:gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="22dp" />
+            </LinearLayout>
+
+            <!-- PASSENGER BUTTON -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/passengerButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="👤   Continue as Passenger"
-                android:textSize="16sp"
+                android:layout_height="58dp"
+                android:background="@drawable/bg_btn_passenger"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_person_white"
+                app:iconTint="#FFFFFF"
+                app:iconSize="26dp"
+                app:iconPadding="14dp"
+                app:iconGravity="textStart"
+                android:gravity="center"
+                android:text="Continue as Passenger"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/teal"
-                android:elevation="3dp"
-                android:letterSpacing="0.01"/>
+                android:textColor="#FFFFFF"
+                android:elevation="6dp"
+                android:stateListAnimator="@null" />
 
-            <!-- Driver button -->
-            <Button
+            <!-- DRIVER BUTTON -->
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/driverButton"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:text="🚗   Continue as Driver"
-                android:textSize="16sp"
+                android:layout_height="58dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_btn_driver"
+                app:backgroundTint="@null"
+                app:icon="@drawable/ic_car_front_white"
+                app:iconTint="#FFFFFF"
+                app:iconSize="28dp"
+                app:iconPadding="14dp"
+                app:iconGravity="textStart"
+                android:gravity="center"
+                android:text="Continue as Driver"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/navy"
-                android:elevation="3dp"
-                android:layout_marginTop="15dp"
-                android:letterSpacing="0.01"/>
+                android:textColor="#FFFFFF"
+                android:elevation="6dp"
+                android:stateListAnimator="@null" />
 
-            <TextView
+            <!-- Footer Motto with Flanking Thin Lines -->
+            <LinearLayout
+                android:id="@+id/footerMottoGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ride together. Travel smarter."
-                android:textSize="12sp"
-                android:textColor="@color/text_secondary"
-                android:gravity="center"
-                android:layout_marginTop="27dp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="24dp">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="#DCE3EC" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ride together. Travel smarter."
+                    android:textSize="13sp"
+                    android:textStyle="italic"
+                    android:textColor="#4A5D73"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="#DCE3EC" />
+            </LinearLayout>
 
         </LinearLayout>
+
+        <!-- BOTTOM CURVED TEAL + NAVY FOOTER -->
+        <ImageView
+            android:id="@+id/bottomCurveFooter"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:src="@drawable/ic_bottom_curve_footer"
+            android:scaleType="fitXY"
+            android:contentDescription="@null" />
 
     </LinearLayout>
 

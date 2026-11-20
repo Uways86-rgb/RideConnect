@@ -20,10 +20,18 @@ data class GeoPoint(
     val longitude: Double
 )
 
+
 data class GeocodingResult(
     val displayName: String,
-    val point: GeoPoint
+    val point: GeoPoint,
+    val name: String = "",
+    val city: String = "",
+    val county: String = "",
+    val state: String = "",
+    val postcode: String = "",
+    val country: String = ""
 )
+
 
 data class RouteOption(
     val routeIndex: Int,
@@ -216,6 +224,165 @@ class GraphHopperRoutingService(context: Context) {
         )
     }
 
+
+
+    /**
+     * Reverse geocodes coordinates to identify the actual location.
+     *
+     * Used to verify locations selected directly on the map.
+     * The callback is delivered on the main thread.
+     */
+    fun reverseGeocodeMauritius(
+        point: GeoPoint,
+        callback: (Result<List<GeocodingResult>>) -> Unit
+    ) {
+
+        if (!isValidPoint(point)) {
+            deliver(
+                callback,
+                Result.failure(
+                    IllegalArgumentException(
+                        "Invalid coordinates supplied for reverse geocoding."
+                    )
+                )
+            )
+            return
+        }
+
+        // Restrict reverse geocoding to the approximate
+        // main-island bounding area of Mauritius.
+        if (
+            point.latitude !in -20.65..-19.95 ||
+            point.longitude !in 57.25..57.85
+        ) {
+            deliver(
+                callback,
+                Result.failure(
+                    IllegalArgumentException(
+                        "Please select a location within Mauritius."
+                    )
+                )
+            )
+            return
+        }
+
+        if (!hasGeocodingApiKey(callback)) return
+
+        val reservation =
+            creditManager.reserveCredits(GEOCODING_CREDITS)
+
+        if (reservation == null) {
+            deliver(
+                callback,
+                Result.failure(
+                    IllegalStateException(
+                        "RideConnect's daily 400-credit safeguard " +
+                                "has been reached. Try again after the daily reset."
+                    )
+                )
+            )
+            return
+        }
+
+        val url = GEOCODING_URL.toHttpUrl()
+            .newBuilder()
+            .addQueryParameter(
+                "point",
+                "${point.latitude},${point.longitude}"
+            )
+            .addQueryParameter("reverse", "true")
+            .addQueryParameter("locale", "en")
+            .addQueryParameter("limit", "5")
+            .addQueryParameter("provider", "default")
+            .addQueryParameter("key", apiKey)
+            .build()
+
+        val request = Request.Builder()
+            .url(url)
+            .get()
+            .build()
+
+        client.newCall(request).enqueue(
+            object : Callback {
+
+                override fun onFailure(
+                    call: Call,
+                    e: IOException
+                ) {
+                    deliver(
+                        callback,
+                        Result.failure(
+                            IOException(
+                                "Reverse location search failed: ${e.message}",
+                                e
+                            )
+                        )
+                    )
+                }
+
+                override fun onResponse(
+                    call: Call,
+                    response: Response
+                ) {
+                    response.use { res ->
+
+                        recordServerCredits(res, reservation)
+
+                        val body = res.body?.string().orEmpty()
+
+                        if (!res.isSuccessful) {
+                            deliver(
+                                callback,
+                                Result.failure(
+                                    IOException(
+                                        "GraphHopper reverse geocoding failed " +
+                                                "(HTTP ${res.code}): $body"
+                                    )
+                                )
+                            )
+                            return
+                        }
+
+                        try {
+                            val results = parseGeocodingResults(body)
+
+                            if (results.isEmpty()) {
+                                deliver(
+                                    callback,
+                                    Result.failure(
+                                        NoSuchElementException(
+                                            "GraphHopper could not identify " +
+                                                    "the selected location."
+                                        )
+                                    )
+                                )
+                            } else {
+                                deliver(
+                                    callback,
+                                    Result.success(results)
+                                )
+                            }
+
+                        } catch (e: Exception) {
+                            deliver(
+                                callback,
+                                Result.failure(
+                                    IOException(
+                                        "Could not read reverse location results: " +
+                                                e.message,
+                                        e
+                                    )
+                                )
+                            )
+                        }
+                    }
+                }
+            }
+        )
+    }
+
+
+
     /**
      * Calculates driving routes between two coordinates.
      *
@@ -398,6 +565,7 @@ class GraphHopperRoutingService(context: Context) {
     /**
      * Converts GraphHopper geocoding JSON into Kotlin objects.
      */
+
     private fun parseGeocodingResults(
         responseBody: String
     ): List<GeocodingResult> {
@@ -408,6 +576,7 @@ class GraphHopperRoutingService(context: Context) {
         val results = mutableListOf<GeocodingResult>()
 
         for (i in 0 until hits.length()) {
+
             val hit = hits.optJSONObject(i) ?: continue
             val pointJson = hit.optJSONObject("point") ?: continue
 
@@ -420,9 +589,18 @@ class GraphHopperRoutingService(context: Context) {
 
             val name = hit.optString("name", "").trim()
             val city = hit.optString("city", "").trim()
+            val county = hit.optString("county", "").trim()
+            val state = hit.optString("state", "").trim()
+            val postcode = hit.optString("postcode", "").trim()
             val country = hit.optString("country", "").trim()
 
-            val displayName = listOf(name, city, country)
+            val displayName = listOf(
+                name,
+                city,
+                county,
+                state,
+                country
+            )
                 .filter { it.isNotBlank() }
                 .distinct()
                 .joinToString(", ")
@@ -431,13 +609,20 @@ class GraphHopperRoutingService(context: Context) {
             results.add(
                 GeocodingResult(
                     displayName = displayName,
-                    point = point
+                    point = point,
+                    name = name,
+                    city = city,
+                    county = county,
+                    state = state,
+                    postcode = postcode,
+                    country = country
                 )
             )
         }
 
         return results
     }
+
 
     /**
      * Converts GraphHopper route JSON into RouteOption objects.

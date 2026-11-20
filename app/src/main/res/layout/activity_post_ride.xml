@@ -15,21 +15,54 @@
 
         <!-- TITLE -->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🚗 Post a Ride"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create a ride for passengers to book"
-            android:textSize="17sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
+        <!-- BMW IMAGE HEADER -->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginStart="-30dp"
+            android:layout_marginEnd="-30dp"
+            android:background="@color/navy">
+
+            <ImageView
+                android:id="@+id/postRideCarImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/rideconnect_splash"
+                android:scaleType="fitXY"
+                android:contentDescription="BMW car photograph"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal|bottom"
+                android:background="#55041E42"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Post a Ride"
+                    android:textSize="27sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create a ride for passengers to book"
+                    android:textSize="12sp"
+                    android:textColor="#F5B82E"
+                    android:layout_marginTop="5dp"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
 
         <!-- PICKUP -->
 

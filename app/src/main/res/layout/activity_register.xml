@@ -15,40 +15,49 @@
         android:padding="22dp">
 
         <!-- Brand header -->
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="190dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="@color/navy"
-            android:padding="20dp">
+            android:background="@color/navy">
 
-            <TextView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:gravity="center"
-                android:text="🚗"
-                android:textSize="43sp"
-                android:background="@color/white"/>
+            <ImageView
+                android:id="@+id/registerCarImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/rideconnect_splash"
+                android:scaleType="fitXY"
+                android:contentDescription="BMW car photograph"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Create Account"
-                android:textSize="29sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="12dp"/>
+            <!-- Header text overlay -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal|bottom"
+                android:background="#55041E42"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="18dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Join the RideConnect community"
-                android:textSize="13sp"
-                android:textColor="#DCE6EF"
-                android:layout_marginTop="6dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create Account"
+                    android:textSize="29sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"/>
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Join the RideConnect community"
+                    android:textSize="13sp"
+                    android:textColor="#F5B82E"
+                    android:layout_marginTop="6dp"/>
+
+            </LinearLayout>
+
+        </FrameLayout>
 
         <!-- Registration form -->
         <LinearLayout
@@ -169,19 +178,109 @@
                 android:layout_marginTop="17dp"
                 android:layout_marginBottom="6dp"/>
 
-            <EditText
-                android:id="@+id/passwordInput"
+            <!-- Password field with visibility toggle -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
-                android:hint="Create a password"
-                android:inputType="textPassword"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@android:color/transparent">
+
+                <EditText
+                    android:id="@+id/passwordInput"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Create a password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_secondary"
+                    android:backgroundTint="@color/teal"/>
+
+                <ImageButton
+                    android:id="@+id/togglePasswordVisibility"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_visibility"
+                    android:scaleType="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Show password"
+                    android:padding="12dp"/>
+
+            </LinearLayout>
+
+            <!-- Driving Information -->
+            <TextView
+                android:id="@+id/drivingInformationTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Driving Information"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="15dp"
+                android:visibility="gone"/>
+
+            <!-- Date Registered -->
+            <TextView
+                android:id="@+id/registrationDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date Registered with RideConnect"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="6dp"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/registrationDateInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Select registration date"
+                android:focusable="false"
+                android:clickable="true"
                 android:singleLine="true"
                 android:paddingStart="14dp"
                 android:paddingEnd="14dp"
                 android:textSize="15sp"
                 android:textColor="@color/text_primary"
                 android:textColorHint="@color/text_secondary"
-                android:backgroundTint="@color/teal"/>
+                android:backgroundTint="@color/teal"
+                android:visibility="gone"/>
+
+            <!-- Years of Driving Experience -->
+            <TextView
+                android:id="@+id/drivingExperienceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Years of Driving Experience"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginTop="17dp"
+                android:layout_marginBottom="6dp"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/drivingExperienceInput"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:hint="Enter years of experience"
+                android:inputType="number"
+                android:singleLine="true"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:textSize="15sp"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:backgroundTint="@color/teal"
+                android:visibility="gone"/>
 
             <!-- Vehicle information -->
             <TextView

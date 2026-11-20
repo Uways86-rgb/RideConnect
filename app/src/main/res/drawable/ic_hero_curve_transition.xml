@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="360dp"
+    android:height="54dp"
+    android:viewportWidth="360"
+    android:viewportHeight="54">
+    <!-- Teal accent curve -->
+    <path
+        android:fillColor="@color/teal"
+        android:pathData="M0,34 Q180,0 360,26 L360,54 L0,54 Z" />
+    <!-- White foreground curve -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M0,40 Q180,6 360,34 L360,54 L0,54 Z" />
+</vector>

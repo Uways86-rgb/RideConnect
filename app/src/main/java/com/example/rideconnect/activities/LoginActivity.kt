@@ -3,8 +3,13 @@ package com.example.rideconnect.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.rideconnect.R
@@ -31,11 +36,98 @@ class LoginActivity : AppCompatActivity() {
         // UI ELEMENTS
         val emailInput = findViewById<EditText>(R.id.emailInput)
         val passwordInput = findViewById<EditText>(R.id.passwordInput)
+
+        val togglePasswordVisibility =
+            findViewById<ImageButton>(R.id.togglePasswordVisibility)
+
+        var isPasswordVisible = false
+
+        // SHOW / HIDE PASSWORD
+        togglePasswordVisibility.setOnClickListener {
+
+            isPasswordVisible = !isPasswordVisible
+
+            if (isPasswordVisible) {
+
+                passwordInput.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
+
+                togglePasswordVisibility.setImageResource(
+                    R.drawable.ic_visibility_off
+                )
+
+                togglePasswordVisibility.contentDescription = "Hide password"
+
+            } else {
+
+                passwordInput.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
+
+                togglePasswordVisibility.setImageResource(
+                    R.drawable.ic_visibility
+                )
+
+                togglePasswordVisibility.contentDescription = "Show password"
+            }
+
+            // Keep cursor at the end of the password
+            passwordInput.setSelection(passwordInput.text.length)
+        }
+
         val loginButton = findViewById<Button>(R.id.loginButton)
         val registerButton = findViewById<Button>(R.id.registerButton)
 
+        // FORGOT PASSWORD
+        val forgotPasswordText =
+            findViewById<TextView>(R.id.forgotPasswordText)
+
+        forgotPasswordText.setOnClickListener {
+
+            val email = emailInput.text.toString().trim()
+
+            // CHECK EMPTY EMAIL
+            if (email.isEmpty()) {
+                emailInput.error = "Please enter your email address"
+                emailInput.requestFocus()
+                return@setOnClickListener
+            }
+
+            // VALIDATE EMAIL FORMAT
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                emailInput.error = "Please enter a valid email address"
+                emailInput.requestFocus()
+                return@setOnClickListener
+            }
+
+            // PREVENT REPEATED REQUESTS
+            forgotPasswordText.isEnabled = false
+
+            auth.sendPasswordResetEmail(email)
+                .addOnSuccessListener {
+
+                    Toast.makeText(
+                        this,
+                        "If an account exists for this email, a password reset link will be sent.",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    forgotPasswordText.isEnabled = true
+                }
+                .addOnFailureListener {
+
+                    Toast.makeText(
+                        this,
+                        "Unable to send password reset email. Please try again later.",
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    forgotPasswordText.isEnabled = true
+                }
+        }
+
         // REGISTER BUTTON
         registerButton.setOnClickListener {
+
             val registerIntent = Intent(
                 this,
                 RegisterActivity::class.java
@@ -57,6 +149,7 @@ class LoginActivity : AppCompatActivity() {
 
             // CHECK EMPTY FIELDS
             if (email.isEmpty() || password.isEmpty()) {
+
                 Toast.makeText(
                     this,
                     "Please enter email and password",
@@ -68,6 +161,7 @@ class LoginActivity : AppCompatActivity() {
 
             // CHECK SELECTED ROLE
             if (selectedRole == null) {
+
                 Toast.makeText(
                     this,
                     "Please select Passenger or Driver first",
@@ -80,6 +174,7 @@ class LoginActivity : AppCompatActivity() {
             if (selectedRole != "Passenger" &&
                 selectedRole != "Driver"
             ) {
+
                 Toast.makeText(
                     this,
                     "Invalid account type selected",
@@ -106,6 +201,7 @@ class LoginActivity : AppCompatActivity() {
                     val userId = auth.currentUser?.uid
 
                     if (userId == null) {
+
                         loginButton.isEnabled = true
 
                         Toast.makeText(
@@ -125,6 +221,7 @@ class LoginActivity : AppCompatActivity() {
 
                             // USER PROFILE DOES NOT EXIST
                             if (!document.exists()) {
+
                                 loginButton.isEnabled = true
 
                                 Toast.makeText(
@@ -181,6 +278,7 @@ class LoginActivity : AppCompatActivity() {
 
                                 // INVALID ROLE
                                 else {
+
                                     loginButton.isEnabled = true
 
                                     Toast.makeText(
@@ -193,6 +291,7 @@ class LoginActivity : AppCompatActivity() {
 
                             // WRONG ROLE SELECTED
                             else {
+
                                 loginButton.isEnabled = true
 
                                 Toast.makeText(
@@ -202,24 +301,26 @@ class LoginActivity : AppCompatActivity() {
                                 ).show()
                             }
                         }
-                        .addOnFailureListener { exception ->
+                        .addOnFailureListener {
 
                             loginButton.isEnabled = true
 
                             Toast.makeText(
                                 this,
-                                "Failed to load user data: ${exception.message}",
+                                "Failed to load user data. Please try again.",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                 }
-                .addOnFailureListener { exception ->
+                .addOnFailureListener {
 
+                    // RESTORE LOGIN BUTTON
                     loginButton.isEnabled = true
 
+                    // FRIENDLY LOGIN ERROR MESSAGE
                     Toast.makeText(
                         this,
-                        "Login failed: ${exception.message}",
+                        "Incorrect email or password. Please try again.",
                         Toast.LENGTH_LONG
                     ).show()
                 }
