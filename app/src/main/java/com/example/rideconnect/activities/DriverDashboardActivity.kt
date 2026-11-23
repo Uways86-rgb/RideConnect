@@ -1080,13 +1080,15 @@ class DriverDashboardActivity : AppCompatActivity() {
     // START INSTANT RIDE
     // ============================================================
 
+
     private fun startRide() {
         val rideId = currentRideId
+        val driverId = auth.currentUser?.uid
 
-        if (rideId == null) {
+        if (rideId == null || driverId == null) {
             Toast.makeText(
                 this,
-                "No ride selected",
+                "No active ride found.",
                 Toast.LENGTH_LONG
             ).show()
             return
@@ -1094,15 +1096,40 @@ class DriverDashboardActivity : AppCompatActivity() {
 
         startRideButton.isEnabled = false
 
-        db.collection("rides")
+        val rideReference = db.collection("rides")
             .document(rideId)
-            .update(
+
+        db.runTransaction { transaction ->
+
+            val rideDocument = transaction.get(rideReference)
+
+            val assignedDriverId =
+                rideDocument.getString("driverId")
+
+            val status =
+                rideDocument.getString("status")
+
+            // Only the driver assigned to this ride can start it.
+            if (
+                assignedDriverId != driverId ||
+                status != "Accepted"
+            ) {
+                return@runTransaction false
+            }
+
+            transaction.update(
+                rideReference,
                 mapOf(
                     "status" to "In Progress",
                     "startTime" to FieldValue.serverTimestamp()
                 )
             )
-            .addOnSuccessListener {
+
+            true
+
+        }.addOnSuccessListener { started ->
+
+            if (started) {
                 Toast.makeText(
                     this,
                     "Ride started!",
@@ -1110,17 +1137,32 @@ class DriverDashboardActivity : AppCompatActivity() {
                 ).show()
 
                 loadDriverRide()
-            }
-            .addOnFailureListener { exception ->
-                startRideButton.isEnabled = true
+
+            } else {
+                currentRideId = null
 
                 Toast.makeText(
                     this,
-                    "Failed to start ride: ${exception.message}",
+                    "This ride has already been assigned to another driver or is no longer available.",
                     Toast.LENGTH_LONG
                 ).show()
+
+                showNoRide()
+                loadDriverRide()
             }
+
+        }.addOnFailureListener { exception ->
+
+            startRideButton.isEnabled = true
+
+            Toast.makeText(
+                this,
+                "Failed to start ride: ${exception.message}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
     }
+
 
     // ============================================================
     // COMPLETE INSTANT RIDE
