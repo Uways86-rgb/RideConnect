@@ -67,6 +67,14 @@ class DriverDashboardActivity : AppCompatActivity() {
     private val passengerPickupMarkers =
         mutableMapOf<String, Marker>()
 
+    // Live passenger location tracking for instant ride
+    private var instantPassengerLocationListener: ListenerRegistration? = null
+    private var instantPassengerMarker: Marker? = null
+
+    // Live passenger location tracking for approved shared ride bookings
+    private val passengerLocationListeners =
+        mutableMapOf<String, ListenerRegistration>()
+
     private var postedRideBeingTrackedId: String? = null
 
     private var shouldRetryLocationOnResume = false
@@ -276,6 +284,7 @@ class DriverDashboardActivity : AppCompatActivity() {
     // START DRIVER LOCATION UPDATES
     // ============================================================
 
+    @Suppress("MissingPermission")
     private fun startDriverLocationUpdates() {
         if (!hasLocationPermission()) return
 
@@ -959,6 +968,9 @@ class DriverDashboardActivity : AppCompatActivity() {
                         }
 
                     obsoleteMarkerIds.forEach { bookingId ->
+                        passengerLocationListeners[bookingId]?.remove()
+                        passengerLocationListeners.remove(bookingId)
+
                         passengerPickupMarkers[bookingId]?.let { marker ->
                             driverMap.overlays.remove(marker)
                         }
@@ -966,21 +978,8 @@ class DriverDashboardActivity : AppCompatActivity() {
                     }
 
                     for (booking in approvedBookings) {
-                        val latitude =
-                            booking.getDouble("pickupLatitude")
-                                ?: continue
-
-                        val longitude =
-                            booking.getDouble("pickupLongitude")
-                                ?: continue
-
-                        if (
-                            latitude !in -90.0..90.0 ||
-                            longitude !in -180.0..180.0
-                        ) {
-                            continue
-                        }
-
+                        val bookingId = booking.id
+                        val passengerId = booking.getString("passengerId")
                         val passengerName =
                             booking.getString("passengerName")
                                 ?: "Approved passenger"
@@ -990,8 +989,14 @@ class DriverDashboardActivity : AppCompatActivity() {
                                 ?: booking.getString("pickup")
                                 ?: "Pickup address unavailable"
 
+                        val latitude =
+                            booking.getDouble("pickupLatitude") ?: 0.0
+
+                        val longitude =
+                            booking.getDouble("pickupLongitude") ?: 0.0
+
                         val marker =
-                            passengerPickupMarkers[booking.id]
+                            passengerPickupMarkers[bookingId]
                                 ?: Marker(driverMap).also { newMarker ->
                                     newMarker.setAnchor(
                                         Marker.ANCHOR_CENTER,
@@ -999,13 +1004,39 @@ class DriverDashboardActivity : AppCompatActivity() {
                                     )
 
                                     driverMap.overlays.add(newMarker)
-                                    passengerPickupMarkers[booking.id] =
+                                    passengerPickupMarkers[bookingId] =
                                         newMarker
                                 }
 
-                        marker.position = GeoPoint(latitude, longitude)
-                        marker.title = "Passenger: $passengerName"
-                        marker.snippet = pickupAddress
+                        if (latitude in -90.0..90.0 && longitude in -180.0..180.0) {
+                            marker.position = GeoPoint(latitude, longitude)
+                            marker.title = "👤 Passenger: $passengerName"
+                            marker.snippet = pickupAddress
+                        }
+
+                        // Attach real-time passenger location listener if passenger ID is available
+                        if (!passengerId.isNullOrBlank() && !passengerLocationListeners.containsKey(bookingId)) {
+                            val listener = db.collection("passengerLocations")
+                                .document(passengerId)
+                                .addSnapshotListener { passengerDoc, passengerErr ->
+                                    if (passengerErr != null || passengerDoc == null || !passengerDoc.exists()) return@addSnapshotListener
+
+                                    val liveLat = passengerDoc.getDouble("latitude")
+                                    val liveLon = passengerDoc.getDouble("longitude")
+
+                                    if (liveLat != null && liveLon != null && liveLat in -90.0..90.0 && liveLon in -180.0..180.0) {
+                                        val currentMarker = passengerPickupMarkers[bookingId]
+                                        if (currentMarker != null) {
+                                            currentMarker.position = GeoPoint(liveLat, liveLon)
+                                            currentMarker.title = "👤 Passenger: $passengerName (Live)"
+                                            currentMarker.snippet = "Live passenger location"
+                                            driverMap.invalidate()
+                                        }
+                                    }
+                                }
+
+                            passengerLocationListeners[bookingId] = listener
+                        }
                     }
 
                     driverMap.invalidate()
@@ -1020,6 +1051,9 @@ class DriverDashboardActivity : AppCompatActivity() {
         approvedBookingsListener?.remove()
         approvedBookingsListener = null
         postedRideBeingTrackedId = null
+
+        passengerLocationListeners.values.forEach { it.remove() }
+        passengerLocationListeners.clear()
 
         passengerPickupMarkers.values.forEach { marker ->
             driverMap.overlays.remove(marker)
@@ -1049,6 +1083,13 @@ class DriverDashboardActivity : AppCompatActivity() {
 
         acceptRideButton.isEnabled = false
 
+        val passengerId = document.getString("passengerId")
+        if (!passengerId.isNullOrEmpty()) {
+            startInstantPassengerLocationTracking(passengerId)
+        } else {
+            stopInstantPassengerLocationTracking()
+        }
+
         when (document.getString("status")) {
 
             "Accepted" -> {
@@ -1074,6 +1115,55 @@ class DriverDashboardActivity : AppCompatActivity() {
                 completeRideButton.isEnabled = false
             }
         }
+    }
+
+    // ============================================================
+    // INSTANT PASSENGER LIVE LOCATION TRACKING
+    // ============================================================
+
+    private fun startInstantPassengerLocationTracking(passengerId: String) {
+        instantPassengerLocationListener?.remove()
+
+        instantPassengerLocationListener = db.collection("passengerLocations")
+            .document(passengerId)
+            .addSnapshotListener { document, error ->
+                if (error != null || document == null || !document.exists()) return@addSnapshotListener
+
+                val latitude = document.getDouble("latitude")
+                val longitude = document.getDouble("longitude")
+
+                if (latitude != null && longitude != null && latitude in -90.0..90.0 && longitude in -180.0..180.0) {
+                    val point = GeoPoint(latitude, longitude)
+
+                    if (instantPassengerMarker == null) {
+                        instantPassengerMarker = Marker(driverMap).apply {
+                            title = "👤 Passenger"
+                            snippet = "Live passenger location"
+                            setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
+                        }
+                        driverMap.overlays.add(instantPassengerMarker)
+                    }
+
+                    instantPassengerMarker?.position = point
+                    instantPassengerMarker?.title = "👤 Passenger (Live)"
+                    instantPassengerMarker?.snippet = "Live passenger location"
+                    driverMap.invalidate()
+                }
+            }
+    }
+
+    private fun stopInstantPassengerLocationTracking() {
+        instantPassengerLocationListener?.remove()
+        instantPassengerLocationListener = null
+
+        instantPassengerMarker?.let { marker ->
+            if (::driverMap.isInitialized) {
+                driverMap.overlays.remove(marker)
+                driverMap.invalidate()
+            }
+        }
+
+        instantPassengerMarker = null
     }
 
     // ============================================================
@@ -1205,6 +1295,8 @@ class DriverDashboardActivity : AppCompatActivity() {
                 startRideButton.isEnabled = false
                 completeRideButton.isEnabled = false
 
+                stopInstantPassengerLocationTracking()
+
                 loadDriverRide()
                 loadPostedRideForMarkers()
             }
@@ -1232,6 +1324,8 @@ class DriverDashboardActivity : AppCompatActivity() {
         acceptRideButton.isEnabled = false
         startRideButton.isEnabled = false
         completeRideButton.isEnabled = false
+
+        stopInstantPassengerLocationTracking()
     }
 
     // ============================================================
@@ -1367,6 +1461,7 @@ class DriverDashboardActivity : AppCompatActivity() {
         instantRideRequestsListener = null
 
         stopApprovedPassengerPickupTracking()
+        stopInstantPassengerLocationTracking()
 
         if (::locationManager.isInitialized) {
             locationManager.removeUpdates(driverLocationListener)

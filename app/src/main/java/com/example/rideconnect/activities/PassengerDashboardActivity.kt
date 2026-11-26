@@ -20,6 +20,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.rideconnect.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import org.osmdroid.config.Configuration
@@ -52,10 +53,14 @@ class PassengerDashboardActivity : AppCompatActivity() {
     private lateinit var locationOverlay: MyLocationNewOverlay
 
     private var rideListener: ListenerRegistration? = null
+    private var bookingListener: ListenerRegistration? = null
     private var driverLocationListener: ListenerRegistration? = null
+    private var passengerLocationListener: LocationListener? = null
+
     private var driverLocationMarker: Marker? = null
     private var currentDriverId: String? = null
     private var currentRideId: String? = null
+    private var currentBookingId: String? = null
 
     private var currentPickupLatitude: Double? = null
     private var currentPickupLongitude: Double? = null
@@ -947,7 +952,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
             }
     }
 
-    // EXISTING ACTIVE RIDE
+    // EXISTING ACTIVE RIDE OR APPROVED BOOKING
     private fun checkForExistingRide(
         statusText: TextView,
         driverNameText: TextView,
@@ -966,7 +971,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
             .limit(1)
             .get()
             .addOnSuccessListener { documents ->
-                if (currentRideId != null) return@addOnSuccessListener
+                if (currentRideId != null || currentBookingId != null) return@addOnSuccessListener
 
                 if (!documents.isEmpty) {
                     val rideId = documents.documents[0].id
@@ -980,6 +985,153 @@ class PassengerDashboardActivity : AppCompatActivity() {
                         driverCarText,
                         rideDetailsText
                     )
+                } else {
+                    checkForApprovedBooking(
+                        statusText,
+                        driverNameText,
+                        driverPhoneText,
+                        driverCarText,
+                        rideDetailsText
+                    )
+                }
+            }
+            .addOnFailureListener {
+                checkForApprovedBooking(
+                    statusText,
+                    driverNameText,
+                    driverPhoneText,
+                    driverCarText,
+                    rideDetailsText
+                )
+            }
+    }
+
+    private fun checkForApprovedBooking(
+        statusText: TextView,
+        driverNameText: TextView,
+        driverPhoneText: TextView,
+        driverCarText: TextView,
+        rideDetailsText: TextView
+    ) {
+        val userId = auth.currentUser?.uid ?: return
+
+        db.collection("bookings")
+            .whereEqualTo("passengerId", userId)
+            .whereEqualTo("status", "Approved")
+            .limit(1)
+            .get()
+            .addOnSuccessListener { documents ->
+                if (currentRideId != null || currentBookingId != null) return@addOnSuccessListener
+
+                if (!documents.isEmpty) {
+                    val bookingDoc = documents.documents[0]
+                    val bookingId = bookingDoc.id
+                    currentBookingId = bookingId
+
+                    listenForBookingStatus(
+                        bookingId,
+                        statusText,
+                        driverNameText,
+                        driverPhoneText,
+                        driverCarText,
+                        rideDetailsText
+                    )
+                }
+            }
+    }
+
+    private fun listenForBookingStatus(
+        bookingId: String,
+        statusText: TextView,
+        driverNameText: TextView,
+        driverPhoneText: TextView,
+        driverCarText: TextView,
+        rideDetailsText: TextView
+    ) {
+        bookingListener?.remove()
+
+        bookingListener = db.collection("bookings")
+            .document(bookingId)
+            .addSnapshotListener { snapshot, error ->
+
+                if (error != null) {
+                    statusText.text =
+                        "Unable to check booking status: ${error.message}"
+                    return@addSnapshotListener
+                }
+
+                if (snapshot == null || !snapshot.exists()) {
+                    statusText.text = "Booking no longer exists"
+                    stopDriverLocationTracking()
+                    stopPassengerLocationBroadcasting()
+                    return@addSnapshotListener
+                }
+
+                val status = snapshot.getString("status")
+                val pickup = snapshot.getString("pickup")
+                    ?: snapshot.getString("pickupAddress") ?: ""
+                val destination = snapshot.getString("destination") ?: ""
+                val driverId = snapshot.getString("driverId")
+
+                rideDetailsText.text =
+                    "Pickup: $pickup\nDestination: $destination"
+
+                when (status) {
+
+                    "Approved" -> {
+                        statusText.text = "🟢 Shared Ride Booking Approved!"
+
+                        if (driverId != null) {
+                            getDriverInformation(
+                                driverId,
+                                driverNameText,
+                                driverPhoneText,
+                                driverCarText
+                            )
+
+                            startDriverLocationTracking(driverId)
+                            startPassengerLocationBroadcasting()
+
+                        } else {
+                            driverNameText.text =
+                                "🚘 Driver information unavailable"
+                            driverPhoneText.text = ""
+                            driverCarText.text = ""
+
+                            stopDriverLocationTracking()
+                            stopPassengerLocationBroadcasting()
+                        }
+                    }
+
+                    "Completed" -> {
+                        statusText.text = "✅ Shared Ride Completed"
+                        driverNameText.text = "Your ride has been completed."
+                        driverPhoneText.text = "View it in Ride History."
+                        driverCarText.text = ""
+
+                        stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
+                    }
+
+                    "Cancelled", "Rejected" -> {
+                        statusText.text = "❌ Booking $status"
+                        driverNameText.text = "This booking was $status."
+                        driverPhoneText.text = ""
+                        driverCarText.text = ""
+
+                        stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
+                    }
+
+                    else -> {
+                        statusText.text = "Booking status: $status"
+                        driverNameText.text = ""
+                        driverPhoneText.text = ""
+                        driverCarText.text = ""
+
+                        stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
+                    }
                 }
             }
     }
@@ -987,7 +1139,6 @@ class PassengerDashboardActivity : AppCompatActivity() {
     // ---------------------------------------------------------
     // RIDE STATUS LISTENER
     // ---------------------------------------------------------
-
 
     private fun listenForRideStatus(
         rideId: String,
@@ -1015,6 +1166,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
                 if (snapshot == null || !snapshot.exists()) {
                     statusText.text = "Ride no longer exists"
                     stopDriverLocationTracking()
+                    stopPassengerLocationBroadcasting()
                     return@addSnapshotListener
                 }
 
@@ -1034,6 +1186,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
                         driverCarText.text = ""
 
                         stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
                     }
 
                     "Accepted", "In Progress" -> {
@@ -1055,6 +1208,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
                             )
 
                             startDriverLocationTracking(driverId)
+                            startPassengerLocationBroadcasting()
 
                         } else {
                             driverNameText.text =
@@ -1063,6 +1217,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
                             driverCarText.text = ""
 
                             stopDriverLocationTracking()
+                            stopPassengerLocationBroadcasting()
                         }
                     }
 
@@ -1078,6 +1233,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
                         driverCarText.text = ""
 
                         stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
                     }
 
                     "Completed" -> {
@@ -1092,6 +1248,7 @@ class PassengerDashboardActivity : AppCompatActivity() {
                         driverCarText.text = ""
 
                         stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
                     }
 
                     else -> {
@@ -1101,11 +1258,73 @@ class PassengerDashboardActivity : AppCompatActivity() {
                         driverCarText.text = ""
 
                         stopDriverLocationTracking()
+                        stopPassengerLocationBroadcasting()
                     }
                 }
             }
     }
 
+    // ---------------------------------------------------------
+    // PASSENGER LIVE LOCATION BROADCASTING
+    // ---------------------------------------------------------
+
+    private fun startPassengerLocationBroadcasting() {
+        val passengerId = auth.currentUser?.uid ?: return
+        if (!hasFineLocationPermission() && !hasCoarseLocationPermission()) return
+
+        val manager = getSystemService(LOCATION_SERVICE) as LocationManager
+
+        if (passengerLocationListener != null) return
+
+        passengerLocationListener = object : LocationListener {
+            override fun onLocationChanged(location: Location) {
+                val locationData = hashMapOf<String, Any>(
+                    "passengerId" to passengerId,
+                    "latitude" to location.latitude,
+                    "longitude" to location.longitude,
+                    "updatedAt" to FieldValue.serverTimestamp()
+                )
+
+                db.collection("passengerLocations")
+                    .document(passengerId)
+                    .set(locationData)
+            }
+        }
+
+        try {
+            if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                manager.requestLocationUpdates(
+                    LocationManager.GPS_PROVIDER,
+                    3000L,
+                    5f,
+                    passengerLocationListener!!,
+                    Looper.getMainLooper()
+                )
+            }
+
+            if (manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                manager.requestLocationUpdates(
+                    LocationManager.NETWORK_PROVIDER,
+                    5000L,
+                    5f,
+                    passengerLocationListener!!,
+                    Looper.getMainLooper()
+                )
+            }
+        } catch (_: SecurityException) {
+        }
+    }
+
+    private fun stopPassengerLocationBroadcasting() {
+        passengerLocationListener?.let { listener ->
+            try {
+                val manager = getSystemService(LOCATION_SERVICE) as LocationManager
+                manager.removeUpdates(listener)
+            } catch (_: Exception) {
+            }
+        }
+        passengerLocationListener = null
+    }
 
     // ---------------------------------------------------------
     // DRIVER LOCATION TRACKING
@@ -1272,7 +1491,9 @@ class PassengerDashboardActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         rideListener?.remove()
+        bookingListener?.remove()
         driverLocationListener?.remove()
+        stopPassengerLocationBroadcasting()
 
         locationTimeout?.let {
             locationHandler.removeCallbacks(it)
